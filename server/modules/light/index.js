@@ -1,6 +1,6 @@
 let lightInstance;
 
-const config = require('../../state/config.json');
+const config = require('../../../state/config.json');
 
 const GCERelay = require('./GCERelay')
 const GPIO = require('./GPIO')

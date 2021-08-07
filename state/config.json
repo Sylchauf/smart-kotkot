@@ -47,16 +47,17 @@
       "activateWhen": true
     }
   },
-  "camera": {
-    "module": "UsbWebcam",
-    "options": {
-      "device": "/dev/video0",
-      "width": 1024,
-      "height": 768
-    },
-    "intervalSec": 20,
-    "maxAgeSec": 10
-  },
+  "camera": [
+    {
+      "module": "UsbWebcam",
+      "options": {
+        "device": "/dev/video0",
+        "width": 1024,
+        "height": 768
+      },
+      "intervalSec": 20
+    }
+  ],
   "location": {
     "lat": 45.288331,
     "lon": 1.589881

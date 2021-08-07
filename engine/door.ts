@@ -3,7 +3,7 @@ import DOOR_STATE from "../constants/DOOR_STATE";
 import DOOR_DIRECTION from "../constants/DOOR_DIRECTION";
 import fs from "fs";
 
-import { motorInstance } from "../modules/motor";
+import { motorInstance } from "../server/modules/motor";
 import logger from "../lib/logger";
 
 const status = {

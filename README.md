@@ -1,3 +1,16 @@
+# Installation
+
+## Requirements
+
+* Node.JS v14+
+* fswebcam
+
+## Run
+
+```bash
+npm run start
+```
+
 # API
 
 ## Door

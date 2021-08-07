@@ -2,6 +2,7 @@ const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 const { setupCronjobs } = require("./server/cron-tasks");
+const {initializeCameras} = require('./server/camera')
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -21,5 +22,6 @@ app.prepare().then(() => {
     console.log("> Ready on http://localhost:3000");
 
     setupCronjobs(PORT);
+    initializeCameras()
   });
 });
