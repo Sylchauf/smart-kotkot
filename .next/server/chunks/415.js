@@ -28,8 +28,9 @@ __webpack_require__.d(__webpack_exports__, {
   "i7": function() { return /* binding */ door_status; }
 });
 
-// EXTERNAL MODULE: ./state/config.json
-var config = __webpack_require__(3801);
+// EXTERNAL MODULE: ./lib/getConfig.js
+var getConfig = __webpack_require__(4847);
+var getConfig_default = /*#__PURE__*/__webpack_require__.n(getConfig);
 ;// CONCATENATED MODULE: ./constants/DOOR_STATE.js
 const DOOR_STATE = {
   TOP: "top",
@@ -42,15 +43,16 @@ var DOOR_DIRECTION = __webpack_require__(4814);
 var external_fs_ = __webpack_require__(5747);
 var external_fs_default = /*#__PURE__*/__webpack_require__.n(external_fs_);
 ;// CONCATENATED MODULE: ./server/modules/motor/index.js
-let motorInstance;
+const motor_getConfig = __webpack_require__(4847);
 
-const motor_config = __webpack_require__(3801);
+let motorInstance;
+const config = motor_getConfig();
 
 const GCERelay = __webpack_require__(65);
 
 const GPIO = __webpack_require__(5494);
 
-switch (motor_config.door.module) {
+switch (config.door.module) {
   case "GCERelay":
     motorInstance = new GCERelay();
     break;
@@ -68,7 +70,8 @@ var logger_default = /*#__PURE__*/__webpack_require__.n(logger);
 
 
 
- // @ts-ignore
+
+const door_config = getConfig_default()(); // @ts-ignore
 
 
 
@@ -96,11 +99,11 @@ const setDoorStatus = _status => {
 };
 
 const correctTop = () => {
-  logger_default().info(`[Door] Try to apply correction for up (${config.door.correctionSec}s)`);
-  const response = moveDoor(DOOR_DIRECTION/* default.UP */.Z.UP, config.door.correctionSec);
+  logger_default().info(`[Door] Try to apply correction for up (${door_config.door.correctionSec}s)`);
+  const response = moveDoor(DOOR_DIRECTION/* default.UP */.Z.UP, door_config.door.correctionSec);
 
   if (response.status === 200) {
-    setDoorState("durationUpSec", doorState.durationUpSec + config.door.correctionSec);
+    setDoorState("durationUpSec", doorState.durationUpSec + door_config.door.correctionSec);
     setDoorState("state", constants_DOOR_STATE.TOP);
   }
 
@@ -108,11 +111,11 @@ const correctTop = () => {
 };
 
 const correctBottom = () => {
-  logger_default().info(`[Door] Apply correction for down (${config.door.correctionSec}s)`);
-  const response = moveDoor(DOOR_DIRECTION/* default.DOWN */.Z.DOWN, config.door.correctionSec);
+  logger_default().info(`[Door] Apply correction for down (${door_config.door.correctionSec}s)`);
+  const response = moveDoor(DOOR_DIRECTION/* default.DOWN */.Z.DOWN, door_config.door.correctionSec);
 
   if (response.status === 200) {
-    setDoorState("durationDownSec", doorState.durationDownSec + config.door.correctionSec);
+    setDoorState("durationDownSec", doorState.durationDownSec + door_config.door.correctionSec);
     setDoorState("state", constants_DOOR_STATE.BOTTOM);
   }
 
@@ -166,6 +169,43 @@ const stopDoor = () => {
 };
 
 
+
+/***/ }),
+
+/***/ 4847:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+const fs = __webpack_require__(5747);
+
+const logger = __webpack_require__(2557);
+
+const getConfig = () => {
+  if (fs.existsSync("./state/config.json")) return JSON.parse(fs.readFileSync("./state/config.json").toString());else {
+    const message = "FATAL ERROR - NO CONFIG FILE DETECTED";
+    logger.error(message);
+    throw new Error(message);
+  }
+};
+
+module.exports = getConfig;
+
+/***/ }),
+
+/***/ 2557:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+const winston = __webpack_require__(944);
+
+__webpack_require__(2510);
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [new winston.transports.Console({
+    format: winston.format.simple()
+  })]
+});
+module.exports = logger;
 
 /***/ }),
 
@@ -280,6 +320,14 @@ class MotorAbstract {
 }
 
 module.exports = MotorAbstract;
+
+/***/ }),
+
+/***/ 3801:
+/***/ (function(module) {
+
+"use strict";
+module.exports = JSON.parse('{"locale":"fr","skipGpio":{"dht22":true,"sensoren":true,"bme280":true,"cputemp":true,"ir":true},"gpioPorts":{"in":{"dht22":14,"oben":5,"unten":6,"bme280":"0x76"},"out":{"hoch":23,"runter":24,"ir":25}},"intervals":{"dht22":30,"dht22OnError":300,"cpu":30,"sensoren":1,"bme280":60},"door":{"module":"GCERelay","options":{"upPin":1,"downPin":2,"activateWhen":true},"correctionSec":2,"automation":{"openTimes":["sunrise+30"],"closeTimes":["sunset+25"]}},"light":{"module":"GCERelay","options":{"pin":5,"activateWhen":true}},"camera":[{"module":"UsbWebcam","options":{"device":"/dev/video0","width":1024,"height":768},"intervalSec":20}],"location":{"lat":45.288331,"lon":1.589881},"heating":{"enabled":true,"heatBelowC":5,"minimumHeatingMins":30,"timeFrame":{"from":"sunrise+0","to":"dusk-60"}},"shelly":{"url":"xxx","intervalSec":30}}');
 
 /***/ })
 

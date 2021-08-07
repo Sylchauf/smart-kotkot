@@ -1,7 +1,9 @@
-import config from "../state/config.json";
+import getConfig from "../lib/getConfig";
 import DOOR_STATE from "../constants/DOOR_STATE";
 import DOOR_DIRECTION from "../constants/DOOR_DIRECTION";
 import fs from "fs";
+
+const config = getConfig();
 
 // @ts-ignore
 import { motorInstance } from "../server/modules/motor";

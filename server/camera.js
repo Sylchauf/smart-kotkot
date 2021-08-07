@@ -1,7 +1,9 @@
 const moment = require("moment");
 const logger = require("../lib/logger");
-const config = require("../state/config.json");
-const { cameraInstance, getCameraInstance } = require("./modules/camera");
+const { getCameraInstance } = require("./modules/camera");
+const getConfig = require("../lib/getConfig");
+
+const config = getConfig();
 
 const cameraTemplate = {
   image: null,

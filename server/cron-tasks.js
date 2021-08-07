@@ -1,8 +1,10 @@
 const CronJob = require("cron").CronJob;
-const config = require("../state/config.json");
 const configStringToTime = require("./lib/configStringToTime");
 const axios = require("axios");
 const logger = require("../lib/logger");
+const getConfig = require("../lib/getConfig");
+
+const config = getConfig();
 
 let cronStatus = {
   jobs: [],

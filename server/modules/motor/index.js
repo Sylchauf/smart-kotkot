@@ -1,6 +1,8 @@
+const getConfig = require("../../../lib/getConfig");
+
 let motorInstance;
 
-const config = require("../../../state/config.json");
+const config = getConfig();
 
 const GCERelay = require("./GCERelay");
 const GPIO = require("./GPIO");

@@ -4,6 +4,43 @@ exports.id = 804;
 exports.ids = [804];
 exports.modules = {
 
+/***/ 4847:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+const fs = __webpack_require__(5747);
+
+const logger = __webpack_require__(2557);
+
+const getConfig = () => {
+  if (fs.existsSync("./state/config.json")) return JSON.parse(fs.readFileSync("./state/config.json").toString());else {
+    const message = "FATAL ERROR - NO CONFIG FILE DETECTED";
+    logger.error(message);
+    throw new Error(message);
+  }
+};
+
+module.exports = getConfig;
+
+/***/ }),
+
+/***/ 2557:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+const winston = __webpack_require__(944);
+
+__webpack_require__(2510);
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [new winston.transports.Console({
+    format: winston.format.simple()
+  })]
+});
+module.exports = logger;
+
+/***/ }),
+
 /***/ 1828:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
@@ -32,13 +69,13 @@ const moment = __webpack_require__(2470);
 
 const logger = __webpack_require__(2557);
 
-const config = __webpack_require__(3801);
-
 const {
-  cameraInstance,
   getCameraInstance
 } = __webpack_require__(3980);
 
+const getConfig = __webpack_require__(4847);
+
+const config = getConfig();
 const cameraTemplate = {
   image: null,
   time: null,
@@ -313,7 +350,7 @@ module.exports = require("winston-daily-rotate-file");;
 var __webpack_require__ = require("../../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [511], function() { return __webpack_exec__(1828); });
+var __webpack_exports__ = (__webpack_exec__(1828));
 module.exports = __webpack_exports__;
 
 })();
