@@ -1,0 +1,9 @@
+{
+  "Door.IsOpen": "Ouverte",
+  "Door.IsClose": "Fermée",
+  "Door.Moving": "La porte est en mouvement…",
+  "Door.Open": "Ouvrir",
+  "Door.Close": "Fermer",
+  "Door.State": "État",
+  "Home.Door": "Porte"
+}

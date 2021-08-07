@@ -1,0 +1,20 @@
+{
+  "Door.Close": {
+    "defaultMessage": "Close"
+  },
+  "Door.IsClose": {
+    "defaultMessage": "Closed"
+  },
+  "Door.IsOpen": {
+    "defaultMessage": "Opened"
+  },
+  "Door.Moving": {
+    "defaultMessage": "The door is moving…"
+  },
+  "Door.Open": {
+    "defaultMessage": "Open"
+  },
+  "Door.State": {
+    "defaultMessage": "State"
+  }
+}
