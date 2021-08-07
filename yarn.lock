@@ -260,6 +260,11 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
+"@dlukanin/cla-mapper@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@dlukanin/cla-mapper/-/cla-mapper-1.2.1.tgz#0b532c6a246cee5439e338f130f11ae83e05a7f0"
+  integrity sha512-DhwxAZKTKmc+kWY0dgkNzYs56szL4HUjDo5YwQbDuN4TGUNSkJNFhhKhnZZ2WPdJwuS/a3w5iLNiQ5RoonTw9w==
+
 "@emotion/babel-plugin@^11.3.0":
   version "11.3.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.3.0.tgz#3a16850ba04d8d9651f07f3fb674b3436a4fb9d7"
@@ -2122,6 +2127,11 @@ file-stream-rotator@^0.5.7:
   dependencies:
     moment "^2.11.2"
 
+file-type@^10.10.0:
+  version "10.11.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-10.11.0.tgz#2961d09e4675b9fb9a3ee6b69e9cd23f43fd1890"
+  integrity sha512-uzk64HRpUZyTGZtVuvrjP0FYxzQrBf4rojot6J65YMEbwBLB0CWm0CLojVpwpmFmxcE/lkvYICgfcGozbBq6rw==
+
 file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
@@ -2444,6 +2454,13 @@ image-size@1.0.0:
   integrity sha512-JLJ6OwBfO1KcA+TvJT+v8gbE6iWbj24LyDNFgFEN0lzegn6cC6a/p3NIDaepMsJjQjlUWqIC7wJv8lBFxPNjcw==
   dependencies:
     queue "6.0.2"
+
+image-type@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/image-type/-/image-type-4.1.0.tgz#72a88d64ff5021371ed67b9a466442100be57cd1"
+  integrity sha512-CFJMJ8QK8lJvRlTCEgarL4ro6hfDQKif2HjSvYCdQZESaIPV4v9imrf7BQHK+sQeTeNeMpWciR9hyC/g8ybXEg==
+  dependencies:
+    file-type "^10.10.0"
 
 import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.3.0"
@@ -3144,6 +3161,14 @@ node-libs-browser@^2.2.1:
     url "^0.11.0"
     util "^0.11.0"
     vm-browserify "^1.0.1"
+
+node-raspistill@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/node-raspistill/-/node-raspistill-2.0.0.tgz#52df5ca500747b88771b540e3af4d8a0bb620202"
+  integrity sha512-CeYHqM2macHj8zhWZnQKSfDBwJ2GulmK2f8xf1zhGveboK2tiPL7mB8wk1f9dwmftjzBJ511iWoYirZFtiQYLA==
+  dependencies:
+    "@dlukanin/cla-mapper" "^1.1.0"
+    image-type "4.1.0"
 
 node-releases@^1.1.71, node-releases@^1.1.73:
   version "1.1.73"

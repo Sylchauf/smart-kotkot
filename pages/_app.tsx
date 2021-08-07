@@ -13,7 +13,12 @@ const messages = config.locale === "fr" ? fr : en;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <IntlProvider messages={messages} locale={config.locale} defaultLocale="en">
+    <IntlProvider
+      // @ts-ignore
+      messages={messages}
+      locale={config.locale}
+      defaultLocale="en"
+    >
       <QueryClientProvider client={queryClient}>
         <Layout>
           <Component {...pageProps} />

@@ -3,6 +3,7 @@ import DOOR_STATE from "../constants/DOOR_STATE";
 import DOOR_DIRECTION from "../constants/DOOR_DIRECTION";
 import fs from "fs";
 
+// @ts-ignore
 import { motorInstance } from "../server/modules/motor";
 import logger from "../lib/logger";
 
@@ -77,12 +78,13 @@ const makeResponse = (status: number, message: string, logType = "info") => {
     message,
   };
 
+  // @ts-ignore
   logger[logType](message);
 
   return response;
 };
 
-const moveDoor = (direction: string, forceDuration = null) => {
+const moveDoor = (direction: string, forceDuration?: number) => {
   // Check if the motor can move
   if (direction !== DOOR_DIRECTION.UP && direction !== DOOR_DIRECTION.DOWN)
     return makeResponse(400, "[Door] Invalid parameter (up/down)", "warn");
@@ -144,8 +146,13 @@ const moveDoor = (direction: string, forceDuration = null) => {
   if (duration <= 0)
     return makeResponse(500, `[Door] Cant move for ${duration}s ...`);
 
-  if (direction === DOOR_DIRECTION.UP) motorInstance.moveUp();
-  else if (direction === DOOR_DIRECTION.DOWN) motorInstance.moveDown();
+  if (direction === DOOR_DIRECTION.UP) {
+    // @ts-ignore
+    motorInstance.moveUp();
+  } else if (direction === DOOR_DIRECTION.DOWN) {
+    // @ts-ignore
+    motorInstance.moveDown();
+  }
 
   setDoorStatus("moving " + direction);
 
@@ -171,6 +178,7 @@ const moveDoor = (direction: string, forceDuration = null) => {
 };
 
 const stopDoor = () => {
+  // @ts-ignore
   motorInstance.stop();
   setDoorStatus("stop");
 };
