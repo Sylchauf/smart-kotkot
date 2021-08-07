@@ -9,7 +9,7 @@
 /coverage
 
 # next.js
-/.next/
+/.next/cache
 /out/
 
 # production
@@ -33,5 +33,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-state
+/state/
 .idea
