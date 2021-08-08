@@ -57,6 +57,22 @@ const setupCronjobs = (port) => {
       });
     });
 
+  if (config.light?.automation?.off)
+    config.light.automation.off.forEach((time) => {
+      cronjobsToConfigure.push({
+        action: "light_off",
+        time: time,
+      });
+    });
+
+  if (config.light?.automation?.on)
+    config.light.automation.on.forEach((time) => {
+      cronjobsToConfigure.push({
+        action: "light_on",
+        time: time,
+      });
+    });
+
   cronjobsToConfigure.forEach((newJob) => {
     const realTime = configStringToTime(newJob.time);
 

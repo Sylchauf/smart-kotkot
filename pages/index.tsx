@@ -4,6 +4,7 @@ import Cameras from "../components/Cameras";
 import Door from "../components/Door";
 import Header from "../components/Header";
 import Light from "../components/Light";
+import Temperature from "../components/Temperature";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -51,6 +52,20 @@ export default function Home() {
                     />
                   </div>
                   <Light />
+                </CardContent>
+              </Card>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Card>
+                <CardContent>
+                  <div className={styles.titleCard}>
+                    <FormattedMessage
+                      id={"Home.Temperature"}
+                      defaultMessage={"Temperature"}
+                    />
+                  </div>
+                  <Temperature />
                 </CardContent>
               </Card>
             </Grid>

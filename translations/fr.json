@@ -10,6 +10,7 @@
   "Home.Door": "Porte",
   "Home.Cameras": "Cameras",
   "Home.Light": "Lumière",
+  "Home.Temperature": "Température",
   "Light.State": "État",
   "Light.IsOn": "Allumée",
   "Light.IsOff": "Éteinte",
@@ -19,5 +20,7 @@
   "Light.NextOffAt": "Prochaine <b>extinction</b> automatique <b>à {time}</b>",
   "Confirm.Sure": "Êtes vous sûr ?",
   "Confirm.Yes": "Confirmer",
-  "Confirm.Cancel": "Annuler"
+  "Confirm.Cancel": "Annuler",
+  "Temperature.Actual": "Actuellement",
+  "Temperature.12ago": "Il y a 12h"
 }

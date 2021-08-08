@@ -91,7 +91,7 @@ const Layout = ({
 
 /* harmony default export */ var components_Layout = (Layout);
 ;// CONCATENATED MODULE: ./translations/fr.json
-var fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"En mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Door.NextOpenAt":"Prochaine <b>ouverture</b> automatique <b>à {time}</b>","Door.NextCloseAt":"Prochaine <b>fermeture</b> automatique <b>à {time}</b>","Home.Door":"Porte","Home.Cameras":"Cameras","Home.Light":"Lumière","Light.State":"État","Light.IsOn":"Allumée","Light.IsOff":"Éteinte","Light.On":"Allumer","Light.Off":"Éteindre","Light.NextOnAt":"Prochain <b>allumage</b> automatique <b>à {time}</b>","Light.NextOffAt":"Prochaine <b>extinction</b> automatique <b>à {time}</b>","Confirm.Sure":"Êtes vous sûr ?","Confirm.Yes":"Confirmer","Confirm.Cancel":"Annuler"}');
+var fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"En mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Door.NextOpenAt":"Prochaine <b>ouverture</b> automatique <b>à {time}</b>","Door.NextCloseAt":"Prochaine <b>fermeture</b> automatique <b>à {time}</b>","Home.Door":"Porte","Home.Cameras":"Cameras","Home.Light":"Lumière","Home.Temperature":"Température","Light.State":"État","Light.IsOn":"Allumée","Light.IsOff":"Éteinte","Light.On":"Allumer","Light.Off":"Éteindre","Light.NextOnAt":"Prochain <b>allumage</b> automatique <b>à {time}</b>","Light.NextOffAt":"Prochaine <b>extinction</b> automatique <b>à {time}</b>","Confirm.Sure":"Êtes vous sûr ?","Confirm.Yes":"Confirmer","Confirm.Cancel":"Annuler","Temperature.Actual":"Actuellement","Temperature.12ago":"Il y a 12h"}');
 ;// CONCATENATED MODULE: ./pages/_app.tsx
 
 

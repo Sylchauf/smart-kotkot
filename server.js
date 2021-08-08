@@ -3,6 +3,7 @@ const { parse } = require("url");
 const next = require("next");
 const { setupCronjobs } = require("./server/cron-tasks");
 const { initializeCameras, getJpg } = require("./server/camera");
+const { getTemperatureAndHumidity } = require("./server/temperature");
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -27,6 +28,6 @@ app.prepare().then(() => {
 
     setupCronjobs(PORT);
     initializeCameras();
-    getJpg();
+    getTemperatureAndHumidity();
   });
 });

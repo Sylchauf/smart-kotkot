@@ -223,7 +223,6 @@ const GPIO = __webpack_require__(6522);
 const getConfig = __webpack_require__(4847);
 
 const config = getConfig();
-console.log("config.light.module:", config.light.module);
 
 switch (config.light.module) {
   case "GCERelay":
