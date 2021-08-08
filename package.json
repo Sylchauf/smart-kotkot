@@ -6,6 +6,8 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production pm2 start server.js",
+    "stop": "pm2 delete server",
+    "restart": "pm2 restart server",
     "lint": "next lint",
     "extract-intl": "formatjs extract '{pages,components}/**/*.ts*' --out-file translations/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'"
   },

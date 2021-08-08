@@ -25,12 +25,10 @@ const CameraDisplay: React.FC<Props> = ({ id, lastRequest, config }) => {
       >
         {date}
       </div>
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={"/api/camera/lastimage/" + id + `?lastRequest=${lastRequest}`}
-        width={config.options.width}
-        height={config.options.height}
         alt={"Camera"}
-        layout="responsive"
       />
     </div>
   );
