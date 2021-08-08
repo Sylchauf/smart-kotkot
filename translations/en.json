@@ -1,4 +1,13 @@
 {
+  "Confirm.Cancel": {
+    "defaultMessage": "Cancel"
+  },
+  "Confirm.Sure": {
+    "defaultMessage": "Are you sure ?"
+  },
+  "Confirm.Yes": {
+    "defaultMessage": "Yes"
+  },
   "Door.Close": {
     "defaultMessage": "Close"
   },
@@ -9,12 +18,48 @@
     "defaultMessage": "Opened"
   },
   "Door.Moving": {
-    "defaultMessage": "The door is moving…"
+    "defaultMessage": "Moving…"
+  },
+  "Door.NextCloseAt": {
+    "defaultMessage": "Next automatic <b>closing at {time}</b>"
+  },
+  "Door.NextOpenAt": {
+    "defaultMessage": "Next automatic <b>opening at {time}</b>"
   },
   "Door.Open": {
     "defaultMessage": "Open"
   },
   "Door.State": {
+    "defaultMessage": "State"
+  },
+  "Home.Cameras": {
+    "defaultMessage": "Cameras"
+  },
+  "Home.Door": {
+    "defaultMessage": "Door"
+  },
+  "Home.Light": {
+    "defaultMessage": "Light"
+  },
+  "Light.IsOff": {
+    "defaultMessage": "Off"
+  },
+  "Light.IsOn": {
+    "defaultMessage": "On"
+  },
+  "Light.NextOffAt": {
+    "defaultMessage": "Next automatic <b>switch off at {time}</b>"
+  },
+  "Light.NextOnAt": {
+    "defaultMessage": "Next automatic <b>switch on at {time}</b>"
+  },
+  "Light.Off": {
+    "defaultMessage": "Off"
+  },
+  "Light.On": {
+    "defaultMessage": "On"
+  },
+  "Light.State": {
     "defaultMessage": "State"
   }
 }

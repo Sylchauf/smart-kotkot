@@ -10,8 +10,9 @@ const handle = app.getRequestHandler();
 
 const PORT = process.env.PORT || 3000;
 
+// Declare all global variable used
 global.cameraList = {};
-global.test = "toto";
+global.cronJobs = [];
 
 app.prepare().then(() => {
   createServer((req, res) => {

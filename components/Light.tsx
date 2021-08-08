@@ -1,0 +1,86 @@
+import { Button } from "@material-ui/core";
+import moment from "moment";
+import Image from "next/image";
+import { FormattedMessage } from "react-intl";
+import useLight from "../hooks/useLight";
+import LightOn from "../public/light-on.svg";
+import LightOff from "../public/light-off.svg";
+
+const Light = () => {
+  const { state, nextAutomation, isLoading, on, off } = useLight();
+
+  if (isLoading) return null;
+
+  const isOn = state === "on";
+
+  const stateToDisplay = isOn ? (
+    <FormattedMessage id={"Light.IsOn"} defaultMessage={"On"} />
+  ) : (
+    <FormattedMessage id={"Light.IsOff"} defaultMessage={"Off"} />
+  );
+
+  return (
+    <div>
+      <div>
+        <b>
+          <FormattedMessage id={"Light.State"} defaultMessage={"State"} /> :{" "}
+        </b>
+        <span style={{ color: isOn ? "green" : "red" }}>{stateToDisplay}</span>
+      </div>
+
+      <div style={{ color: "gray", fontSize: "75%" }}>
+        {nextAutomation.action === "light_off" && (
+          <FormattedMessage
+            id={"Light.NextOffAt"}
+            values={{
+              // @ts-ignore
+              // eslint-disable-next-line react/display-name
+              b: (...chunks) => <b>{chunks}</b>,
+              time: moment(nextAutomation.nextDate).local().format("HH:mm"),
+            }}
+            defaultMessage={"Next automatic <b>switch off at {time}</b>"}
+          />
+        )}
+        {nextAutomation.action === "light_on" && (
+          <FormattedMessage
+            id={"Light.NextOnAt"}
+            values={{
+              // @ts-ignore
+              // eslint-disable-next-line react/display-name
+              b: (...chunks) => <b>{chunks}</b>,
+              time: moment(nextAutomation.nextDate).local().format("HH:mm"),
+            }}
+            defaultMessage={"Next automatic <b>switch on at {time}</b>"}
+          />
+        )}
+      </div>
+
+      <br />
+
+      <div style={{ margin: "0 auto", width: 72, height: 72 }}>
+        <Image
+          src={isOn ? LightOn : LightOff}
+          layout={"responsive"}
+          alt={state}
+        />
+      </div>
+
+      <br />
+
+      <div>
+        {!isOn && (
+          <Button onClick={on} fullWidth variant={"outlined"}>
+            <FormattedMessage id={"Light.On"} defaultMessage={"On"} />
+          </Button>
+        )}
+        {isOn && (
+          <Button onClick={off} fullWidth variant={"outlined"}>
+            <FormattedMessage id={"Light.Off"} defaultMessage={"Off"} />
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Light;

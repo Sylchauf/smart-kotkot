@@ -8,13 +8,12 @@ import en from "../translations/en.json";
 
 const queryClient = new QueryClient();
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <IntlProvider
       // @ts-ignore
       messages={fr}
-      locale={'fr'}
+      locale={"fr"}
       defaultLocale="en"
     >
       <QueryClientProvider client={queryClient}>

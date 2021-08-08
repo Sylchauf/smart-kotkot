@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 import Cameras from "../components/Cameras";
 import Door from "../components/Door";
 import Header from "../components/Header";
+import Light from "../components/Light";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -25,15 +26,35 @@ export default function Home() {
           </Card>
         </Grid>
 
-        <Grid item xs={6} sm={3}>
-          <Card>
-            <CardContent>
-              <div className={styles.titleCard}>
-                <FormattedMessage id={"Home.Door"} defaultMessage={"Door"} />
-              </div>
-              <Door />
-            </CardContent>
-          </Card>
+        <Grid item xs={12} sm={3}>
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <Card>
+                <CardContent>
+                  <div className={styles.titleCard}>
+                    <FormattedMessage
+                      id={"Home.Door"}
+                      defaultMessage={"Door"}
+                    />
+                  </div>
+                  <Door />
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12}>
+              <Card>
+                <CardContent>
+                  <div className={styles.titleCard}>
+                    <FormattedMessage
+                      id={"Home.Light"}
+                      defaultMessage={"Light"}
+                    />
+                  </div>
+                  <Light />
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

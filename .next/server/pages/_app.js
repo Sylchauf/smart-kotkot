@@ -29,7 +29,10 @@ var head_namespaceObject = require("next/head");;
 var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
+// EXTERNAL MODULE: external "material-ui-confirm"
+var external_material_ui_confirm_ = __webpack_require__(3430);
 ;// CONCATENATED MODULE: ./components/Layout.tsx
+
 
 
 
@@ -40,7 +43,22 @@ var external_react_ = __webpack_require__(9297);
 const Layout = ({
   children
 }) => {
-  return /*#__PURE__*/(0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
+  const defaultOptions = {
+    title: /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.FormattedMessage, {
+      id: "Confirm.Sure",
+      defaultMessage: "Are you sure ?"
+    }),
+    confirmationText: /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.FormattedMessage, {
+      id: "Confirm.Yes",
+      defaultMessage: "Yes"
+    }),
+    cancellationText: /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.FormattedMessage, {
+      id: "Confirm.Cancel",
+      defaultMessage: "Cancel"
+    })
+  };
+  return /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_material_ui_confirm_.ConfirmProvider, {
+    defaultOptions: defaultOptions,
     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)((head_default()), {
       children: [/*#__PURE__*/jsx_runtime_.jsx("title", {
         children: "Smart KotKot"
@@ -54,16 +72,26 @@ const Layout = ({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       })]
-    }), /*#__PURE__*/jsx_runtime_.jsx(core_.Container, {
-      maxWidth: "lg",
-      children: children
+    }), /*#__PURE__*/jsx_runtime_.jsx("main", {
+      style: {
+        background: "#f3f3f3",
+        minHeight: "100vh"
+      },
+      children: /*#__PURE__*/jsx_runtime_.jsx(core_.Container, {
+        style: {
+          background: "white",
+          minHeight: "100vh"
+        },
+        maxWidth: "lg",
+        children: children
+      })
     })]
   });
 };
 
 /* harmony default export */ var components_Layout = (Layout);
 ;// CONCATENATED MODULE: ./translations/fr.json
-var fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"La porte est en mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Home.Door":"Porte","Home.Cameras":"Cameras"}');
+var fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"En mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Door.NextOpenAt":"Prochaine <b>ouverture</b> automatique <b>à {time}</b>","Door.NextCloseAt":"Prochaine <b>fermeture</b> automatique <b>à {time}</b>","Home.Door":"Porte","Home.Cameras":"Cameras","Home.Light":"Lumière","Light.State":"État","Light.IsOn":"Allumée","Light.IsOff":"Éteinte","Light.On":"Allumer","Light.Off":"Éteindre","Light.NextOnAt":"Prochain <b>allumage</b> automatique <b>à {time}</b>","Light.NextOffAt":"Prochaine <b>extinction</b> automatique <b>à {time}</b>","Confirm.Sure":"Êtes vous sûr ?","Confirm.Yes":"Confirmer","Confirm.Cancel":"Annuler"}');
 ;// CONCATENATED MODULE: ./pages/_app.tsx
 
 
@@ -87,7 +115,7 @@ function MyApp({
   return /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.IntlProvider // @ts-ignore
   , {
     messages: fr_namespaceObject,
-    locale: 'fr',
+    locale: "fr",
     defaultLocale: "en",
     children: /*#__PURE__*/jsx_runtime_.jsx(external_react_query_.QueryClientProvider, {
       client: queryClient,
@@ -107,6 +135,14 @@ function MyApp({
 
 "use strict";
 module.exports = require("@material-ui/core");;
+
+/***/ }),
+
+/***/ 3430:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("material-ui-confirm");;
 
 /***/ }),
 

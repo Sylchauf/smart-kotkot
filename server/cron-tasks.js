@@ -6,13 +6,6 @@ const getConfig = require("../lib/getConfig");
 
 const config = getConfig();
 
-let cronStatus = {
-  jobs: [],
-};
-
-// All the scheduled Cronjobs go in here
-let coopCronjobs = [];
-
 const schedulerCronjob = new CronJob(
   "0 1 0 * * *",
   function () {
@@ -27,22 +20,22 @@ const schedulerCronjob = new CronJob(
 schedulerCronjob.start();
 
 const setupCronjobs = (port) => {
-  cronStatus.jobs = [];
-
   const axiosInstance = axios.create({
     baseURL: "http://127.0.0.1:" + port,
   });
 
   // Properly unregister/stop the previous cronjobs
-  if (coopCronjobs.length > 0) {
-    logger.info(`Cronjobs: Unregistering ${coopCronjobs.length} old Cronjobs`);
+  if (global.cronJobs.length > 0) {
+    logger.info(
+      `Cronjobs: Unregistering ${global.cronJobs.length} old Cronjobs`
+    );
 
-    coopCronjobs.forEach((cronjob) => {
+    global.cronJobs.forEach((cronjob) => {
       cronjob.stop();
       cronjob = null;
     });
 
-    coopCronjobs = [];
+    global.cronJobs = [];
   }
 
   logger.info("Cronjobs: Set up Setup Cronjobs");
@@ -90,34 +83,21 @@ const setupCronjobs = (port) => {
           newJob.time
       );
 
-      cronStatus.jobs.push({
-        time:
-          (realTime.h < 10 ? "0" : "") +
-          realTime.h +
-          ":" +
-          (realTime.m < 10 ? "0" : "") +
-          realTime.m,
-        command: newJob.time,
-        action: newJob.action,
-      });
+      const thisCron = new CronJob(
+        cronPattern,
+        function () {
+          logger.info(`Cronjob Run - ${newJob.action}`);
 
-      // Sort by execution time
-      cronStatus.jobs.sort((a, b) => a.time.localeCompare(b.time));
-
-      coopCronjobs.push(
-        new CronJob(
-          cronPattern,
-          function () {
-            logger.info(`Cronjob Run - ${newJob.action}`);
-
-            if (newJob.action === "open") axiosInstance.get("/api/door/up");
-            else if (newJob.action === "close")
-              axiosInstance.get("/api/door/down");
-          },
-          null,
-          true
-        )
+          if (newJob.action === "open") axiosInstance.get("/api/door/up");
+          else if (newJob.action === "close")
+            axiosInstance.get("/api/door/down");
+        },
+        null,
+        true
       );
+      thisCron.action = newJob.action;
+
+      global.cronJobs.push(thisCron);
     } else
       logger.warn(
         `Cronjob Setup failed: ${newJob.action} INVALID CRON PATTERN`

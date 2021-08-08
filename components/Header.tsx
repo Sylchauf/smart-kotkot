@@ -21,7 +21,15 @@ const Header: React.FC = () => {
   );
 
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        borderBottom: `1px solid lightgray`,
+        paddingBottom: 4,
+        marginBottom: 16,
+      }}
+    >
       <Image src={logo} alt={"NAME"} />
       <div style={{ fontSize: 36, fontWeight: 600 }}>
         <span style={{ color: COLORS.primary }}>S</span>mart{"  "}

@@ -1,4 +1,5 @@
 import { Button, CircularProgress } from "@material-ui/core";
+import moment from "moment";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
 import useDoor from "../hooks/useDoor";
@@ -6,15 +7,14 @@ import OpenLock from "../public/open-lock.svg";
 import Lock from "../public/lock.svg";
 
 const Door = () => {
-  const { state, isMoving, open, close } = useDoor();
+  const { state, nextAutomation, isLoading, isMoving, open, close } = useDoor();
+
+  if (isLoading) return null;
 
   const isOpen = state === "top";
 
   const stateToDisplay = isMoving ? (
-    <FormattedMessage
-      id={"Door.Moving"}
-      defaultMessage={"The door is moving…"}
-    />
+    <FormattedMessage id={"Door.Moving"} defaultMessage={"Moving…"} />
   ) : isOpen ? (
     <FormattedMessage id={"Door.IsOpen"} defaultMessage={"Opened"} />
   ) : (
@@ -24,27 +24,66 @@ const Door = () => {
   return (
     <div>
       <div>
-        <FormattedMessage id={"Door.State"} defaultMessage={"State"} /> :{" "}
-        {stateToDisplay}
+        <b>
+          <FormattedMessage id={"Door.State"} defaultMessage={"State"} /> :{" "}
+        </b>
+        <span style={{ color: isOpen ? "green" : isMoving ? "blue" : "red" }}>
+          {stateToDisplay}
+        </span>
       </div>
 
-      <div>
+      <div style={{ color: "gray", fontSize: "75%" }}>
+        {nextAutomation.action === "close" && (
+          <FormattedMessage
+            id={"Door.NextCloseAt"}
+            values={{
+              // @ts-ignore
+              // eslint-disable-next-line react/display-name
+              b: (...chunks) => <b>{chunks}</b>,
+              time: moment(nextAutomation.nextDate).local().format("HH:mm"),
+            }}
+            defaultMessage={"Next automatic <b>closing at {time}</b>"}
+          />
+        )}
+        {nextAutomation.action === "open" && (
+          <FormattedMessage
+            id={"Door.NextOpenAt"}
+            values={{
+              // @ts-ignore
+              // eslint-disable-next-line react/display-name
+              b: (...chunks) => <b>{chunks}</b>,
+              time: moment(nextAutomation.nextDate).local().format("HH:mm"),
+            }}
+            defaultMessage={"Next automatic <b>opening at {time}</b>"}
+          />
+        )}
+      </div>
+
+      <br />
+
+      <div style={{ margin: "0 auto", width: 72, height: 72 }}>
         {isMoving ? (
           <CircularProgress />
         ) : (
-          <Image src={isOpen ? OpenLock : Lock} />
+          <Image
+            src={isOpen ? OpenLock : Lock}
+            alt={state}
+            layout={"responsive"}
+          />
         )}
       </div>
+
+      <br />
 
       {!isMoving && (
         <div>
           {!isOpen && (
-            <Button onClick={open}>
+            <Button onClick={open} fullWidth variant={"outlined"}>
               <FormattedMessage id={"Door.Open"} defaultMessage={"Open"} />
             </Button>
           )}
           {isOpen && (
-            <Button onClick={close}>
+            <Button onClick={close} fullWidth variant={"outlined"}>
               <FormattedMessage id={"Door.Close"} defaultMessage={"Close"} />
             </Button>
           )}
