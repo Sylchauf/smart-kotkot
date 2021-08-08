@@ -2,6 +2,7 @@ const { temperatureInstance } = require("./modules/temperature");
 const getConfig = require("../lib/getConfig");
 const moment = require("moment");
 const fs = require("fs");
+const { logger } = require("react-query/types/react/logger");
 
 const config = getConfig();
 
@@ -23,6 +24,7 @@ const clearOldLines = () => {
 };
 
 const getTemperatureAndHumidity = () => {
+  logger.info("Get temperature and humidity values");
   const temp = temperatureInstance.getTemperature();
   const hum = temperatureInstance.getHumidity();
 

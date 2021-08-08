@@ -12,13 +12,15 @@ class TEMPerHUM extends TemperatureAbstract {
   async getTemperature() {
     const result = execSync(`bin/${this.bin}`);
 
-    return result.split(" ")[0];
+    console.log('result:', result)
+
+    return String(result).split(" ")[0];
   }
 
   async getHumidity() {
     const result = execSync(`bin/${this.bin}`);
 
-    return result.split(" ")[1];
+    return String(result).split(" ")[1];
   }
 }
 
