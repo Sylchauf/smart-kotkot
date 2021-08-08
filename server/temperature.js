@@ -6,7 +6,7 @@ const logger = require("../lib/logger");
 
 const config = getConfig();
 
-const fileName = `../state/temperature.log`;
+const fileName = `state/temperature.log`;
 
 const appendToFile = (temp, hum) => {
   const line = `${moment().toISOString()} ${temp} ${hum}\n`;
