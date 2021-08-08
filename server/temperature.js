@@ -2,7 +2,7 @@ const { temperatureInstance } = require("./modules/temperature");
 const getConfig = require("../lib/getConfig");
 const moment = require("moment");
 const fs = require("fs");
-const { logger } = require("react-query/types/react/logger");
+const logger = require("../lib/logger");
 
 const config = getConfig();
 
