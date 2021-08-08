@@ -1,6 +1,6 @@
 const moment = require("moment");
 const SunCalc = require("suncalc");
-const getConfig = require("../../../lib/getConfig");
+const getConfig = require("../../lib/getConfig");
 const config = getConfig();
 
 const configStringToTime = (configString) => {
