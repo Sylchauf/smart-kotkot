@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 6290:
+/***/ 2223:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64,10 +64,6 @@ const Layout = ({
 /* harmony default export */ var components_Layout = (Layout);
 ;// CONCATENATED MODULE: ./translations/fr.json
 var fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"La porte est en mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Home.Door":"Porte","Home.Cameras":"Cameras"}');
-;// CONCATENATED MODULE: ./translations/en.json
-var en_namespaceObject = JSON.parse('{"Door.Close":{"defaultMessage":"Close"},"Door.IsClose":{"defaultMessage":"Closed"},"Door.IsOpen":{"defaultMessage":"Opened"},"Door.Moving":{"defaultMessage":"The door is moving…"},"Door.Open":{"defaultMessage":"Open"},"Door.State":{"defaultMessage":"State"}}');
-// EXTERNAL MODULE: ./state/config.json
-var config = __webpack_require__(3801);
 ;// CONCATENATED MODULE: ./pages/_app.tsx
 
 
@@ -82,10 +78,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 const queryClient = new external_react_query_.QueryClient();
-const messages = config.locale === "fr" ? fr_namespaceObject : en_namespaceObject;
 
 function MyApp({
   Component,
@@ -93,8 +86,8 @@ function MyApp({
 }) {
   return /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.IntlProvider // @ts-ignore
   , {
-    messages: messages,
-    locale: config.locale,
+    messages: fr_namespaceObject,
+    locale: 'fr',
     defaultLocale: "en",
     children: /*#__PURE__*/jsx_runtime_.jsx(external_react_query_.QueryClientProvider, {
       client: queryClient,
@@ -106,14 +99,6 @@ function MyApp({
 }
 
 /* harmony default export */ var _app = (MyApp);
-
-/***/ }),
-
-/***/ 3801:
-/***/ (function(module) {
-
-"use strict";
-module.exports = JSON.parse('{"locale":"fr","skipGpio":{"dht22":true,"sensoren":true,"bme280":true,"cputemp":true,"ir":true},"gpioPorts":{"in":{"dht22":14,"oben":5,"unten":6,"bme280":"0x76"},"out":{"hoch":23,"runter":24,"ir":25}},"intervals":{"dht22":30,"dht22OnError":300,"cpu":30,"sensoren":1,"bme280":60},"door":{"module":"GCERelay","options":{"upPin":1,"downPin":2,"activateWhen":true},"correctionSec":2,"automation":{"openTimes":["sunrise+30"],"closeTimes":["sunset+25"]}},"light":{"module":"GCERelay","options":{"pin":5,"activateWhen":true}},"camera":[{"name":"Intérieur","module":"UsbWebcam","options":{"device":"/dev/video0","width":1440,"height":1080},"intervalSec":20},{"name":"Pondoir","module":"UsbWebcam","options":{"device":"/dev/video2","width":1024,"height":768},"intervalSec":20}],"location":{"lat":45.288331,"lon":1.589881},"heating":{"enabled":true,"heatBelowC":5,"minimumHeatingMins":30,"timeFrame":{"from":"sunrise+0","to":"dusk-60"}},"shelly":{"url":"xxx","intervalSec":30}}');
 
 /***/ }),
 
@@ -164,7 +149,7 @@ module.exports = require("react/jsx-runtime");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = (__webpack_exec__(6290));
+var __webpack_exports__ = (__webpack_exec__(2223));
 module.exports = __webpack_exports__;
 
 })();

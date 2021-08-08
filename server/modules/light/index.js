@@ -1,17 +1,18 @@
 let lightInstance;
 
-const config = require('../../../state/config.json');
+const GCERelay = require("./GCERelay");
+const GPIO = require("./GPIO");
+const getConfig = require("../../../lib/getConfig");
 
-const GCERelay = require('./GCERelay')
-const GPIO = require('./GPIO')
+const config = getConfig();
 
 switch (config.light.module) {
-  case 'GCERelay':
+  case "GCERelay":
     lightInstance = new GCERelay();
-    break
-  case 'GPIO':
+    break;
+  case "GPIO":
     lightInstance = new GPIO();
-    break
+    break;
 }
 
-exports.motorInstance = lightInstance
+exports.motorInstance = lightInstance;

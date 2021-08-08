@@ -219,9 +219,11 @@ const {
   exec
 } = __webpack_require__(3129);
 
-const config = __webpack_require__(3801);
-
 const MotorAbstract = __webpack_require__(4188);
+
+const getConfig = __webpack_require__(4847);
+
+const config = getConfig();
 
 class GCERelay extends MotorAbstract {
   constructor() {
@@ -260,9 +262,11 @@ module.exports = GCERelay;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const config = __webpack_require__(3801);
-
 const MotorAbstract = __webpack_require__(4188);
+
+const getConfig = __webpack_require__(4847);
+
+const config = getConfig();
 
 class GPIO extends MotorAbstract {
   constructor() {
@@ -321,14 +325,6 @@ class MotorAbstract {
 }
 
 module.exports = MotorAbstract;
-
-/***/ }),
-
-/***/ 3801:
-/***/ (function(module) {
-
-"use strict";
-module.exports = JSON.parse('{"locale":"fr","skipGpio":{"dht22":true,"sensoren":true,"bme280":true,"cputemp":true,"ir":true},"gpioPorts":{"in":{"dht22":14,"oben":5,"unten":6,"bme280":"0x76"},"out":{"hoch":23,"runter":24,"ir":25}},"intervals":{"dht22":30,"dht22OnError":300,"cpu":30,"sensoren":1,"bme280":60},"door":{"module":"GCERelay","options":{"upPin":1,"downPin":2,"activateWhen":true},"correctionSec":2,"automation":{"openTimes":["sunrise+30"],"closeTimes":["sunset+25"]}},"light":{"module":"GCERelay","options":{"pin":5,"activateWhen":true}},"camera":[{"name":"Intérieur","module":"UsbWebcam","options":{"device":"/dev/video0","width":1440,"height":1080},"intervalSec":20},{"name":"Pondoir","module":"UsbWebcam","options":{"device":"/dev/video2","width":1024,"height":768},"intervalSec":20}],"location":{"lat":45.288331,"lon":1.589881},"heating":{"enabled":true,"heatBelowC":5,"minimumHeatingMins":30,"timeFrame":{"from":"sunrise+0","to":"dusk-60"}},"shelly":{"url":"xxx","intervalSec":30}}');
 
 /***/ })
 

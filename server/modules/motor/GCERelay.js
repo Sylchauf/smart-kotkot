@@ -1,6 +1,8 @@
 const { exec } = require("child_process");
-const config = require("../../../state/config.json");
 const MotorAbstract = require("./MotorAbstract");
+const getConfig = require("../../../lib/getConfig");
+
+const config = getConfig();
 
 class GCERelay extends MotorAbstract {
   device;

@@ -5,18 +5,16 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Layout from "../components/Layout";
 import fr from "../translations/fr.json";
 import en from "../translations/en.json";
-import config from "../state/config.json";
 
 const queryClient = new QueryClient();
 
-const messages = config.locale === "fr" ? fr : en;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <IntlProvider
       // @ts-ignore
-      messages={messages}
-      locale={config.locale}
+      messages={fr}
+      locale={'fr'}
       defaultLocale="en"
     >
       <QueryClientProvider client={queryClient}>

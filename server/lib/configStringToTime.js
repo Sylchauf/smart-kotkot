@@ -1,6 +1,7 @@
 const moment = require("moment");
 const SunCalc = require("suncalc");
-const config = require("../../state/config.json");
+const getConfig = require("../../../lib/getConfig");
+const config = getConfig();
 
 const configStringToTime = (configString) => {
   // Try to convert the string to an actual time to plan the cronjob for

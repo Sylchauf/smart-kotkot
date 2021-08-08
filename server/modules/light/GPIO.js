@@ -1,5 +1,6 @@
-const config = require("../../../state/config.json");
 const MotorAbstract = require("./LightAbstract");
+const getConfig = require("../../../lib/getConfig");
+const config = getConfig();
 
 class GPIO extends MotorAbstract {
   gpio;
