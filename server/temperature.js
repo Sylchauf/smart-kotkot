@@ -14,7 +14,11 @@ const appendToFile = (temp, hum) => {
   console.log("fileName:", fileName);
   console.log("line:", line);
 
-  fs.appendFile(fileName, line, clearOldLines);
+  fs.appendFile(fileName, line, (err) => {
+    console.log(err);
+    if (err) throw err;
+    else clearOldLines();
+  });
 };
 
 const clearOldLines = () => {
