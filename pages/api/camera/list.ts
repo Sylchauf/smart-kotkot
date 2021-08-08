@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
+  // @ts-ignore
   const allCams = global.cameraList;
 
   const cameras = Object.keys(allCams).map((key) => {

@@ -11,7 +11,7 @@ const Cameras: React.FC = () => {
 
   return (
     <Carousel autoPlay showThumbs={false}>
-      {cameraList.map((oneCamera) => (
+      {cameraList.map((oneCamera: any) => (
         <div key={oneCamera.id + oneCamera.config.name}>
           <CameraDisplay
             id={oneCamera.id}

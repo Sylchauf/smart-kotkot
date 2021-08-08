@@ -5,6 +5,5 @@
   "/": "pages/index.js",
   "/api/camera/list": "pages/api/camera/list.js",
   "/api/door/status": "pages/api/door/status.js",
-  "/api/camera/lastimage/[id]": "pages/api/camera/lastimage/[id].js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/api/camera/lastimage/[id]": "pages/api/camera/lastimage/[id].js"
 }
