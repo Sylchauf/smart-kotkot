@@ -49,9 +49,20 @@
   },
   "camera": [
     {
+      "name": "Intérieur",
       "module": "UsbWebcam",
       "options": {
         "device": "/dev/video0",
+        "width": 1440,
+        "height": 1080
+      },
+      "intervalSec": 20
+    },
+    {
+      "name": "Pondoir",
+      "module": "UsbWebcam",
+      "options": {
+        "device": "/dev/video2",
         "width": 1024,
         "height": 768
       },

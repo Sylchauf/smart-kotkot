@@ -8,8 +8,6 @@ import Lock from "../public/lock.svg";
 const Door = () => {
   const { state, isMoving, open, close } = useDoor();
 
-  console.log("state:", state);
-
   const isOpen = state === "top";
 
   const stateToDisplay = isMoving ? (

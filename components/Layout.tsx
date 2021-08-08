@@ -1,3 +1,4 @@
+import { Container } from "@material-ui/core";
 import Head from "next/head";
 import React from "react";
 
@@ -13,7 +14,8 @@ const Layout: React.FC = ({ children }) => {
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
         />
       </Head>
-      <main>{children}</main>
+
+      <Container maxWidth={"lg"}>{children}</Container>
     </>
   );
 };

@@ -8,7 +8,6 @@ const config = getConfig();
 const cameraTemplate = {
   image: null,
   time: null,
-  intervalSec: 30,
   busy: false,
   lastRequest: null,
   ir: {
@@ -19,8 +18,6 @@ const cameraTemplate = {
   },
 };
 
-const cameraList = {};
-
 const initializeCameras = () => {
   config.camera.forEach((oneCamera, index) => {
     setupCamera(String(index), oneCamera);
@@ -28,25 +25,28 @@ const initializeCameras = () => {
 };
 
 const setupCamera = (id, cameraConfig) => {
-  cameraList[id] = {
+  global.cameraList[id] = {
     ...cameraTemplate,
-    ...cameraConfig,
+    config: cameraConfig,
     cameraInstance: getCameraInstance(cameraConfig),
   };
 
-  logger.debug(`Setup Camera ${id}: ${JSON.stringify(cameraList)}`);
+  logger.info(
+    `[CAMERA] Setup new camera ${id} «${cameraConfig.name}» (${cameraConfig.module})`
+  );
 
   takePhoto(id);
 };
 
 const takePhoto = async (id, nightVision = false) => {
-  const camera = cameraList[id];
-  const cameraInstance = cameraList[id].cameraInstance;
+  const camera = global.cameraList[id];
 
   if (!camera) {
     logger.warn(`[CAMERA] Camera not found ${id}`);
     return false;
   }
+
+  const cameraInstance = camera.cameraInstance;
 
   camera.lastRequest = moment();
 
@@ -60,7 +60,7 @@ const takePhoto = async (id, nightVision = false) => {
 
     camera.busy = true;
     logger.info(
-      "[CAMERA] Taking a" + (nightVision ? " night vision" : "") + " picture"
+      `[CAMERA] Taking a" + (nightVision ? " night vision" : "") + " picture (${camera.config.name})`
     );
     let takingPicture = moment();
 
@@ -88,10 +88,10 @@ const takePhoto = async (id, nightVision = false) => {
         );
 
         // Schedule taking the next picture
-        if (camera.lastRequest && camera.intervalSec > 0) {
+        if (camera.lastRequest && camera.config.intervalSec > 0) {
           setTimeout(() => {
             takePhoto(id);
-          }, camera.intervalSec * 1000);
+          }, camera.config.intervalSec * 1000);
         }
       })
       .catch(logger.error);
@@ -101,7 +101,7 @@ const takePhoto = async (id, nightVision = false) => {
 };
 
 const getJpg = (id) => {
-  const camera = cameraList[id];
+  const camera = global.cameraList[id];
 
   if (!camera) {
     logger.warn(`[CAMERA] Camera not found ${id}`);

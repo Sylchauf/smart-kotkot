@@ -1,6 +1,7 @@
 const CameraAbstract = require("./CameraAbstract");
 const { exec } = require("child_process");
 const fs = require("fs");
+const md5 = require("md5");
 
 class UsbWebcam extends CameraAbstract {
   cameraConfig;
@@ -14,7 +15,7 @@ class UsbWebcam extends CameraAbstract {
   }
 
   async takePicture() {
-    const fileName = "/tmp/shot.jpg";
+    const fileName = `/tmp/shot-${md5(this.cameraConfig.options.device)}.jpg`;
 
     return new Promise((resolve, reject) => {
       const resolution =
@@ -25,14 +26,15 @@ class UsbWebcam extends CameraAbstract {
         ? `-d ${this.cameraConfig.options.device}`
         : "";
 
-      const commandLine = `fswebcam ${device} ${resolution} -S 20 --jpeg -1 ${fileName}`;
+      const commandLine = `fswebcam ${device} ${resolution} -D 1 --no-banner --jpeg -1 ${fileName}`;
 
       exec(commandLine, (error) => {
         if (error) reject(error);
         else {
-          const image = fs.readFileSync(fileName);
-
-          resolve(image);
+          fs.readFile(fileName, (err, image) => {
+            if (err) reject(err);
+            else resolve(image);
+          });
         }
       });
     });
