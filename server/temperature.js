@@ -26,11 +26,11 @@ const clearOldLines = () => {
   });
 };
 
-const getTemperatureAndHumidity = () => {
+const getTemperatureAndHumidity = async () => {
   logger.info("[Temperature] Get temperature and humidity values");
   try {
-    const temp = temperatureInstance.getTemperature();
-    const hum = temperatureInstance.getHumidity();
+    const temp = await temperatureInstance.getTemperature();
+    const hum = await temperatureInstance.getHumidity();
 
     logger.debug(`[Temperature] Temp: ${temp} - Humidity : ${hum}`);
     appendToFile(temp, hum);
