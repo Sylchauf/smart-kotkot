@@ -11,11 +11,7 @@ const fileName = `state/temperature.log`;
 const appendToFile = (temp, hum) => {
   const line = `${moment().toISOString()} ${temp} ${hum}\n`;
 
-  console.log("fileName:", fileName);
-  console.log("line:", line);
-
   fs.appendFile(fileName, line, (err) => {
-    console.log(err);
     if (err) throw err;
     else clearOldLines();
   });
@@ -25,7 +21,9 @@ const clearOldLines = () => {
   fs.readFile(fileName, "utf8", function (err, data) {
     if (data) {
       const wantedLines = data.split("\n").slice(-1000); // keep 1k lines
-      fs.writeFile(fileName, wantedLines);
+      fs.writeFile(fileName, wantedLines, (err) => {
+        if (err) throw err;
+      });
     }
   });
 };
