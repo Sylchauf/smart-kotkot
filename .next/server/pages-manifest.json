@@ -1,5 +1,15 @@
 {
   "/_app": "pages/_app.js",
+  "/api/camera/lastimage/[id]": "pages/api/camera/lastimage/[id].js",
+  "/api/camera/list": "pages/api/camera/list.js",
+  "/api/door/calibrate/down": "pages/api/door/calibrate/down.js",
+  "/api/door/calibrate/up": "pages/api/door/calibrate/up.js",
+  "/api/door/down": "pages/api/door/down.js",
+  "/api/door/status": "pages/api/door/status.js",
+  "/api/door/up": "pages/api/door/up.js",
+  "/api/hello": "pages/api/hello.js",
+  "/": "pages/index.html",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }
