@@ -11,6 +11,9 @@ const fileName = `../state/temperature.log`;
 const appendToFile = (temp, hum) => {
   const line = `${moment().toISOString()} ${temp} ${hum}\n`;
 
+  console.log("fileName:", fileName);
+  console.log("line:", line);
+
   fs.appendFile(fileName, line, clearOldLines);
 };
 
@@ -24,11 +27,19 @@ const clearOldLines = () => {
 };
 
 const getTemperatureAndHumidity = () => {
-  logger.info("Get temperature and humidity values");
-  const temp = temperatureInstance.getTemperature();
-  const hum = temperatureInstance.getHumidity();
+  logger.info("[Temperature] Get temperature and humidity values");
+  try {
+    const temp = temperatureInstance.getTemperature();
+    const hum = temperatureInstance.getHumidity();
 
-  appendToFile(temp, hum);
+    logger.debug(`[Temperature] Temp: ${temp} - Humidity : ${hum}`);
+    appendToFile(temp, hum);
+  } catch (error) {
+    logger.error(
+      "[Temperature] Can not access to temperature and/or humidity " +
+        error.toString()
+    );
+  }
 
   setTimeout(() => {
     getTemperatureAndHumidity();
