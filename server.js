@@ -9,7 +9,8 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const PORT = process.env.PORT || 3000;
+global.PORT = process.env.PORT || 3000;
+global.ROOT_URL = process.env.ROOT_URL || `http://127.0.0.1:${global.PORT}`;
 
 // Declare all global variable used
 global.cameraList = {};
@@ -22,11 +23,11 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
 
     handle(req, res, parsedUrl);
-  }).listen(Number(PORT), (err) => {
+  }).listen(Number(global.PORT), (err) => {
     if (err) throw err;
     console.log("> Ready on http://localhost:3000");
 
-    setupCronjobs(PORT);
+    setupCronjobs();
     initializeCameras();
     getTemperatureAndHumidity();
   });

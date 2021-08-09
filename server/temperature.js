@@ -20,7 +20,7 @@ const appendToFile = (temp, hum) => {
 const clearOldLines = () => {
   fs.readFile(fileName, "utf8", function (err, data) {
     if (data) {
-      const wantedLines = data.split("\n").slice(-1000).join("\n"); // keep 1k lines
+      const wantedLines = data.split("\n").slice(-10000).join("\n"); // keep 1k lines
       fs.writeFile(fileName, wantedLines, (err) => {
         if (err) throw err;
       });

@@ -19,9 +19,9 @@ const schedulerCronjob = new CronJob(
 
 schedulerCronjob.start();
 
-const setupCronjobs = (port) => {
+const setupCronjobs = () => {
   const axiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:" + port,
+    baseURL: global.ROOT_URL,
   });
 
   // Properly unregister/stop the previous cronjobs
