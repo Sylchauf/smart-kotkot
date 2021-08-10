@@ -57,16 +57,16 @@ const setupCronjobs = () => {
       });
     });
 
-  if (config.light?.automation?.off)
-    config.light.automation.off.forEach((time) => {
+  if (config.light?.automation?.offTimes)
+    config.light.automation.offTimes.forEach((time) => {
       cronjobsToConfigure.push({
         action: "light_off",
         time: time,
       });
     });
 
-  if (config.light?.automation?.on)
-    config.light.automation.on.forEach((time) => {
+  if (config.light?.automation?.onTimes)
+    config.light.automation.onTimes.forEach((time) => {
       cronjobsToConfigure.push({
         action: "light_on",
         time: time,
@@ -107,6 +107,8 @@ const setupCronjobs = () => {
           if (newJob.action === "open") axiosInstance.get("/api/door/up");
           else if (newJob.action === "close")
             axiosInstance.get("/api/door/down");
+          else if (newJob.action === "light_on") axiosInstance.get("/api/light/on");
+          else if (newJob.action === "light_off") axiosInstance.get("/api/light/off");
         },
         null,
         true
