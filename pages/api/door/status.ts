@@ -13,6 +13,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         nextDate: oneCron.nextDates().toDate(),
       };
     })
+      .filter((i: any) => ["open", "close"].includes(i.action))
     .sort((a: any, b: any) => {
       if (moment(a.nextDate).isBefore(moment(b.nextDate))) return -1;
       if (moment(a.nextDate).isAfter(moment(b.nextDate))) return 1;

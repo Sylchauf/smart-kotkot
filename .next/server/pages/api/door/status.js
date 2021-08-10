@@ -28,7 +28,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       action: oneCron.action,
       nextDate: oneCron.nextDates().toDate()
     };
-  }).sort((a, b) => {
+  }).filter(i => ["open", "close"].includes(i.action)).sort((a, b) => {
     if (moment__WEBPACK_IMPORTED_MODULE_0___default()(a.nextDate).isBefore(moment__WEBPACK_IMPORTED_MODULE_0___default()(b.nextDate))) return -1;
     if (moment__WEBPACK_IMPORTED_MODULE_0___default()(a.nextDate).isAfter(moment__WEBPACK_IMPORTED_MODULE_0___default()(b.nextDate))) return 1;
     return 0;
