@@ -6,6 +6,8 @@ import useDoor from "../hooks/useDoor";
 import OpenLock from "../public/open-lock.svg";
 import Lock from "../public/lock.svg";
 
+const IMAGE_SIZE = 56;
+
 const Door = () => {
   const { state, nextAutomation, isLoading, isMoving, open, close } = useDoor();
 
@@ -61,7 +63,7 @@ const Door = () => {
 
       <br />
 
-      <div style={{ margin: "0 auto", width: 72, height: 72 }}>
+      <div style={{ margin: "0 auto", width: IMAGE_SIZE, height: IMAGE_SIZE }}>
         {isMoving ? (
           <CircularProgress />
         ) : (
@@ -78,12 +80,22 @@ const Door = () => {
       {!isMoving && (
         <div>
           {!isOpen && (
-            <Button onClick={open} fullWidth variant={"outlined"}>
+            <Button
+              onClick={open}
+              fullWidth
+              variant={"outlined"}
+              size={"small"}
+            >
               <FormattedMessage id={"Door.Open"} defaultMessage={"Open"} />
             </Button>
           )}
           {isOpen && (
-            <Button onClick={close} fullWidth variant={"outlined"}>
+            <Button
+              onClick={close}
+              fullWidth
+              variant={"outlined"}
+              size={"small"}
+            >
               <FormattedMessage id={"Door.Close"} defaultMessage={"Close"} />
             </Button>
           )}

@@ -6,6 +6,8 @@ import useLight from "../hooks/useLight";
 import LightOn from "../public/light-on.svg";
 import LightOff from "../public/light-off.svg";
 
+const IMAGE_SIZE = 56;
+
 const Light = () => {
   const { state, nextAutomation, isLoading, on, off } = useLight();
 
@@ -57,7 +59,7 @@ const Light = () => {
 
       <br />
 
-      <div style={{ margin: "0 auto", width: 72, height: 72 }}>
+      <div style={{ margin: "0 auto", width: IMAGE_SIZE, height: IMAGE_SIZE }}>
         <Image
           src={isOn ? LightOn : LightOff}
           layout={"responsive"}
@@ -69,12 +71,12 @@ const Light = () => {
 
       <div>
         {!isOn && (
-          <Button onClick={on} fullWidth variant={"outlined"}>
+          <Button onClick={on} fullWidth variant={"outlined"} size={"small"}>
             <FormattedMessage id={"Light.On"} defaultMessage={"On"} />
           </Button>
         )}
         {isOn && (
-          <Button onClick={off} fullWidth variant={"outlined"}>
+          <Button onClick={off} fullWidth variant={"outlined"} size={"small"}>
             <FormattedMessage id={"Light.Off"} defaultMessage={"Off"} />
           </Button>
         )}

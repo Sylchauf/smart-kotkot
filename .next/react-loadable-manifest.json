@@ -1,1 +1,9 @@
-{}
+{
+  "../components/TemperatureCard.tsx -> react-apexcharts": {
+    "id": 7229,
+    "files": [
+      "static/chunks/6c44d60f.1b537a51432022a444fb.js",
+      "static/chunks/229.acf3975f1c6076e72626.js"
+    ]
+  }
+}

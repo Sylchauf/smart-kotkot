@@ -1,65 +1,236 @@
 {
-  "Confirm.Cancel": {
-    "defaultMessage": "Cancel"
-  },
-  "Confirm.Sure": {
-    "defaultMessage": "Are you sure ?"
-  },
-  "Confirm.Yes": {
-    "defaultMessage": "Yes"
-  },
-  "Door.Close": {
-    "defaultMessage": "Close"
-  },
-  "Door.IsClose": {
-    "defaultMessage": "Closed"
-  },
-  "Door.IsOpen": {
-    "defaultMessage": "Opened"
-  },
-  "Door.Moving": {
-    "defaultMessage": "Moving…"
-  },
-  "Door.NextCloseAt": {
-    "defaultMessage": "Next automatic <b>closing at {time}</b>"
-  },
-  "Door.NextOpenAt": {
-    "defaultMessage": "Next automatic <b>opening at {time}</b>"
-  },
-  "Door.Open": {
-    "defaultMessage": "Open"
-  },
-  "Door.State": {
-    "defaultMessage": "State"
-  },
-  "Home.Cameras": {
-    "defaultMessage": "Cameras"
-  },
-  "Home.Door": {
-    "defaultMessage": "Door"
-  },
-  "Home.Light": {
-    "defaultMessage": "Light"
-  },
-  "Light.IsOff": {
-    "defaultMessage": "Off"
-  },
-  "Light.IsOn": {
-    "defaultMessage": "On"
-  },
-  "Light.NextOffAt": {
-    "defaultMessage": "Next automatic <b>switch off at {time}</b>"
-  },
-  "Light.NextOnAt": {
-    "defaultMessage": "Next automatic <b>switch on at {time}</b>"
-  },
-  "Light.Off": {
-    "defaultMessage": "Off"
-  },
-  "Light.On": {
-    "defaultMessage": "On"
-  },
-  "Light.State": {
-    "defaultMessage": "State"
-  }
+  "Actions.Close": [
+    {
+      "type": 0,
+      "value": "Close"
+    }
+  ],
+  "Confirm.Cancel": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
+  "Confirm.Sure": [
+    {
+      "type": 0,
+      "value": "Are you sure ?"
+    }
+  ],
+  "Confirm.Yes": [
+    {
+      "type": 0,
+      "value": "Yes"
+    }
+  ],
+  "Door.Close": [
+    {
+      "type": 0,
+      "value": "Close"
+    }
+  ],
+  "Door.IsClose": [
+    {
+      "type": 0,
+      "value": "Closed"
+    }
+  ],
+  "Door.IsOpen": [
+    {
+      "type": 0,
+      "value": "Opened"
+    }
+  ],
+  "Door.Moving": [
+    {
+      "type": 0,
+      "value": "Moving…"
+    }
+  ],
+  "Door.NextCloseAt": [
+    {
+      "type": 0,
+      "value": "Next automatic "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "closing at "
+        },
+        {
+          "type": 1,
+          "value": "time"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    }
+  ],
+  "Door.NextOpenAt": [
+    {
+      "type": 0,
+      "value": "Next automatic "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "opening at "
+        },
+        {
+          "type": 1,
+          "value": "time"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    }
+  ],
+  "Door.Open": [
+    {
+      "type": 0,
+      "value": "Open"
+    }
+  ],
+  "Door.State": [
+    {
+      "type": 0,
+      "value": "State"
+    }
+  ],
+  "Home.Cameras": [
+    {
+      "type": 0,
+      "value": "Cameras"
+    }
+  ],
+  "Home.Door": [
+    {
+      "type": 0,
+      "value": "Door"
+    }
+  ],
+  "Home.Light": [
+    {
+      "type": 0,
+      "value": "Light"
+    }
+  ],
+  "Home.Temperature": [
+    {
+      "type": 0,
+      "value": "Temperature"
+    }
+  ],
+  "Light.IsOff": [
+    {
+      "type": 0,
+      "value": "Off"
+    }
+  ],
+  "Light.IsOn": [
+    {
+      "type": 0,
+      "value": "On"
+    }
+  ],
+  "Light.NextOffAt": [
+    {
+      "type": 0,
+      "value": "Next automatic "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "switch off at "
+        },
+        {
+          "type": 1,
+          "value": "time"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    }
+  ],
+  "Light.NextOnAt": [
+    {
+      "type": 0,
+      "value": "Next automatic "
+    },
+    {
+      "children": [
+        {
+          "type": 0,
+          "value": "switch on at "
+        },
+        {
+          "type": 1,
+          "value": "time"
+        }
+      ],
+      "type": 8,
+      "value": "b"
+    }
+  ],
+  "Light.Off": [
+    {
+      "type": 0,
+      "value": "Off"
+    }
+  ],
+  "Light.On": [
+    {
+      "type": 0,
+      "value": "On"
+    }
+  ],
+  "Light.State": [
+    {
+      "type": 0,
+      "value": "State"
+    }
+  ],
+  "Temperature.ActualHum": [
+    {
+      "type": 0,
+      "value": "Current humidity"
+    }
+  ],
+  "Temperature.ActualTemp": [
+    {
+      "type": 0,
+      "value": "Current temperature"
+    }
+  ],
+  "Temperature.Celsius": [
+    {
+      "type": 0,
+      "value": "Celsius (°)"
+    }
+  ],
+  "Temperature.Chart": [
+    {
+      "type": 0,
+      "value": "Temperature Logs"
+    }
+  ],
+  "Temperature.LastRead": [
+    {
+      "type": 0,
+      "value": "Last reading at "
+    },
+    {
+      "type": 1,
+      "value": "date"
+    }
+  ],
+  "Temperature.Percent": [
+    {
+      "type": 0,
+      "value": "Percent (%)"
+    }
+  ]
 }

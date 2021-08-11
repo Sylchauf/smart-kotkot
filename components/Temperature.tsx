@@ -1,31 +1,43 @@
+import moment from "moment";
 import React from "react";
 import { FormattedMessage } from "react-intl";
+import useTemperature from "../hooks/useTemperature";
 
 const Temperature: React.FC = () => {
-  const isInLimit = true;
+  const { date, actualTemp, actualHum } = useTemperature();
+  const isInLimit = actualTemp >= 5 && actualTemp <= 36;
+
+  const dateFormatted = moment(date).local().format("L - HH[h]mm");
 
   return (
     <div>
       <div>
-        <b>
-          <FormattedMessage
-            id={"Temperature.Actual"}
-            defaultMessage={"Actually"}
-          />{" "}
-          :{" "}
-          <span
-            style={{ color: isInLimit ? "green" : "red", fontSize: "140%" }}
-          >
-            20.5°
-          </span>
-        </b>
+        <FormattedMessage
+          id={"Temperature.ActualTemp"}
+          defaultMessage={"Current temperature"}
+        />{" "}
+        :{" "}
+        <span style={{ color: isInLimit ? "green" : "red", fontSize: "140%" }}>
+          {actualTemp}°
+        </span>
       </div>
       <div>
-          • <FormattedMessage
-          id={"Temperature.12ago"}
-          defaultMessage={"12h hours ago"}
+        <FormattedMessage
+          id={"Temperature.ActualHum"}
+          defaultMessage={"Current humidity"}
         />{" "}
-        : <span style={{ color: isInLimit ? "green" : "red" }}>18°</span>
+        :{" "}
+        <span style={{ color: isInLimit ? "green" : "red" }}>{actualHum}%</span>
+      </div>
+
+      <br />
+
+      <div style={{ color: "gray", fontSize: "75%" }}>
+        <FormattedMessage
+          id={"Temperature.LastRead"}
+          defaultMessage={"Last reading at {date}"}
+          values={{ date: dateFormatted }}
+        />
       </div>
     </div>
   );

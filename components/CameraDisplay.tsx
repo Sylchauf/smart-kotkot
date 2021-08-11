@@ -9,7 +9,7 @@ interface Props {
 }
 
 const CameraDisplay: React.FC<Props> = ({ id, lastRequest, config }) => {
-  const date = moment(lastRequest).local().format("YYYY-MM-DD HH:mm:ss");
+  const date = moment(lastRequest).local().format("L HH:mm:ss");
 
   return (
     <div>

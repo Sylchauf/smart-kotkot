@@ -21,6 +21,13 @@
   "Confirm.Sure": "Êtes vous sûr ?",
   "Confirm.Yes": "Confirmer",
   "Confirm.Cancel": "Annuler",
-  "Temperature.Actual": "Actuellement",
-  "Temperature.12ago": "Il y a 12h"
+  "Temperature.ActualTemp": "Température actuelle",
+  "Temperature.ActualHum": "Humidité actuelle",
+  "Temperature.LastRead": "Dernier relevé à {date}",
+  "Temperature.Temperature": "Température",
+  "Temperature.Humidity": "Humidité",
+  "Temperature.Celsius": "Celsius (°)",
+  "Temperature.Percent": "Pourcentage (%)",
+  "Temperature.Chart": "Historique des températures",
+  "Actions.Close": "Fermer"
 }

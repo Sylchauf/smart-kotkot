@@ -4,7 +4,7 @@ exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 2223:
+/***/ 4032:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18,8 +18,6 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
-// EXTERNAL MODULE: external "react-intl"
-var external_react_intl_ = __webpack_require__(1687);
 // EXTERNAL MODULE: external "react-query"
 var external_react_query_ = __webpack_require__(2585);
 // EXTERNAL MODULE: external "@material-ui/core"
@@ -31,6 +29,8 @@ var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
 var external_react_ = __webpack_require__(9297);
 // EXTERNAL MODULE: external "material-ui-confirm"
 var external_material_ui_confirm_ = __webpack_require__(3430);
+// EXTERNAL MODULE: external "react-intl"
+var external_react_intl_ = __webpack_require__(1687);
 ;// CONCATENATED MODULE: ./components/Layout.tsx
 
 
@@ -90,11 +90,15 @@ const Layout = ({
 };
 
 /* harmony default export */ var components_Layout = (Layout);
-;// CONCATENATED MODULE: ./translations/fr.json
-var fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"En mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Door.NextOpenAt":"Prochaine <b>ouverture</b> automatique <b>à {time}</b>","Door.NextCloseAt":"Prochaine <b>fermeture</b> automatique <b>à {time}</b>","Home.Door":"Porte","Home.Cameras":"Cameras","Home.Light":"Lumière","Home.Temperature":"Température","Light.State":"État","Light.IsOn":"Allumée","Light.IsOff":"Éteinte","Light.On":"Allumer","Light.Off":"Éteindre","Light.NextOnAt":"Prochain <b>allumage</b> automatique <b>à {time}</b>","Light.NextOffAt":"Prochaine <b>extinction</b> automatique <b>à {time}</b>","Confirm.Sure":"Êtes vous sûr ?","Confirm.Yes":"Confirmer","Confirm.Cancel":"Annuler","Temperature.Actual":"Actuellement","Temperature.12ago":"Il y a 12h"}');
-;// CONCATENATED MODULE: ./pages/_app.tsx
-
-
+;// CONCATENATED MODULE: external "moment/locale/fr"
+var fr_namespaceObject = require("moment/locale/fr");;
+// EXTERNAL MODULE: external "moment"
+var external_moment_ = __webpack_require__(2470);
+var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment_);
+// EXTERNAL MODULE: external "axios"
+var external_axios_ = __webpack_require__(2376);
+var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_);
+;// CONCATENATED MODULE: ./hooks/useConfig.ts
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -103,24 +107,84 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+const axiosInstance = external_axios_default().create({
+  baseURL: "/api/interface/"
+});
+
+const useConfig = () => {
+  const {
+    data,
+    isLoading
+  } = (0,external_react_query_.useQuery)("config", async () => {
+    const result = await axiosInstance.get("config");
+    return result.data;
+  });
+  return {
+    config: _objectSpread({}, data),
+    isLoading
+  };
+};
+
+/* harmony default export */ var hooks_useConfig = (useConfig);
+;// CONCATENATED MODULE: ./translations/en.json
+var en_namespaceObject = JSON.parse('{"Actions.Close":[{"type":0,"value":"Close"}],"Confirm.Cancel":[{"type":0,"value":"Cancel"}],"Confirm.Sure":[{"type":0,"value":"Are you sure ?"}],"Confirm.Yes":[{"type":0,"value":"Yes"}],"Door.Close":[{"type":0,"value":"Close"}],"Door.IsClose":[{"type":0,"value":"Closed"}],"Door.IsOpen":[{"type":0,"value":"Opened"}],"Door.Moving":[{"type":0,"value":"Moving…"}],"Door.NextCloseAt":[{"type":0,"value":"Next automatic "},{"children":[{"type":0,"value":"closing at "},{"type":1,"value":"time"}],"type":8,"value":"b"}],"Door.NextOpenAt":[{"type":0,"value":"Next automatic "},{"children":[{"type":0,"value":"opening at "},{"type":1,"value":"time"}],"type":8,"value":"b"}],"Door.Open":[{"type":0,"value":"Open"}],"Door.State":[{"type":0,"value":"State"}],"Home.Cameras":[{"type":0,"value":"Cameras"}],"Home.Door":[{"type":0,"value":"Door"}],"Home.Light":[{"type":0,"value":"Light"}],"Home.Temperature":[{"type":0,"value":"Temperature"}],"Light.IsOff":[{"type":0,"value":"Off"}],"Light.IsOn":[{"type":0,"value":"On"}],"Light.NextOffAt":[{"type":0,"value":"Next automatic "},{"children":[{"type":0,"value":"switch off at "},{"type":1,"value":"time"}],"type":8,"value":"b"}],"Light.NextOnAt":[{"type":0,"value":"Next automatic "},{"children":[{"type":0,"value":"switch on at "},{"type":1,"value":"time"}],"type":8,"value":"b"}],"Light.Off":[{"type":0,"value":"Off"}],"Light.On":[{"type":0,"value":"On"}],"Light.State":[{"type":0,"value":"State"}],"Temperature.ActualHum":[{"type":0,"value":"Current humidity"}],"Temperature.ActualTemp":[{"type":0,"value":"Current temperature"}],"Temperature.Celsius":[{"type":0,"value":"Celsius (°)"}],"Temperature.Chart":[{"type":0,"value":"Temperature Logs"}],"Temperature.LastRead":[{"type":0,"value":"Last reading at "},{"type":1,"value":"date"}],"Temperature.Percent":[{"type":0,"value":"Percent (%)"}]}');
+;// CONCATENATED MODULE: ./translations/fr.json
+var translations_fr_namespaceObject = JSON.parse('{"Door.IsOpen":"Ouverte","Door.IsClose":"Fermée","Door.Moving":"En mouvement…","Door.Open":"Ouvrir","Door.Close":"Fermer","Door.State":"État","Door.NextOpenAt":"Prochaine <b>ouverture</b> automatique <b>à {time}</b>","Door.NextCloseAt":"Prochaine <b>fermeture</b> automatique <b>à {time}</b>","Home.Door":"Porte","Home.Cameras":"Cameras","Home.Light":"Lumière","Home.Temperature":"Température","Light.State":"État","Light.IsOn":"Allumée","Light.IsOff":"Éteinte","Light.On":"Allumer","Light.Off":"Éteindre","Light.NextOnAt":"Prochain <b>allumage</b> automatique <b>à {time}</b>","Light.NextOffAt":"Prochaine <b>extinction</b> automatique <b>à {time}</b>","Confirm.Sure":"Êtes vous sûr ?","Confirm.Yes":"Confirmer","Confirm.Cancel":"Annuler","Temperature.ActualTemp":"Température actuelle","Temperature.ActualHum":"Humidité actuelle","Temperature.LastRead":"Dernier relevé à {date}","Temperature.Temperature":"Température","Temperature.Humidity":"Humidité","Temperature.Celsius":"Celsius (°)","Temperature.Percent":"Pourcentage (%)","Temperature.Chart":"Historique des températures","Actions.Close":"Fermer"}');
+;// CONCATENATED MODULE: ./components/LocaleConfigurator.tsx
+
+
+
+
+
+
+
+
+
+const LocaleConfigurator = ({
+  children
+}) => {
+  const {
+    config,
+    isLoading
+  } = hooks_useConfig();
+  if (isLoading) return /*#__PURE__*/jsx_runtime_.jsx(core_.CircularProgress, {});
+  external_moment_default().locale(config.locale);
+  const message = config.locale === "fr" ? translations_fr_namespaceObject : en_namespaceObject;
+  return /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.IntlProvider // @ts-ignore
+  , {
+    messages: message,
+    locale: config.locale,
+    defaultLocale: "en",
+    children: children
+  });
+};
+
+/* harmony default export */ var components_LocaleConfigurator = (LocaleConfigurator);
+;// CONCATENATED MODULE: ./pages/_app.tsx
+
+
+function _app_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _app_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { _app_ownKeys(Object(source), true).forEach(function (key) { _app_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { _app_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _app_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
 const queryClient = new external_react_query_.QueryClient();
 
+
+
 function MyApp({
   Component,
   pageProps
 }) {
-  return /*#__PURE__*/jsx_runtime_.jsx(external_react_intl_.IntlProvider // @ts-ignore
-  , {
-    messages: fr_namespaceObject,
-    locale: "fr",
-    defaultLocale: "en",
-    children: /*#__PURE__*/jsx_runtime_.jsx(external_react_query_.QueryClientProvider, {
-      client: queryClient,
+  return /*#__PURE__*/jsx_runtime_.jsx(external_react_query_.QueryClientProvider, {
+    client: queryClient,
+    children: /*#__PURE__*/jsx_runtime_.jsx(components_LocaleConfigurator, {
       children: /*#__PURE__*/jsx_runtime_.jsx(components_Layout, {
-        children: /*#__PURE__*/jsx_runtime_.jsx(Component, _objectSpread({}, pageProps))
+        children: /*#__PURE__*/jsx_runtime_.jsx(Component, _app_objectSpread({}, pageProps))
       })
     })
   });
@@ -138,11 +202,27 @@ module.exports = require("@material-ui/core");;
 
 /***/ }),
 
+/***/ 2376:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("axios");;
+
+/***/ }),
+
 /***/ 3430:
 /***/ (function(module) {
 
 "use strict";
 module.exports = require("material-ui-confirm");;
+
+/***/ }),
+
+/***/ 2470:
+/***/ (function(module) {
+
+"use strict";
+module.exports = require("moment");;
 
 /***/ }),
 
@@ -185,7 +265,7 @@ module.exports = require("react/jsx-runtime");;
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = (__webpack_exec__(2223));
+var __webpack_exports__ = (__webpack_exec__(4032));
 module.exports = __webpack_exports__;
 
 })();

@@ -1,27 +1,22 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { IntlProvider } from "react-intl";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Layout from "../components/Layout";
-import fr from "../translations/fr.json";
-import en from "../translations/en.json";
 
 const queryClient = new QueryClient();
 
+import "moment/locale/fr";
+import LocaleConfigurator from "../components/LocaleConfigurator";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <IntlProvider
-      // @ts-ignore
-      messages={fr}
-      locale={"fr"}
-      defaultLocale="en"
-    >
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <LocaleConfigurator>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </QueryClientProvider>
-    </IntlProvider>
+      </LocaleConfigurator>
+    </QueryClientProvider>
   );
 }
 export default MyApp;
