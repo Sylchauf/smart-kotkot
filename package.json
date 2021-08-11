@@ -8,7 +8,8 @@
     "start": "NODE_ENV=production pm2 start server.js",
     "stop": "pm2 delete server",
     "restart": "pm2 restart server",
-    "install": "pm2 install logrotate",
+    "autostart": "pm2 startup",
+    "logs": "pm2 logs --raw",
     "lint": "next lint",
     "compile-intl": "formatjs compile translations/model.json --ast --out-file translations/en.json",
     "extract-intl": "formatjs extract '{pages,components}/**/*.ts*' --out-file translations/model.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'"
