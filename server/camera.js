@@ -2,6 +2,8 @@ const moment = require("moment");
 const logger = require("../lib/logger");
 const { getCameraInstance } = require("./modules/camera");
 const getConfig = require("../lib/getConfig");
+const path = require("path");
+const fs = require("fs");
 
 const config = getConfig();
 
@@ -54,38 +56,34 @@ const takePhoto = async (id, nightVision = false) => {
     logger.warn("[CAMERA] Can not take picture : Camera is busy.");
     return false;
   } else {
-    /*if (nightVision && !gpioRelais.setNightVision(true)) {
-      logger.warn(`Could not turn on Night Vision`);
-    }*/
-
     camera.busy = true;
-    logger.info(
-      `[CAMERA] Taking a" + (nightVision ? " night vision" : "") + " picture (${camera.config.name})`
-    );
+    logger.info(`[CAMERA] Taking a picture (${id} - ${camera.config.name})`);
     let takingPicture = moment();
 
     cameraInstance
       .takePicture()
       .then((photo) => {
-        const newPicTime = new Date();
+        const newPicTime = moment().format("X");
+
+        if (camera.config.save?.path) {
+          fs.mkdirSync(camera.config.save.path, {
+            recursive: true,
+          });
+
+          fs.writeFileSync(
+            path.join(camera.config.save.path, `${newPicTime}.jpg`),
+            photo
+          );
+        }
 
         camera.image = photo;
         camera.time = newPicTime;
         camera.busy = false;
 
-        // Turn off Infrared LEDs again
-        /*if (nightVision && !gpioRelais.setNightVision(false)) {
-          logger.warn("Error when turning night vision off");
-        }*/
-
         // Statistics about camera duration
         let tookPicture = moment();
         let duration = tookPicture.diff(takingPicture);
-        logger.debug(
-          `[CAMERA] Took a ${
-            nightVision ? "night vision " : ""
-          }picture - ${duration} ms`
-        );
+        logger.debug(`[CAMERA] Took a picture - ${duration} ms`);
 
         // Schedule taking the next picture
         if (camera.lastRequest && camera.config.intervalSec > 0) {

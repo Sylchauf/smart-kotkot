@@ -2,7 +2,8 @@ const { createServer } = require("http");
 const { parse } = require("url");
 const next = require("next");
 const { setupCronjobs } = require("./server/cron-tasks");
-const { initializeCameras, getJpg } = require("./server/camera");
+const { setupCleanOldPictures } = require("./server/cleanPictures");
+const { initializeCameras } = require("./server/camera");
 const { getTemperatureAndHumidity } = require("./server/temperature");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -30,5 +31,6 @@ app.prepare().then(() => {
     setupCronjobs();
     initializeCameras();
     getTemperatureAndHumidity();
+    setupCleanOldPictures();
   });
 });
