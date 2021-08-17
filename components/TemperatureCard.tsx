@@ -11,6 +11,7 @@ import moment from "moment";
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import useMobile from "../hooks/useMobile";
 import useTemperatureLogs from "../hooks/useTemperatureLogs";
 import HomeCard from "./HomeCard";
 import Temperature from "./Temperature";
@@ -23,6 +24,7 @@ const TemperatureCard: React.FC = () => {
 
   const { series, refetch } = useTemperatureLogs();
   const { formatMessage, locale } = useIntl();
+  const { isMobile, isLandscape } = useMobile();
 
   const handleOpen = () => {
     refetch();
@@ -39,7 +41,7 @@ const TemperatureCard: React.FC = () => {
 
   return (
     <>
-      <Dialog open={openChart} fullWidth>
+      <Dialog open={openChart} fullWidth fullScreen={isMobile || isLandscape}>
         <DialogTitle>
           <FormattedMessage
             id={"Temperature.Chart"}
