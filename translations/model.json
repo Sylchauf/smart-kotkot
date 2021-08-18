@@ -2,6 +2,12 @@
   "Actions.Close": {
     "defaultMessage": "Close"
   },
+  "Camera.History": {
+    "defaultMessage": "Camera History"
+  },
+  "Camera.SelectCamera": {
+    "defaultMessage": "Choose the camera"
+  },
   "Confirm.Cancel": {
     "defaultMessage": "Cancel"
   },

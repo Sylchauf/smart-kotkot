@@ -15,7 +15,6 @@ const Cameras: React.FC = () => {
         <div key={oneCamera.id + oneCamera.config.name}>
           <CameraDisplay
             id={oneCamera.id}
-            config={oneCamera.config}
             lastRequest={oneCamera.lastRequest}
           />
           <p className="legend">{oneCamera.config.name}</p>

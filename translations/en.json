@@ -5,6 +5,18 @@
       "value": "Close"
     }
   ],
+  "Camera.History": [
+    {
+      "type": 0,
+      "value": "Camera History"
+    }
+  ],
+  "Camera.SelectCamera": [
+    {
+      "type": 0,
+      "value": "Choose the camera"
+    }
+  ],
   "Confirm.Cancel": [
     {
       "type": 0,

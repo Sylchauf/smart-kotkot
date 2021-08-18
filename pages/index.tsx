@@ -2,8 +2,8 @@ import { FormattedMessage } from "react-intl";
 
 import { Grid, IconButton } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
+import CameraCard from "../components/CameraCard";
 
-import Cameras from "../components/Cameras";
 import Door from "../components/Door";
 import Header from "../components/Header";
 import HomeCard from "../components/HomeCard";
@@ -24,15 +24,7 @@ export default function Home() {
 
       <Grid container spacing={4}>
         <Grid item xs={12} sm={9}>
-          <HomeCard
-            title={
-              <FormattedMessage
-                id={"Home.Cameras"}
-                defaultMessage={"Cameras"}
-              />
-            }
-            content={<Cameras />}
-          />
+          <CameraCard />
         </Grid>
 
         <Grid item xs={12} sm={3}>

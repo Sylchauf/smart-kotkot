@@ -1,14 +1,17 @@
 import moment from "moment";
 import React from "react";
-import Image from "next/image";
 
 interface Props {
   id: string;
-  config: any;
-  lastRequest: string;
+  lastRequest: number;
+  imageId?: string;
 }
 
-const CameraDisplay: React.FC<Props> = ({ id, lastRequest, config }) => {
+const CameraDisplay: React.FC<Props> = ({
+  id,
+  lastRequest,
+  imageId = "last",
+}) => {
   const date = moment(lastRequest).local().format("L HH:mm:ss");
 
   return (
@@ -27,7 +30,7 @@ const CameraDisplay: React.FC<Props> = ({ id, lastRequest, config }) => {
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={"/api/camera/lastimage/" + id + `?lastRequest=${lastRequest}`}
+        src={`/api/camera/images/${id}/${imageId}?lastRequest=${lastRequest}`}
         alt={"Camera"}
       />
     </div>

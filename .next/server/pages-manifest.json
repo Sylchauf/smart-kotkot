@@ -3,12 +3,13 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/api/door/status": "pages/api/door/status.js",
-  "/api/light/status": "pages/api/light/status.js",
-  "/api/camera/list": "pages/api/camera/list.js",
-  "/api/camera/lastimage/[id]": "pages/api/camera/lastimage/[id].js",
+  "/api/camera/images/[cameraId]/list": "pages/api/camera/images/[cameraId]/list.js",
   "/api/interface/config": "pages/api/interface/config.js",
+  "/api/door/status": "pages/api/door/status.js",
+  "/api/camera/list": "pages/api/camera/list.js",
+  "/api/light/status": "pages/api/light/status.js",
   "/api/temperature/status": "pages/api/temperature/status.js",
-  "/api/temperature/logs": "pages/api/temperature/logs.js",
+  "/api/camera/images/[cameraId]/last": "pages/api/camera/images/[cameraId]/last.js",
+  "/api/camera/images/[cameraId]/[name]": "pages/api/camera/images/[cameraId]/[name].js",
   "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }

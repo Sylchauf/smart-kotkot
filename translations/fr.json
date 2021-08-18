@@ -8,7 +8,7 @@
   "Door.NextOpenAt": "Prochaine <b>ouverture</b> automatique <b>à {time}</b>",
   "Door.NextCloseAt": "Prochaine <b>fermeture</b> automatique <b>à {time}</b>",
   "Home.Door": "Porte",
-  "Home.Cameras": "Cameras",
+  "Home.Cameras": "Caméras",
   "Home.Light": "Lumière",
   "Home.Temperature": "Température",
   "Light.State": "État",
@@ -29,5 +29,7 @@
   "Temperature.Celsius": "Celsius (°)",
   "Temperature.Percent": "Pourcentage (%)",
   "Temperature.Chart": "Historique des températures",
-  "Actions.Close": "Fermer"
+  "Actions.Close": "Fermer",
+  "Camera.SelectCamera": "Sélectionnez une caméra",
+  "Camera.History": "Historique des caméras"
 }
