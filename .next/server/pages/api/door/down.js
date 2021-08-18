@@ -1,10 +1,10 @@
 (function() {
 var exports = {};
-exports.id = 641;
-exports.ids = [641];
+exports.id = 122;
+exports.ids = [122];
 exports.modules = {
 
-/***/ 5742:
+/***/ 982:
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ((req, res) => {
-  const result = (0,_engine_door__WEBPACK_IMPORTED_MODULE_0__/* .moveDoor */ .LW)(_constants_DOOR_DIRECTION__WEBPACK_IMPORTED_MODULE_1__/* .default.UP */ .Z.UP);
+  const result = (0,_engine_door__WEBPACK_IMPORTED_MODULE_0__/* .moveDoor */ .LW)(_constants_DOOR_DIRECTION__WEBPACK_IMPORTED_MODULE_1__/* .default.DOWN */ .Z.DOWN);
   res.status(result.status).json(result);
 });
 
@@ -67,7 +67,7 @@ module.exports = require("winston-daily-rotate-file");;
 var __webpack_require__ = require("../../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [415], function() { return __webpack_exec__(5742); });
+var __webpack_exports__ = __webpack_require__.X(0, [415], function() { return __webpack_exec__(982); });
 module.exports = __webpack_exports__;
 
 })();
