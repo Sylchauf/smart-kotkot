@@ -26,7 +26,7 @@ class UsbWebcam extends CameraAbstract {
         ? `-d ${this.cameraConfig.options.device}`
         : "";
 
-      const commandLine = `fswebcam ${device} ${resolution} -D 1 --no-banner --jpeg -1 ${fileName}`;
+      const commandLine = `fswebcam ${device} ${resolution} -S 20 --no-banner --jpeg -1 ${fileName}`;
 
       exec(commandLine, (error) => {
         if (error) reject(error);
