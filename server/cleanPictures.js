@@ -13,6 +13,8 @@ const cleanOldPicture = () => {
         extensions: [".jpg"],
       });
 
+      console.log("result:", result);
+
       logger.info(`[Clean] ${result.length} pictures deleted (${camera.name})`);
     }
   });
@@ -20,13 +22,17 @@ const cleanOldPicture = () => {
 
 // Clean old pictures automagically
 const setupCleanOldPictures = () => {
+  logger.info("[Cronjobs] Set up cron to clean old images");
+
   const schedulerCleanPicture = new CronJob(
-    "* * * * * *",
+    "0 * * * * *",
     function () {
       cleanOldPicture();
     },
     null
   );
+
+  schedulerCleanPicture.start();
 };
 
 module.exports = {

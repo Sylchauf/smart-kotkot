@@ -270,7 +270,7 @@ class UsbWebcam extends CameraAbstract {
 
       const resolution = (_this$cameraConfig$op = this.cameraConfig.options) !== null && _this$cameraConfig$op !== void 0 && _this$cameraConfig$op.width && (_this$cameraConfig$op2 = this.cameraConfig.options) !== null && _this$cameraConfig$op2 !== void 0 && _this$cameraConfig$op2.height ? `-r ${this.cameraConfig.options.width}x${this.cameraConfig.options.height}` : "";
       const device = (_this$cameraConfig$op3 = this.cameraConfig.options) !== null && _this$cameraConfig$op3 !== void 0 && _this$cameraConfig$op3.device ? `-d ${this.cameraConfig.options.device}` : "";
-      const commandLine = `fswebcam ${device} ${resolution} -D 1 --no-banner --jpeg -1 ${fileName}`;
+      const commandLine = `fswebcam ${device} ${resolution} -S 20 --no-banner --jpeg -1 ${fileName}`;
       exec(commandLine, error => {
         if (error) reject(error);else {
           fs.readFile(fileName, (err, image) => {
