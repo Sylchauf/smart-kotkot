@@ -13,9 +13,11 @@ const cleanOldPicture = () => {
         extensions: [".jpg"],
       });
 
-      console.log("result:", result);
-
-      logger.info(`[Clean] ${result.length} pictures deleted (${camera.name})`);
+      logger.info(
+        `[Clean] ${Object.keys(result).length} pictures deleted (${
+          camera.name
+        })`
+      );
     }
   });
 };
