@@ -1,5 +1,6 @@
 import moment from "moment";
 import React from "react";
+import Image from "next/image";
 
 interface Props {
   id: string;
@@ -32,6 +33,7 @@ const CameraDisplay: React.FC<Props> = ({
       <img
         src={`/api/camera/images/${id}/${imageId}?lastRequest=${lastRequest}`}
         alt={"Camera"}
+        loading="lazy"
       />
     </div>
   );

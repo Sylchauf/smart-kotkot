@@ -4,6 +4,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { Carousel } from "react-responsive-carousel";
 import useCameraHistory from "../hooks/useCameraHistory";
 import useCameraList from "../hooks/useCameraList";
+import useMobile from "../hooks/useMobile";
 import CameraDisplay from "./CameraDisplay";
 
 const CameraHistory: React.FC = () => {
@@ -12,6 +13,7 @@ const CameraHistory: React.FC = () => {
   const cameraList = useCameraList();
   const files = useCameraHistory(cameraSelected);
   const { formatMessage } = useIntl();
+  const { isMobile, isLandscape } = useMobile();
 
   const handleChange = (event: any) => {
     setCameraSelected(event.target.value as string);
@@ -46,8 +48,13 @@ const CameraHistory: React.FC = () => {
         </Select>
       </FormControl>
 
-      <div style={{ width: "69vw", margin: "0 auto" }}>
-        <Carousel showThumbs={false}>
+      <div
+        style={{
+          width: isMobile || isLandscape ? "100%" : "69vw",
+          margin: "0 auto",
+        }}
+      >
+        <Carousel showThumbs={false} showIndicators={false} autoPlay={false}>
           {files.map((file: string) => (
             <CameraDisplay
               key={file}
