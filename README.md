@@ -8,8 +8,8 @@
 
 ### Requirements
 
-- Node.JS v14+
-- fswebcam
+- Docker
+- Docker-compose (install with pip on raspbian)
 
 ### Run
 
