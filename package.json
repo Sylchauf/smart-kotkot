@@ -4,12 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production pm2 start server.js",
-    "stop": "pm2 delete server",
-    "restart": "pm2 restart server",
-    "autostart": "pm2 startup",
-    "logs": "pm2 logs --raw",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "next build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "start": "NODE_ENV=production node dist/server.js",
     "lint": "next lint",
     "compile-intl": "formatjs compile translations/model.json --ast --out-file translations/en.json",
     "extract-intl": "formatjs extract '{pages,components}/**/*.ts*' --out-file translations/model.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'"

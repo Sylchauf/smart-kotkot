@@ -78,3 +78,17 @@ Replace `{IMAGE_ID}` by the id given in the images list endpoint
 echo 'SUBSYSTEM=="usb", MODE="0660", GROUP="plugdev"' > /etc/udev/rules.d/00-usb-permissions.rules
 udevadm control --reload-rules
 ```
+
+## Developers
+
+### Libraries used
+
+- Next.JS v11
+- React.JS v17
+- Material-ui v5
+
+### Rebuild the image
+
+```bash
+docker build . -t sylchauf/smart-kotkot
+```

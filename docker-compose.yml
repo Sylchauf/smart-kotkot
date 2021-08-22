@@ -1,0 +1,11 @@
+version: "2.3"
+services:
+  nodeserver:
+    image: "sylchauf/smart-kotkot:latest"
+    ports:
+      - "3000:3000"
+    device_cgroup_rules:
+      - 'c *:* rmw'
+    volumes:
+      - ./state:/app/state
+      - /dev:/dev
