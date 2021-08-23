@@ -90,5 +90,5 @@ udevadm control --reload-rules
 ### Rebuild the image
 
 ```bash
-docker build . -t sylchauf/smart-kotkot
+docker buildx build --platform linux/arm/v6,linux/arm/v7,linux/amd64,linux/arm64 -t sylchauf/smart-kotkot:latest --push .
 ```

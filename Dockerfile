@@ -1,11 +1,9 @@
 # Install dependencies only when needed
 FROM node:alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
-
 # Install python (dependencies to build)
-RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python2
-RUN npm install --quiet node-gyp -g
+RUN apk --no-cache add libc6-compat g++ gcc libgcc libstdc++ linux-headers make python3
+RUN npm install node-gyp -g
 
 
 WORKDIR /app
@@ -20,10 +18,13 @@ COPY --from=deps /app/node_modules ./node_modules
 RUN npm run build && npm ci --production --ignore-scripts
 
 # Production image, copy all the files and run next
-FROM node:16-bullseye AS runner
+FROM node:alpine AS runner
 WORKDIR /app
 
-RUN apt update && apt install -y fswebcam libusb-dev
+# Needed to build fswebcam
+RUN apk add --no-cache git gcc g++ libgcc libstdc++ linux-headers libc6-compat gd-dev make libusb-compat
+
+RUN git clone https://github.com/fsphil/fswebcam.git && cd fswebcam && ./configure --prefix=/usr && make && make install
 
 #RUN echo 'SUBSYSTEM=="usb", MODE="0660", GROUP="plugdev"' > /etc/udev/rules.d/00-usb-permissions.rules
 #RUN udevadm control --reload-rules
