@@ -29,8 +29,6 @@ const DoorCard: React.FC = () => {
     calibrationDown,
   } = useDoor();
 
-  console.log("isMoving:", isMoving);
-
   const { isMobile, isLandscape } = useMobile();
 
   const doorActions = [

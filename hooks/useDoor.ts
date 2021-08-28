@@ -15,12 +15,6 @@ const useDoor = () => {
     async () => {
       const result = await axiosInstance.get("status");
 
-      console.log(
-        'result?.data?.status !== "stop":',
-        result?.data,
-        result?.data?.status !== "stop"
-      );
-
       setIsMoving(result?.data?.status !== "stop");
 
       return result.data;
@@ -53,8 +47,6 @@ const useDoor = () => {
       setIsMoving(true);
       return axiosInstance.get("calibrate/down");
     });
-
-  console.log("isMovingIN:", isMoving);
 
   return {
     state: data?.state,
