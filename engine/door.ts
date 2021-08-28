@@ -43,17 +43,7 @@ const correctTop = () => {
     `[Door] Try to apply correction for up (${config.door.correctionSec}s)`
   );
 
-  const response = moveDoor(DOOR_DIRECTION.UP, config.door.correctionSec);
-
-  if (response.status === 200) {
-    setDoorState(
-      "durationUpSec",
-      doorState.durationUpSec + config.door.correctionSec
-    );
-    setDoorState("state", DOOR_STATE.TOP);
-  }
-
-  return response;
+  return moveDoor(DOOR_DIRECTION.UP, config.door.correctionSec);
 };
 
 const correctBottom = () => {
@@ -61,17 +51,7 @@ const correctBottom = () => {
     `[Door] Apply correction for down (${config.door.correctionSec}s)`
   );
 
-  const response = moveDoor(DOOR_DIRECTION.DOWN, config.door.correctionSec);
-
-  if (response.status === 200) {
-    setDoorState(
-      "durationDownSec",
-      doorState.durationDownSec + config.door.correctionSec
-    );
-    setDoorState("state", DOOR_STATE.BOTTOM);
-  }
-
-  return response;
+  return moveDoor(DOOR_DIRECTION.DOWN, config.door.correctionSec);
 };
 
 const makeResponse = (status: number, message: string, logType = "info") => {
@@ -110,28 +90,6 @@ const moveDoor = (direction: string, forceDuration?: number) => {
     return makeResponse(
       409,
       "[Door] You ask to close the door : it's already close",
-      "warn"
-    );
-
-  if (
-    direction === DOOR_DIRECTION.UP &&
-    doorState.state === DOOR_STATE.BOTTOM &&
-    forceDuration
-  )
-    return makeResponse(
-      403,
-      "[Door] You ask to calibrate the door to the up : it's impossible for the moment. Please end the bottom calibration then ask open the door. After the door has moved, you will start the up calibration",
-      "warn"
-    );
-
-  if (
-    direction === DOOR_DIRECTION.DOWN &&
-    doorState.state === DOOR_STATE.TOP &&
-    forceDuration
-  )
-    return makeResponse(
-      403,
-      "[Door] You ask to calibrate the door to the down : it's impossible for the moment. Please end the top calibration then ask close the door. After the door has moved, you will start the down calibration",
       "warn"
     );
 

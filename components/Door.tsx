@@ -2,15 +2,12 @@ import { Button, CircularProgress } from "@material-ui/core";
 import moment from "moment";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
-import useDoor from "../hooks/useDoor";
 import OpenLock from "../public/open-lock.svg";
 import Lock from "../public/lock.svg";
 
 const IMAGE_SIZE = 56;
 
-const Door = () => {
-  const { state, nextAutomation, isLoading, isMoving, open, close } = useDoor();
-
+const Door = ({ state, nextAutomation, isLoading, isMoving, open, close }) => {
   if (isLoading) return null;
 
   const isOpen = state === "top";
