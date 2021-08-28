@@ -3,8 +3,7 @@ FROM node:alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 # Install python (dependencies to build)
 RUN apk --no-cache add libc6-compat g++ gcc libgcc libstdc++ linux-headers make python3
-RUN npm install node-gyp -g
-
+RUN npm config set fetch-retry-maxtimeout 60000 && npm install node-gyp -g
 
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -15,7 +14,7 @@ FROM node:alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN npm run build && npm ci --production --ignore-scripts
+RUN npm config set fetch-retry-maxtimeout 60000 && npm run build && npm ci --production --ignore-scripts
 
 # Production image, copy all the files and run next
 FROM node:alpine AS runner

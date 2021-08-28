@@ -7,7 +7,23 @@ import Lock from "../public/lock.svg";
 
 const IMAGE_SIZE = 56;
 
-const Door = ({ state, nextAutomation, isLoading, isMoving, open, close }) => {
+interface Props {
+  state: any;
+  nextAutomation: any;
+  isLoading: boolean;
+  isMoving: boolean;
+  open: () => void;
+  close: () => void;
+}
+
+const Door: React.FC<Props> = ({
+  state,
+  nextAutomation,
+  isLoading,
+  isMoving,
+  open,
+  close,
+}) => {
   if (isLoading) return null;
 
   const isOpen = state === "top";
