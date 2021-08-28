@@ -26,9 +26,6 @@ RUN apk add --no-cache git gcc g++ libgcc libstdc++ linux-headers libc6-compat g
 
 RUN git clone https://github.com/fsphil/fswebcam.git && cd fswebcam && ./configure --prefix=/usr && make && make install
 
-#RUN echo 'SUBSYSTEM=="usb", MODE="0660", GROUP="plugdev"' > /etc/udev/rules.d/00-usb-permissions.rules
-#RUN udevadm control --reload-rules
-
 ENV NODE_ENV production
 
 COPY --from=builder /app/next.config.js ./
