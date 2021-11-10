@@ -4,13 +4,13 @@
 
 ## Hardware compatibility
 
-- Any linux server (x64, x86, ARM) like Raspberry PI (2,3,4,Zero)
+- Any linux server with at least 512Mb RAM (x64, x86, ARM) like Raspberry PI (2,3,4,Zero)
 - Camera: Usb Webcam or Raspberry PI Cam
 - Light: anyone controlled by GPIO or [USB GCERelay](https://www.gce-electronics.com/en/-usb/247-126-controller-usb-8-relay-board.html#/29-boitier-without_box)
 - Door/Motor : anyone controlled by by GPIO or [USB GCERelay](https://www.gce-electronics.com/en/-usb/247-126-controller-usb-8-relay-board.html#/29-boitier-without_box)
 - Temperature sensor: TEMPerHUM
 
-Smart KotKot is modular and it's easy to add new compatibility devices. Check the directory `/server/modules` to create your own driver and/or ask help in a new issue.
+💡 _Smart KotKot_ is **modular** and it's **easy to add new compatibility devices**. Check the directory `/server/modules` to create your own driver and/or ask help in a new issue.
 
 ## Installation
 
@@ -35,7 +35,7 @@ docker-compose up
 
 ## Configuration
 
-Smart Kotkot configuration is in the `/state` directory and is composed of multiples files :
+_Smart KotKot_ configuration is in the `/state` directory and is composed of multiples files :
 
 - `config.json` is the general configuration file. Clone the sample file in the `/state_sample` directory and edit it before running the application. All configurations properties is described in [Config properties](/docs/config.properties.md)
 - `doorState.json` is the door configuration file. It stores the state of the door (open / close) and the times needed to open and close the door (in seconds). You must write yourself the first state in this file and the time in seconds to open and close the door.
