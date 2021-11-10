@@ -10,7 +10,7 @@ const Cameras: React.FC = () => {
   if (!cameraList) return null;
 
   return (
-    <Carousel autoPlay showThumbs={false} infiniteLoop>
+    <Carousel autoPlay={false} showThumbs={false} infiniteLoop>
       {cameraList.map((oneCamera: any) => (
         <div key={oneCamera.id + oneCamera.config.name}>
           <CameraDisplay

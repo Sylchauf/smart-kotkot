@@ -73,7 +73,7 @@ const DoorCard: React.FC = () => {
               >
                 <FormattedMessage
                   id={"Door.CalibrationUp"}
-                  defaultMessage={"Force move up"}
+                  defaultMessage={"Force move to the up"}
                 />
               </Button>
             </Grid>
@@ -86,7 +86,7 @@ const DoorCard: React.FC = () => {
               >
                 <FormattedMessage
                   id={"Door.CalibrationDown"}
-                  defaultMessage={"Force move down"}
+                  defaultMessage={"Force move to the down"}
                 />
               </Button>
             </Grid>
