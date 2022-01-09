@@ -5,14 +5,14 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-} from "@material-ui/core";
+} from "@mui/material";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import useMobile from "../hooks/useMobile";
 import CameraHistory from "./CameraHistory";
 import Cameras from "./Cameras";
 import HomeCard from "./HomeCard";
-import AccessTimeIcon from "@material-ui/icons/AccessTime";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const CameraCard: React.FC = () => {
   const [openHistory, setOpenHistory] = useState<boolean>(false);

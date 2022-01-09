@@ -1,6 +1,6 @@
 {
   "name": "smart-coop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "node server.js",
@@ -13,38 +13,38 @@
     "extract-intl": "formatjs extract '{pages,components}/**/*.ts*' --out-file translations/model.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'"
   },
   "dependencies": {
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "^5.0.0-beta.3",
-    "@material-ui/icons": "^5.0.0-beta.1",
-    "apexcharts": "^3.27.3",
-    "axios": "^0.21.1",
+    "@emotion/react": "11.7.1",
+    "@emotion/styled": "11.6.0",
+    "@mui/material": "5.2.7",
+    "@mui/icons-material": "5.2.5",
+    "apexcharts": "3.32.1",
+    "axios": "0.24.0",
     "cron": "^1.8.2",
     "find-remove": "^3.1.0",
-    "material-ui-confirm": "^2.1.3",
+    "material-ui-confirm": "3.0.3",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
     "next": "11.0.1",
-    "node-raspistill": "^2.0.0",
+    "node-raspistill": "2.0.1",
     "onoff": "^6.0.3",
     "react": "17.0.2",
     "react-apexcharts": "^1.3.9",
     "react-dom": "17.0.2",
-    "react-intl": "^5.20.7",
-    "react-query": "^3.19.2",
-    "react-responsive-carousel": "^3.2.20",
+    "react-intl": "5.24.2",
+    "react-query": "3.34.7",
+    "react-responsive-carousel": "3.2.22",
     "read-last-lines": "^1.8.0",
     "suncalc": "^1.8.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
   },
   "devDependencies": {
-    "@formatjs/cli": "^4.2.30",
-    "@types/react": "17.0.16",
-    "babel-plugin-formatjs": "^10.3.4",
+    "@formatjs/cli": "^4.7.1",
+    "@types/react": "17.0.38",
+    "babel-plugin-formatjs": "10.3.15",
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
-    "prettier": "^2.3.2",
-    "typescript": "4.3.5"
+    "prettier": "^2.5.1",
+    "typescript": "4.5.4"
   }
 }

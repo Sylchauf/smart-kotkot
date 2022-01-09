@@ -1,4 +1,4 @@
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
 import moment from "moment";
 import React from "react";
 import { IntlProvider } from "react-intl";

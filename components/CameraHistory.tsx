@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Carousel } from "react-responsive-carousel";

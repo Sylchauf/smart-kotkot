@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent } from "@mui/material";
 import React from "react";
 import styles from "../styles/HomeCard.module.css";
 

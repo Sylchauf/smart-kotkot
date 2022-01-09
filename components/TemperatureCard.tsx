@@ -5,8 +5,8 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-} from "@material-ui/core";
-import TimelineIcon from "@material-ui/icons/Timeline";
+} from "@mui/material";
+import TimelineIcon from "@mui/icons-material/Timeline";
 import moment from "moment";
 import dynamic from "next/dynamic";
 import React, { useState } from "react";

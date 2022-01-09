@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import moment from "moment";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";

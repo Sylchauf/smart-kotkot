@@ -1,6 +1,6 @@
 import { FormattedMessage } from "react-intl";
 
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
 import CameraCard from "../components/CameraCard";
 import DoorCard from "../components/DoorCard";
 

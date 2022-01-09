@@ -1,4 +1,4 @@
-import { Button, CircularProgress } from "@material-ui/core";
+import { Button, CircularProgress } from "@mui/material";
 import moment from "moment";
 import Image from "next/image";
 import { FormattedMessage } from "react-intl";
