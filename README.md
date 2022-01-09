@@ -111,7 +111,7 @@ udevadm control --reload-rules
 - React.JS v17
 - Material-ui v5
 
-### Rebuild the image
+### Rebuild and push the image
 
 ```bash
 docker buildx build --platform linux/arm/v6,linux/arm/v7,linux/amd64,linux/arm64 -t sylchauf/smart-kotkot:latest --push .
