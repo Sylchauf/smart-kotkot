@@ -1,6 +1,5 @@
 import moment from "moment";
 import React from "react";
-import Image from "next/image";
 
 interface Props {
   id: string;

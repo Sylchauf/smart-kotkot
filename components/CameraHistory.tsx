@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Carousel } from "react-responsive-carousel";
 import useCameraHistory from "../hooks/useCameraHistory";
-import useCameraList from "../hooks/useCameraList";
+import useCamera from "../hooks/useCamera";
 import useMobile from "../hooks/useMobile";
 import CameraDisplay from "./CameraDisplay";
 
 const CameraHistory: React.FC = () => {
   const [cameraSelected, setCameraSelected] = useState<string>("0");
 
-  const cameraList = useCameraList();
+  const { list } = useCamera();
   const files = useCameraHistory(cameraSelected);
   const { formatMessage } = useIntl();
   const { isMobile, isLandscape } = useMobile();
@@ -38,7 +38,7 @@ const CameraHistory: React.FC = () => {
             defaultMessage: "Choose the camera",
           })}
         >
-          {cameraList
+          {list
             .filter((camera: any) => !!camera.config.save?.path)
             .map((camera: any) => (
               <MenuItem key={camera.id} value={camera.id}>

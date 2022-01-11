@@ -2,11 +2,17 @@
   "Actions.Close": {
     "defaultMessage": "Close"
   },
+  "Camera.AccessHistory": {
+    "defaultMessage": "View all images"
+  },
   "Camera.History": {
     "defaultMessage": "Camera History"
   },
   "Camera.SelectCamera": {
     "defaultMessage": "Choose the camera"
+  },
+  "Camera.TakeNow": {
+    "defaultMessage": "Take pictures now"
   },
   "Confirm.Cancel": {
     "defaultMessage": "Cancel"
@@ -16,6 +22,18 @@
   },
   "Confirm.Yes": {
     "defaultMessage": "Yes"
+  },
+  "Door.Advanced": {
+    "defaultMessage": "Advanced actions"
+  },
+  "Door.Calibration": {
+    "defaultMessage": "Calibration"
+  },
+  "Door.CalibrationDown": {
+    "defaultMessage": "Force move to the down"
+  },
+  "Door.CalibrationUp": {
+    "defaultMessage": "Force move to the up"
   },
   "Door.Close": {
     "defaultMessage": "Close"

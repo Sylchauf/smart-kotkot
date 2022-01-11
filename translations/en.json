@@ -5,6 +5,12 @@
       "value": "Close"
     }
   ],
+  "Camera.AccessHistory": [
+    {
+      "type": 0,
+      "value": "View all images"
+    }
+  ],
   "Camera.History": [
     {
       "type": 0,
@@ -15,6 +21,12 @@
     {
       "type": 0,
       "value": "Choose the camera"
+    }
+  ],
+  "Camera.TakeNow": [
+    {
+      "type": 0,
+      "value": "Take pictures now"
     }
   ],
   "Confirm.Cancel": [
@@ -33,6 +45,30 @@
     {
       "type": 0,
       "value": "Yes"
+    }
+  ],
+  "Door.Advanced": [
+    {
+      "type": 0,
+      "value": "Advanced actions"
+    }
+  ],
+  "Door.Calibration": [
+    {
+      "type": 0,
+      "value": "Calibration"
+    }
+  ],
+  "Door.CalibrationDown": [
+    {
+      "type": 0,
+      "value": "Force move to the down"
+    }
+  ],
+  "Door.CalibrationUp": [
+    {
+      "type": 0,
+      "value": "Force move to the up"
     }
   ],
   "Door.Close": [

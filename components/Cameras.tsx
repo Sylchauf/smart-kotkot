@@ -1,17 +1,17 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import useCameraList from "../hooks/useCameraList";
+import useCamera from "../hooks/useCamera";
 import CameraDisplay from "./CameraDisplay";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Cameras: React.FC = () => {
-  const cameraList = useCameraList();
+  const { list } = useCamera();
 
-  if (!cameraList) return null;
+  if (!list) return null;
 
   return (
     <Carousel autoPlay={false} showThumbs={false} infiniteLoop>
-      {cameraList.map((oneCamera: any) => (
+      {list.map((oneCamera: any) => (
         <div key={oneCamera.id + oneCamera.config.name}>
           <CameraDisplay
             id={oneCamera.id}

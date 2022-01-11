@@ -75,13 +75,20 @@ Get an array of all initialized camera
 
 #### Get images
 
-Access to picture taken by camera.
+Access to pictures taken by cameras.
 Replace `{CAMERA_ID}` by the id given in the camera list endpoint
 Replace `{IMAGE_ID}` by the id given in the images list endpoint
 
 - `/api/camera/images/{CAMERA_ID}/list` Get a list of all images taken.
 - `/api/camera/images/{CAMERA_ID}/last` Get the last picture taken by this camera
 - `/api/camera/images/{CAMERA_ID}/{IMAGE_ID}`
+
+#### Take pictures
+
+Take a picture on the selected camera.
+Replace `{CAMERA_ID}` by the id given in the camera list endpoint
+
+- `/api/camera/images/{CAMERA_ID}/take` Get a list of all images taken.
 
 ### Light
 

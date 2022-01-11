@@ -40,7 +40,7 @@ const setupCamera = (id, cameraConfig) => {
   takePhoto(id);
 };
 
-const takePhoto = async (id, nightVision = false) => {
+const takePhoto = async (id, manualTake = false) => {
   const camera = global.cameraList[id];
 
   if (!camera) {
@@ -60,7 +60,7 @@ const takePhoto = async (id, nightVision = false) => {
     logger.info(`[CAMERA] Taking a picture (${id} - ${camera.config.name})`);
     let takingPicture = moment();
 
-    cameraInstance
+    return cameraInstance
       .takePicture()
       .then((photo) => {
         const newPicTime = moment().format("X");
@@ -86,15 +86,19 @@ const takePhoto = async (id, nightVision = false) => {
         logger.debug(`[CAMERA] Took a picture - ${duration} ms`);
 
         // Schedule taking the next picture
-        if (camera.lastRequest && camera.config.intervalSec > 0) {
+        if (
+          camera.lastRequest &&
+          camera.config.intervalSec > 0 &&
+          !manualTake
+        ) {
           setTimeout(() => {
             takePhoto(id);
           }, camera.config.intervalSec * 1000);
         }
+
+        return true;
       })
       .catch(logger.error);
-
-    return true;
   }
 };
 
@@ -109,4 +113,4 @@ const getJpg = (id) => {
   return camera.image;
 };
 
-module.exports = { initializeCameras, getJpg };
+module.exports = { initializeCameras, getJpg, takePhoto };
