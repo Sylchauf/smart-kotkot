@@ -4,6 +4,7 @@ const { getCameraInstance } = require("./modules/camera");
 const getConfig = require("../lib/getConfig");
 const path = require("path");
 const fs = require("fs");
+const detectObject = require("./lib/detectObject");
 
 const config = getConfig();
 
@@ -65,10 +66,14 @@ const takePhoto = async (id, manualTake = false) => {
       .then((photo) => {
         const newPicTime = moment().format("X");
 
+        let fileName;
+
         if (camera.config.save?.path) {
           fs.mkdirSync(camera.config.save.path, {
             recursive: true,
           });
+
+          fileName = path.join(camera.config.save.path, `${newPicTime}.jpg`);
 
           fs.writeFileSync(
             path.join(camera.config.save.path, `${newPicTime}.jpg`),
@@ -94,6 +99,10 @@ const takePhoto = async (id, manualTake = false) => {
           setTimeout(() => {
             takePhoto(id);
           }, camera.config.intervalSec * 1000);
+        }
+
+        if (!!camera.config.detection?.enabled && fileName) {
+          detectObject(fileName, camera.config.detection);
         }
 
         return true;

@@ -31,6 +31,7 @@
   "Temperature.Chart": "Historique des températures",
   "Actions.Close": "Fermer",
   "Camera.SelectCamera": "Sélectionnez une caméra",
+  "Camera.SelectImage": "Sélectionnez une image",
   "Camera.History": "Historique des caméras",
   "Camera.TakeNow": "Prendre des photos maintenant",
   "Camera.AccessHistory": "Voir toutes les images"

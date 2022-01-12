@@ -15,7 +15,7 @@ const CameraDisplay: React.FC<Props> = ({
   const date = moment(lastRequest).local().format("L HH:mm:ss");
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <div
         style={{
           background: "white",
@@ -33,6 +33,7 @@ const CameraDisplay: React.FC<Props> = ({
         src={`/api/camera/images/${id}/${imageId}?lastRequest=${lastRequest}`}
         alt={"Camera"}
         loading="lazy"
+        width={"100%"}
       />
     </div>
   );

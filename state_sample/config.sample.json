@@ -55,7 +55,10 @@
         "width": 1024,
         "height": 768
       },
-      "intervalSec": 20
+      "intervalSec": 20,
+      "detection": {
+        "enabled": true
+      }
     }
   ],
   "location": {
