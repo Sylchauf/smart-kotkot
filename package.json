@@ -21,7 +21,6 @@
     "axios": "0.24.0",
     "cron": "^1.8.2",
     "find-remove": "^3.1.0",
-    "get-image-data": "^5.0.0",
     "material-ui-confirm": "3.0.3",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
