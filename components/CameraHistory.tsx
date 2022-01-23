@@ -100,11 +100,13 @@ const CameraHistory: React.FC = () => {
               margin: "0 auto",
             }}
           >
-            <CameraDisplay
-              id={cameraSelected}
-              imageId={imageSelected}
-              lastRequest={Number(imageSelected.split(".")[0]) * 1000}
-            />
+            {imageSelected && (
+              <CameraDisplay
+                id={cameraSelected}
+                imageId={imageSelected}
+                lastRequest={Number(imageSelected.split(".")[0]) * 1000}
+              />
+            )}
           </div>
         </Grid>
       </Grid>
