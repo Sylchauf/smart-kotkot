@@ -1,6 +1,6 @@
 {
-  "name": "smart-coop",
-  "version": "0.2.0",
+  "name": "smart-kotkot",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "node server.js",
