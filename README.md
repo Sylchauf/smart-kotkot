@@ -31,9 +31,22 @@ Then, install the following requirements.
 
 ### Run
 
+Edit the `.env` file to fill your domain configuration :
+
+```bash
+DOMAIN=YOUR.DOMAIN.COM
+PORT=443
+```
+
+Then, start Smart KotKot :
+
 ```bash
 docker-compose up
 ```
+
+Your Smart KotKot instance is now live at `https://YOUR.DOMAIN.COM:443`
+
+_Note: This application force the usage of https_
 
 ## Configuration
 
