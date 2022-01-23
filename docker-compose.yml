@@ -13,9 +13,10 @@ services:
   caddy:
     image: caddy:2.4.3-alpine
     restart: always
-    command: sh -c "caddy reverse-proxy --from https://$${DOMAIN}:$${PORT} --to http://smartkotkot:3000"
+    command: sh -c "caddy reverse-proxy --from https://$${DOMAIN}:443 --to http://smartkotkot:3000"
     ports:
-      - "${PORT}:${PORT}"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./caddy:/data
     depends_on:
