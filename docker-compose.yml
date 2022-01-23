@@ -6,14 +6,16 @@ services:
     security_opt:
       - seccomp:unconfined
     device_cgroup_rules:
-      - 'c *:* rmw'
+      - "c *:* rmw"
     volumes:
       - ./state:/app/state
       - /dev:/dev
   caddy:
     image: caddy:2.4.3-alpine
     restart: always
-    command: sh -c "caddy reverse-proxy --from https://$${DOMAIN}:443 --to http://smartkotkot:3000"
+    environment:
+      - DOMAIN
+    command: sh -c "caddy reverse-proxy --from https://$$DOMAIN:443 --to http://smartkotkot:3000"
     ports:
       - "80:80"
       - "443:443"
