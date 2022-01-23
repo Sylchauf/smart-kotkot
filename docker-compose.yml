@@ -10,18 +10,3 @@ services:
     volumes:
       - ./state:/app/state
       - /dev:/dev
-  caddy:
-    image: caddy:2.4.3-alpine
-    restart: always
-    environment:
-      - DOMAIN
-      - HTTP_PORT
-      - HTTPS_PORT
-    command: sh -c "caddy reverse-proxy --from https://$$DOMAIN --to http://smartkotkot:3000 --http-port $$HTTP_PORT --https-port $$HTTPS_PORT"
-    ports:
-      - "${HTTP_PORT}:${HTTP_PORT}"
-      - "${HTTPS_PORT}:${HTTPS_PORT}"
-    volumes:
-      - ./caddy:/data
-    depends_on:
-      - smartkotkot
