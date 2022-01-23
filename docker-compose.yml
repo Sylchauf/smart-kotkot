@@ -15,7 +15,7 @@ services:
     restart: always
     environment:
       - DOMAIN
-    command: sh -c "caddy reverse-proxy --from https://$$DOMAIN --to http://smartkotkot:3000 --http_port $$HTTP_PORT --https_port $$HTTPS_PORT"
+    command: sh -c "caddy reverse-proxy --from https://$$DOMAIN --to http://smartkotkot:3000 --http-port $$HTTP_PORT --https-port $$HTTPS_PORT"
     ports:
       - "${HTTP_PORT}:${HTTP_PORT}"
       - "${HTTPS_PORT}:${HTTPS_PORT}"
