@@ -17,6 +17,6 @@ services:
     ports:
       - "${PORT}:${PORT}"
     volumes:
-      - caddy:/data
+      - ./caddy:/data
     depends_on:
       - smartkotkot
