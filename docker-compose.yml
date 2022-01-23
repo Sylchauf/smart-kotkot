@@ -1,10 +1,8 @@
 version: "2.3"
 services:
-  nodeserver:
+  smartkotkot:
     image: "sylchauf/smart-kotkot:latest"
     restart: always
-    ports:
-      - "80:3000"
     security_opt:
       - seccomp:unconfined
     device_cgroup_rules:
@@ -12,3 +10,13 @@ services:
     volumes:
       - ./state:/app/state
       - /dev:/dev
+  caddy:
+    image: caddy:2.4.3-alpine
+    restart: always
+    command: caddy reverse-proxy --from https://$${DOMAIN}:$${PORT} --to http://smartkotkot:3000
+    ports:
+      - $${PORT}:$${PORT}
+    volumes:
+      - caddy:/data
+    depends_on:
+      - smartkotkot

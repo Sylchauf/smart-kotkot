@@ -19,16 +19,6 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <ConfirmProvider defaultOptions={defaultOptions}>
-      <Head>
-        <title>Smart KotKot</title>
-        <meta name="description" content="Smart KotKot : The connected and opensource coop" />
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
-      </Head>
-
       <main style={{ background: "#f3f3f3", minHeight: "100vh" }}>
         <Container
           style={{ background: "white", minHeight: "100vh" }}
