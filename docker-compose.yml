@@ -7,6 +7,8 @@ services:
       - seccomp:unconfined
     device_cgroup_rules:
       - "c *:* rmw"
+    ports:
+      - "3000:3000"
     volumes:
       - ./state:/app/state
       - /dev:/dev
