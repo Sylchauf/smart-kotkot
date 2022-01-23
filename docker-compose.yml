@@ -15,10 +15,11 @@ services:
     restart: always
     environment:
       - DOMAIN
-    command: sh -c "caddy reverse-proxy --from https://$$DOMAIN:443 --to http://smartkotkot:3000"
+    command: sh -c "caddy reverse-proxy --from https://$$DOMAIN:$$PORT --to http://smartkotkot:3000"
     ports:
       - "80:80"
       - "443:443"
+      - "${PORT}:${PORT}"
     volumes:
       - ./caddy:/data
     depends_on:
