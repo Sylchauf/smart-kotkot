@@ -2,6 +2,8 @@
 
 ## Presentation
 
+Smart KotKot: The connected and opensource coop.
+
 ## Hardware compatibility
 
 - Any linux server with at least 512Mb RAM (x64, x86, ARM) like Raspberry PI (2,3,4,Zero)
