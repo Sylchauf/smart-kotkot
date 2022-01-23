@@ -15,7 +15,7 @@ services:
     restart: always
     command: caddy reverse-proxy --from https://$${DOMAIN}:$${PORT} --to http://smartkotkot:3000
     ports:
-      - $${PORT}:$${PORT}
+      - "${PORT}:${PORT}"
     volumes:
       - caddy:/data
     depends_on:
