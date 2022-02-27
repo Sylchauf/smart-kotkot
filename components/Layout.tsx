@@ -1,10 +1,19 @@
-import { Container } from "@mui/material";
-import Head from "next/head";
+import {
+  Container,
+  createTheme,
+  ThemeProvider,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import { ConfirmProvider } from "material-ui-confirm";
 import { FormattedMessage } from "react-intl";
 
+import COLORS from "../constants/colors";
+import useConfig from "../hooks/useConfig";
+
 const Layout: React.FC = ({ children }) => {
+  const { config } = useConfig();
+
   const defaultOptions = {
     title: (
       <FormattedMessage id={"Confirm.Sure"} defaultMessage={"Are you sure ?"} />
@@ -17,17 +26,47 @@ const Layout: React.FC = ({ children }) => {
     ),
   };
 
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const getMode = () => {
+    if (config.theme == "automatic" || !config.theme)
+      return prefersDarkMode ? "dark" : "light";
+
+    return config.theme;
+  };
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          primary: { main: COLORS.primary },
+          mode: getMode(),
+        },
+      }),
+    [prefersDarkMode, config.theme]
+  );
+
   return (
-    <ConfirmProvider defaultOptions={defaultOptions}>
-      <main style={{ background: "#f3f3f3", minHeight: "100vh" }}>
-        <Container
-          style={{ background: "white", minHeight: "100vh" }}
-          maxWidth={"lg"}
+    <ThemeProvider theme={theme}>
+      <ConfirmProvider defaultOptions={defaultOptions}>
+        <main
+          style={{
+            background: theme.palette.background.paper,
+            minHeight: "100vh",
+          }}
         >
-          {children}
-        </Container>
-      </main>
-    </ConfirmProvider>
+          <Container
+            style={{
+              background: theme.palette.background.default,
+              minHeight: "100vh",
+            }}
+            maxWidth={"lg"}
+          >
+            {children}
+          </Container>
+        </main>
+      </ConfirmProvider>
+    </ThemeProvider>
   );
 };
 

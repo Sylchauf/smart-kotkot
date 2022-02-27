@@ -57,7 +57,7 @@ const takePhoto = async (id, manualTake = false) => {
     return false;
   } else {
     camera.busy = true;
-    logger.info(`[CAMERA] Taking a picture (${id} - ${camera.config.name})`);
+    logger.debug(`[CAMERA] Taking a picture (${id} - ${camera.config.name})`);
     let takingPicture = moment();
 
     return cameraInstance

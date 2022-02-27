@@ -6,5 +6,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.status(200).json({
     locale: config.locale,
+    theme: config.theme || "automatic",
   });
 };

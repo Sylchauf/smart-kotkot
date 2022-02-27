@@ -9,7 +9,7 @@ Smart KotKot: The connected and opensource coop.
 - Any linux server with at least 512Mb RAM (x64, x86, ARM) like Raspberry PI (2,3,4,Zero)
 - Camera: Usb Webcam or Raspberry PI Cam
 - Light: anyone controlled by GPIO or [USB GCERelay](https://www.gce-electronics.com/en/-usb/247-126-controller-usb-8-relay-board.html#/29-boitier-without_box)
-- Door/Motor : anyone controlled by by GPIO or [USB GCERelay](https://www.gce-electronics.com/en/-usb/247-126-controller-usb-8-relay-board.html#/29-boitier-without_box)
+- Door/Motor : anyone controlled by GPIO or [USB GCERelay](https://www.gce-electronics.com/en/-usb/247-126-controller-usb-8-relay-board.html#/29-boitier-without_box)
 - Temperature sensor: TEMPerHUM
 
 💡 _Smart KotKot_ is **modular** and it's **easy to add new compatibility devices**. Check the directory `/server/modules` to create your own driver and/or ask help in a new issue.
@@ -35,7 +35,7 @@ Then, install the following requirements.
 docker-compose up
 ```
 
-Your Smart KotKot instance is now live at `https://YOUR_LOCAL_IP:3000`
+Your instance is now live at `http://YOUR_LOCAL_IP:3000`
 
 ## Configuration
 

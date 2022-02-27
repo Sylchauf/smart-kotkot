@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import COLORS from "../constants/colors";
@@ -20,11 +21,15 @@ const egg = (
 );
 
 const Logo = () => {
+  const theme = useTheme();
+
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
       <Image src={logo} alt={"NAME"} />
       <div style={{ fontSize: 36, fontWeight: 600 }}>
-        <span style={{ color: COLORS.primary }}>S</span>mart{"  "}
+        <span style={{ color: COLORS.primary }}>S</span>
+        <span style={{ color: theme.palette.text.primary }}>mart</span>
+        {"  "}
         <span style={{ color: COLORS.primary }}>
           K{egg}tK{egg}t
         </span>
