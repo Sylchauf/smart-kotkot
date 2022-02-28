@@ -29,7 +29,7 @@ const clearOldLines = () => {
 };
 
 const getTemperatureAndHumidity = async () => {
-  logger.info("[Temperature] Get temperature and humidity values");
+  logger.debug("[Temperature] Get temperature and humidity values");
   try {
     const temp = await temperatureInstance.getTemperature();
     const hum = await temperatureInstance.getHumidity();
