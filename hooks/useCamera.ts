@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import useConfig from "./useConfig";
 
 const axiosInstance = axios.create({
   baseURL: "/api/camera/",
 });
 
 const useCamera = () => {
+  const { config } = useConfig();
+
   const result = useQuery(
     "cameraList",
     async () => {
@@ -13,7 +16,11 @@ const useCamera = () => {
 
       return result.data;
     },
-    { refetchInterval: 2000, staleTime: 2000, cacheTime: 2000 }
+    {
+      refetchInterval: config.refetchIntervalCamera || 5000,
+      staleTime: 2000,
+      cacheTime: 2000,
+    }
   );
 
   const takePictures = async () => {

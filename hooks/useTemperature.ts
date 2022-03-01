@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { useConfirm } from "material-ui-confirm";
 
 const axiosInstance = axios.create({
   baseURL: "/api/temperature/",

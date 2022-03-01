@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useConfirm } from "material-ui-confirm";
+import useConfig from "./useConfig";
 
 const axiosInstance = axios.create({
   baseURL: "/api/light/",
 });
 
 const useLight = () => {
+  const { config } = useConfig();
+
   const { data, isLoading, refetch } = useQuery<any>(
     "lightStatus",
     async () => {
@@ -15,7 +18,8 @@ const useLight = () => {
       return result.data;
     },
     {
-      refetchInterval: 3000,
+      refetchInterval: config.refetchIntervalLight || 3000,
+      staleTime: 1000,
     }
   );
 

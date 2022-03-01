@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useConfirm } from "material-ui-confirm";
+import useConfig from "./useConfig";
 
 const axiosInstance = axios.create({
   baseURL: "/api/door/",
@@ -9,6 +10,8 @@ const axiosInstance = axios.create({
 
 const useDoor = () => {
   const [isMoving, setIsMoving] = useState<boolean>(false);
+
+  const { config } = useConfig();
 
   const { data, isLoading } = useQuery<any>(
     "doorStatus",
@@ -20,7 +23,7 @@ const useDoor = () => {
       return result.data;
     },
     {
-      refetchInterval: 3000,
+      refetchInterval: config.refetchIntervalDoor || 3000,
       staleTime: 1000,
     }
   );

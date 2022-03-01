@@ -1,13 +1,5 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/_error": "pages/_error.js",
-  "/": "pages/index.js",
-  "/api/camera/list": "pages/api/camera/list.js",
-  "/api/door/status": "pages/api/door/status.js",
-  "/api/light/status": "pages/api/light/status.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
-  "/api/camera/images/[cameraId]/last": "pages/api/camera/images/[cameraId]/last.js",
-  "/api/interface/config": "pages/api/interface/config.js",
-  "/api/temperature/status": "pages/api/temperature/status.js"
+  "/_error": "pages/_error.js"
 }

@@ -1,10 +1,4 @@
 {
-  "../components/TemperatureCard.tsx -> react-apexcharts": {
-    "id": "./node_modules/react-apexcharts/dist/react-apexcharts.min.js",
-    "files": [
-      "static/chunks/node_modules_react-apexcharts_dist_react-apexcharts_min_js.js"
-    ]
-  },
   "../node_modules/next/dist/client/next-dev.js -> ./dev/noop": {
     "id": "./node_modules/next/dist/client/dev/noop.js",
     "files": [
