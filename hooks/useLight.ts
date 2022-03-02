@@ -18,8 +18,7 @@ const useLight = () => {
       return result.data;
     },
     {
-      refetchInterval: config.refetchIntervalLight || 3000,
-      staleTime: 1000,
+      refetchInterval: config.refetchIntervalLight || 30000,
     }
   );
 

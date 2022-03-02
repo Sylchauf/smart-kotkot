@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import useConfig from "./useConfig";
 
 const axiosInstance = axios.create({
   baseURL: "/api/temperature/",
 });
 
 const useTemperature = () => {
+  const { config } = useConfig();
+
   const { data, isLoading } = useQuery<any>(
     "temperatureStatus",
     async () => {
@@ -14,7 +17,7 @@ const useTemperature = () => {
       return result.data;
     },
     {
-      refetchInterval: 60000,
+      refetchInterval: config.refetchIntervalTemperature || 300000,
     }
   );
 

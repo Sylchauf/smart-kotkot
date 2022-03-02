@@ -13,7 +13,9 @@ const useDoor = () => {
 
   const { config } = useConfig();
 
-  const { data, isLoading } = useQuery<any>(
+  const refetchInterval = config.refetchIntervalDoor || 30000;
+
+  const { data, isLoading, refetch } = useQuery<any>(
     "doorStatus",
     async () => {
       const result = await axiosInstance.get("status");
@@ -23,20 +25,19 @@ const useDoor = () => {
       return result.data;
     },
     {
-      refetchInterval: config.refetchIntervalDoor || 3000,
-      staleTime: 1000,
+      refetchInterval: isMoving ? 2000 : refetchInterval,
     }
   );
 
   const confirm = useConfirm();
 
   const open = () =>
-    confirm().then(() => {
+    confirm().then(async () => {
       setIsMoving(true);
       return axiosInstance.get("up");
     });
   const close = () =>
-    confirm().then(() => {
+    confirm().then(async () => {
       setIsMoving(true);
       return axiosInstance.get("down");
     });

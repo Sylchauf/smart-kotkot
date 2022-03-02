@@ -17,9 +17,7 @@ const useCamera = () => {
       return result.data;
     },
     {
-      refetchInterval: config.refetchIntervalCamera || 5000,
-      staleTime: 2000,
-      cacheTime: 2000,
+      refetchInterval: config.refetchIntervalCamera || 10000,
     }
   );
 

@@ -5,11 +5,17 @@ const axiosInstance = axios.create({
 });
 
 const useConfig = () => {
-  const { data, isLoading } = useQuery<any>("config", async () => {
-    const result = await axiosInstance.get("config");
+  const { data, isLoading } = useQuery<any>(
+    "config",
+    async () => {
+      const result = await axiosInstance.get("config");
 
-    return result.data;
-  });
+      return result.data;
+    },
+    {
+      staleTime: 0,
+    }
+  );
 
   return {
     config: {

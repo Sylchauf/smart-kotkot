@@ -42,7 +42,7 @@ const Door: React.FC<Props> = ({
         <b>
           <FormattedMessage id={"Door.State"} defaultMessage={"State"} /> :{" "}
         </b>
-        <span style={{ color: isOpen ? "green" : isMoving ? "blue" : "red" }}>
+        <span style={{ color: isMoving ? "blue" : isOpen ? "green" : "red" }}>
           {stateToDisplay}
         </span>
       </div>
