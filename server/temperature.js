@@ -29,6 +29,8 @@ const clearOldLines = () => {
 };
 
 const getTemperatureAndHumidity = async () => {
+  if (!config.temperature) return;
+
   logger.debug("[Temperature] Get temperature and humidity values");
   try {
     const temp = await temperatureInstance.getTemperature();
