@@ -80,7 +80,12 @@ const takePhoto = async (id, manualTake = false) => {
           );
         }
 
-        camera.image = photo;
+        // usefull to take screenshot for github
+        const IS_SCREEN_PRESENTATION = true;
+
+        camera.image = IS_SCREEN_PRESENTATION
+          ? fs.readFileSync("public/chicken-example.jpg")
+          : photo;
         camera.time = newPicTime;
         camera.busy = false;
 

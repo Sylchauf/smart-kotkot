@@ -33,7 +33,7 @@ const CameraDisplay: React.FC<Props> = ({
         src={`/api/camera/images/${id}/${imageId}?lastRequest=${lastRequest}`}
         alt={"Camera"}
         loading="lazy"
-        width={"100%"}
+        style={{ objectFit: "cover", width: '100%', maxHeight: 600 }}
       />
     </div>
   );
