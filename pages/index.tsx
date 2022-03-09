@@ -3,6 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { Grid } from "@mui/material";
 import CameraCard from "../components/CameraCard";
 import DoorCard from "../components/DoorCard";
+import EggsCard from "../components/eggs/EggsCard";
 
 import Header from "../components/Header";
 import HomeCard from "../components/HomeCard";
@@ -17,7 +18,14 @@ export default function Home() {
 
       <Grid container spacing={4}>
         <Grid item xs={12} sm={9}>
-          <CameraCard />
+          <Grid container spacing={4}>
+            <Grid item xs={12}>
+              <CameraCard />
+            </Grid>
+            <Grid item xs={12}>
+              <EggsCard />
+            </Grid>
+          </Grid>
         </Grid>
 
         <Grid item xs={12} sm={3}>

@@ -57,19 +57,19 @@ _Smart KotKot_ configuration is in the `/state` directory and is composed of mul
 
 Moves the door up or down.
 
-- `/api/door/up` Open the door entirely
-- `/api/door/down` Close the door entirely
+- `GET` `/api/door/up` Open the door entirely
+- `GET` `/api/door/down` Close the door entirely
 
 #### Calibration
 
 To initialize your door state, or if the door is not entirely open/closed, small correction movements can be fired.
 
-- `/api/door/calibrate/up` Move up the door for `config.door.correctionSec`s (default is 1s)
-- `/api/door/calibrate/down` Move down the door for `config.door.correctionSec`s (default is 1s)
+- `GET` `/api/door/calibrate/up` Move up the door for `config.door.correctionSec`s (default is 1s)
+- `GET` `/api/door/calibrate/down` Move down the door for `config.door.correctionSec`s (default is 1s)
 
 #### Status
 
-- `/api/door/status` Get the state of the door
+- `GET` `/api/door/status` Get the state of the door
 
 ### Camera
 
@@ -77,7 +77,7 @@ To initialize your door state, or if the door is not entirely open/closed, small
 
 Get an array of all initialized camera
 
-- `/api/camera/list`
+- `GET` `/api/camera/list`
 
 #### Get images
 
@@ -85,27 +85,33 @@ Access to pictures taken by cameras.
 Replace `{CAMERA_ID}` by the id given in the camera list endpoint
 Replace `{IMAGE_ID}` by the id given in the images list endpoint
 
-- `/api/camera/images/{CAMERA_ID}/list` Get a list of all images taken.
-- `/api/camera/images/{CAMERA_ID}/last` Get the last picture taken by this camera
-- `/api/camera/images/{CAMERA_ID}/{IMAGE_ID}`
+- `GET` `/api/camera/images/{CAMERA_ID}/list` Get a list of all images taken.
+- `GET` `/api/camera/images/{CAMERA_ID}/last` Get the last picture taken by this camera
+- `GET` `/api/camera/images/{CAMERA_ID}/{IMAGE_ID}`
 
 #### Take pictures
 
 Take a picture on the selected camera.
 Replace `{CAMERA_ID}` by the id given in the camera list endpoint
 
-- `/api/camera/images/{CAMERA_ID}/take` Get a list of all images taken.
+- `GET` `/api/camera/images/{CAMERA_ID}/take` Get a list of all images taken.
 
 ### Light
 
 #### Turn on and off
 
-- `/api/light/on` Turn the light on
-- `/api/light/off` Turn the light off
+- `GET` `/api/light/on` Turn the light on
+- `GET` `/api/light/off` Turn the light off
 
 #### Status
 
-- `/api/light/status` Get the state of the light
+- `GET` `/api/light/status` Get the state of the light
+
+### Eggs
+
+- `GET` `/api/eggs/list` List all picked eggs since a date. Use the params `since` to indicate the date in IsoString
+- `POST` `/api/eggs/add` Pick up eggs. Payload example: `{ date: '2022-08-01T08:00:00.000Z', number: 2 }`
+- `POST` `/api/eggs/delete` Delete a line in list. Payload example: `{ id: 18 }`
 
 ## Troubleshooting
 

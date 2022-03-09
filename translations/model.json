@@ -2,6 +2,27 @@
   "Actions.Close": {
     "defaultMessage": "Close"
   },
+  "AddEggs.Number": {
+    "defaultMessage": "Number of eggs"
+  },
+  "AddEggs.Title": {
+    "defaultMessage": "Add eggs"
+  },
+  "AddEggs.add": {
+    "defaultMessage": "Add"
+  },
+  "AddEggs.close": {
+    "defaultMessage": "Close"
+  },
+  "AddEggs.date": {
+    "defaultMessage": "Pick-up date"
+  },
+  "AddEggs.error": {
+    "defaultMessage": "Something happend. Try again later"
+  },
+  "AddEggs.success": {
+    "defaultMessage": "Successfully added"
+  },
   "Camera.AccessHistory": {
     "defaultMessage": "View all images"
   },
@@ -10,6 +31,9 @@
   },
   "Camera.SelectCamera": {
     "defaultMessage": "Choose the camera"
+  },
+  "Camera.SelectImage": {
+    "defaultMessage": "Choose the image"
   },
   "Camera.TakeNow": {
     "defaultMessage": "Take pictures now"
@@ -59,11 +83,26 @@
   "Door.State": {
     "defaultMessage": "State"
   },
+  "Eggs.LastYear": {
+    "defaultMessage": "Last Year"
+  },
+  "Eggs.ThisMonth": {
+    "defaultMessage": "This month"
+  },
+  "Eggs.ThisWeek": {
+    "defaultMessage": "This week"
+  },
+  "Eggs.ThisYear": {
+    "defaultMessage": "This Year"
+  },
   "Home.Cameras": {
     "defaultMessage": "Cameras"
   },
   "Home.Door": {
     "defaultMessage": "Door"
+  },
+  "Home.Eggs": {
+    "defaultMessage": "Eggs"
   },
   "Home.Light": {
     "defaultMessage": "Light"
@@ -91,6 +130,12 @@
   },
   "Light.State": {
     "defaultMessage": "State"
+  },
+  "ListEggs.Title": {
+    "defaultMessage": "Picked up eggs"
+  },
+  "ListEggs.successDelete": {
+    "defaultMessage": "Successfully deleted"
   },
   "Temperature.ActualHum": {
     "defaultMessage": "Current humidity"

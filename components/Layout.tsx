@@ -1,6 +1,7 @@
 import {
   Container,
   createTheme,
+  CssBaseline,
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
@@ -41,6 +42,10 @@ const Layout: React.FC = ({ children }) => {
         palette: {
           primary: { main: COLORS.primary },
           mode: getMode(),
+          background: {
+            default: getMode() === "dark" ? "#121212" : "#f3f3f3",
+            paper: getMode() === "dark" ? "rgb(18,18,18)" : "#fff",
+          },
         },
       }),
     [prefersDarkMode, config.theme]
@@ -49,15 +54,14 @@ const Layout: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <ConfirmProvider defaultOptions={defaultOptions}>
+        <CssBaseline />
         <main
           style={{
-            background: theme.palette.background.paper,
             minHeight: "100vh",
           }}
         >
           <Container
             style={{
-              background: theme.palette.background.default,
               minHeight: "100vh",
             }}
             maxWidth={"lg"}

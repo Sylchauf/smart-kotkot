@@ -3,5 +3,11 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/": "pages/index.js",
-  "/api/door/down": "pages/api/door/down.js"
+  "/api/camera/list": "pages/api/camera/list.js",
+  "/api/light/status": "pages/api/light/status.js",
+  "/api/door/status": "pages/api/door/status.js",
+  "/api/camera/images/[cameraId]/last": "pages/api/camera/images/[cameraId]/last.js",
+  "/api/interface/config": "pages/api/interface/config.js",
+  "/api/eggs/list": "pages/api/eggs/list.js",
+  "/api/temperature/status": "pages/api/temperature/status.js"
 }
