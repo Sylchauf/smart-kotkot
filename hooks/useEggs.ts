@@ -14,6 +14,7 @@ export interface AddArgs {
 }
 
 export type Eggs = {
+  id: number;
   date: Date;
   value: number;
 };

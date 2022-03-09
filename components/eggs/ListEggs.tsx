@@ -1,7 +1,7 @@
 import { useConfirm } from "material-ui-confirm";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import MaterialTable from "@material-table/core";
+import MaterialTable, { Column } from "@material-table/core";
 
 import {
   Button,
@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from "react-toastify";
-import useConfig from "../../hooks/useConfig";
 
 import { Eggs } from "../../hooks/useEggs";
 import useMobile from "../../hooks/useMobile";
@@ -23,7 +22,7 @@ interface Props {
   onDelete: (id: number) => any;
 }
 
-const columns = [
+const columns: Array<Column<Eggs>> = [
   {
     title: <FormattedMessage id={"ListEggs.Date"} defaultMessage={"Date"} />,
     field: "date",
@@ -46,7 +45,7 @@ const ListEggs: React.FC<Props> = ({ list, onClose, onDelete }) => {
 
   const confirm = useConfirm();
 
-  const handleDelete = (event, rowData) => {
+  const handleDelete = (rowData: Eggs) => {
     confirm().then(() => {
       toast.success(
         <FormattedMessage
@@ -74,13 +73,12 @@ const ListEggs: React.FC<Props> = ({ list, onClose, onDelete }) => {
 
       <DialogContent>
         <MaterialTable
-          //@ts-ignore
           columns={columns}
           data={list}
           actions={[
             {
               icon: DeleteIcon,
-              onClick: handleDelete,
+              onClick: (event, rawData) => handleDelete(rawData as Eggs),
             },
           ]}
           options={{
