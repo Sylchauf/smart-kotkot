@@ -53,7 +53,7 @@ const ListEggs: React.FC<Props> = ({ list, onClose, onDelete }) => {
           defaultMessage={"Successfully deleted"}
         />
       );
-      onDelete(rowData.id);
+      onDelete(rowData._id);
     });
   };
 

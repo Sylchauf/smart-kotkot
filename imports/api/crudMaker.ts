@@ -1,6 +1,5 @@
 import { coopScope } from "../../server/coopScope";
 import { Restivus } from "meteor/maka:rest";
-import { getAllTeamsByUserId } from "./teams";
 
 const noop = (item) => item;
 const noopSelector = (type, item) => item;
@@ -41,14 +40,6 @@ const parseSelector = (_selector) => {
   }
 
   return selector;
-};
-
-const verifyTeamId = (coopId, userId) => {
-  //@TODO user right verification
-
-  return coopId;
-
-  throw new Meteor.Error(403, "Not authorized");
 };
 
 const catchRequest = (cb) => {
@@ -162,13 +153,9 @@ const crudMaker = (
       get: async function () {
         return catchRequest(() => {
           const selector = parseSelector(this.queryParams.selector);
-          const coopId = verifyTeamId(
-            this.request.headers["x-coop-id"],
-            this.userId
-          );
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(coopId, function () {
+            coopScope.withValue(this.userId, function () {
               Meteor.call(`${name}.read`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
@@ -180,10 +167,9 @@ const crudMaker = (
       post: async function () {
         return catchRequest(() => {
           const selector = parseSelector(this.queryParams.selector);
-          const coopId = this.request.headers["x-coop-id"];
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(coopId, function () {
+            coopScope.withValue(this.userId, function () {
               Meteor.call(`${name}.create`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
@@ -195,10 +181,9 @@ const crudMaker = (
       put: async function () {
         return catchRequest(() => {
           const selector = parseSelector(this.queryParams.selector);
-          const coopId = this.request.headers["x-coop-id"];
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(coopId, function () {
+            coopScope.withValue(this.userId, function () {
               Meteor.call(`${name}.update`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
@@ -210,10 +195,9 @@ const crudMaker = (
       delete: async function () {
         return catchRequest(() => {
           const selector = parseSelector(this.queryParams.selector);
-          const coopId = this.request.headers["x-coop-id"];
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(coopId, function () {
+            coopScope.withValue(this.userId, function () {
               Meteor.call(`${name}.remove`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);

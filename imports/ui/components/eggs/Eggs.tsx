@@ -28,6 +28,8 @@ const Eggs: React.FC<Props> = ({ list, isLoading }) => {
   const startYear = moment().startOf("year");
   const lastYear = moment().subtract(1, "year").startOf("year");
 
+    console.log('list:', list);
+
   const countSince = (date: Moment): number => {
     return list.reduce((previous, current) => {
       if (moment(current.date).isAfter(date)) return previous + current.value;

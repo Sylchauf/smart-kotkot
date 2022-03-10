@@ -1,8 +1,9 @@
 import axios from "axios";
 import moment from "moment";
 import { useQuery } from "react-query";
-import {BASE_URL} from "../../constants/api"
+import { Meteor } from "meteor/meteor";
 
+import { BASE_URL } from "../../constants/api";
 import useConfig from "./useConfig";
 
 const axiosInstance = axios.create({
@@ -15,7 +16,7 @@ export interface AddArgs {
 }
 
 export type Eggs = {
-  id: number;
+  _id: number;
   date: Date;
   value: number;
 };
@@ -33,13 +34,9 @@ const useEggs = (): Return => {
   const { data, isLoading, refetch } = useQuery<any>(
     "eggs",
     async () => {
-      const result = await axiosInstance.get("list", {
-        params: {
-          since: moment().startOf("year").toDate(),
-        },
+      return Meteor.promise("eggs.read", {
+        date: { $gte: moment().startOf("year").toDate() },
       });
-
-      return result.data;
     },
     {
       refetchInterval: config.refetchIntervalEggs || 120000,
@@ -47,13 +44,14 @@ const useEggs = (): Return => {
   );
 
   const addEggs = async ({ date, number }: AddArgs) => {
-    const res = await axiosInstance.post("add", { date, number });
+    const res = await Meteor.promise("eggs.create", { date, value: number });
     refetch();
     return res;
   };
 
-  const deleteEggs = async (id: number) => {
-    const res = await axiosInstance.post("delete", { id });
+  const deleteEggs = async (_id: string) => {
+    console.log("_id:", _id);
+    const res = await Meteor.promise("eggs.delete", { _id });
     refetch();
     return res;
   };

@@ -18,8 +18,9 @@ const secure = (collection) => {
 
   collection.isSecure = true;
 
-  const alterSelector = function (userId, selector = {}, options) {
+  const alterSelector = function (userId, selector = {}) {
     selector.coopId = { $in: ["all", getCoopIdByContext()] };
+    selector.deletedAt = selector.deletedAt || { $exists: false };
   };
 
   if (Meteor.isServer) {
