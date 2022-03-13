@@ -32,6 +32,7 @@ const Layout: React.FC = ({ children }) => {
     () => Meteor.user()?.profile?.theme || "automatic",
     []
   );
+  const user = useTracker(() => Meteor.user(), []);
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -71,7 +72,7 @@ const Layout: React.FC = ({ children }) => {
             }}
             maxWidth={"lg"}
           >
-            <Header />
+              {!!user && <Header />}
             {children}
           </Container>
         </main>

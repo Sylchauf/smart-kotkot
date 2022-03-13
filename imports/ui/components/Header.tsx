@@ -1,8 +1,6 @@
 import { IconButton } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Meteor } from "meteor/meteor";
-import { useTracker } from "meteor/react-meteor-data";
 
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -11,8 +9,6 @@ import Logo from "./Logo";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-
-  const user = useTracker(() => Meteor.user(), []);
 
   return (
     <div
@@ -27,15 +23,13 @@ const Header: React.FC = () => {
     >
       <Logo onClick={() => navigate("/")} />
 
-      {!!user && (
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <DeviceDisplayer />
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <DeviceDisplayer />
 
-          <IconButton onClick={() => navigate("/settings")}>
-            <MenuIcon />
-          </IconButton>
-        </div>
-      )}
+        <IconButton onClick={() => navigate("/settings")}>
+          <MenuIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };
