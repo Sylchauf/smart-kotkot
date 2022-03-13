@@ -3,7 +3,7 @@ import { DEVICES, sendCommand } from "../../../server/websocket";
 import Devices from "../../db/devices/collection";
 
 Meteor.methods({
-  "devices.sendCommand": async function ({ endPoint }) {
+  "devices.sendCommand": async function ({ endPoint, data }) {
     const device = Devices.findOne({ userId: this.userId });
 
     if (!device) throw new Meteor.Error(500, "No device associated");
@@ -12,7 +12,7 @@ Meteor.methods({
 
     if (!socket) throw new Meteor.Error(500, "No device connected");
 
-    return sendCommand(device._id, { endPoint });
+    return sendCommand(device._id, { endPoint, data });
   },
   "devices.read": async function () {
     const devices = Devices.find({ userId: this.userId });

@@ -1,3 +1,7 @@
+import React, { useState } from "react";
+import { FormattedMessage } from "react-intl";
+
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   Button,
   Dialog,
@@ -7,9 +11,7 @@ import {
   Grid,
   IconButton,
 } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
-import React, { useState } from "react";
-import { FormattedMessage } from "react-intl";
+
 import useDoor from "../hooks/useDoor";
 import useMobile from "../hooks/useMobile";
 import Door from "./Door";
