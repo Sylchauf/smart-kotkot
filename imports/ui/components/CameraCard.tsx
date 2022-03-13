@@ -20,7 +20,7 @@ const CameraCard: React.FC = () => {
   const [openHistory, setOpenHistory] = useState<boolean>(false);
   const [disableTakeButton, setDisableTakeButton] = useState<boolean>(false);
 
-  const { takePictures } = useCamera();
+  const { takePictures, isLoading } = useCamera();
 
   const handleOpen = () => {
     setOpenHistory(true);

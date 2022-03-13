@@ -1,24 +1,16 @@
-import axios from "axios";
 import { useQuery } from "react-query";
-import {BASE_URL} from "../../constants/api"
-import useConfig from "./useConfig";
-
-const axiosInstance = axios.create({
-  baseURL: BASE_URL + "/api/temperature/",
-});
+import { Meteor } from "meteor/meteor";
 
 const useTemperature = () => {
-  const { config } = useConfig();
-
   const { data, isLoading } = useQuery<any>(
     "temperatureStatus",
     async () => {
-      const result = await axiosInstance.get("status");
-
-      return result.data;
+      return Meteor.promise("devices.sendCommand", {
+        endPoint: "/api/temperature/status",
+      });
     },
     {
-      refetchInterval: config.refetchIntervalTemperature || 300000,
+      refetchInterval: 300000,
     }
   );
 

@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import getCoopIdByContext from "./getCoopIdByContext";
+import getUserIdByContext from "./getUserIdByContext";
 
 const secure = (collection) => {
   const yes = {
@@ -19,7 +19,7 @@ const secure = (collection) => {
   collection.isSecure = true;
 
   const alterSelector = function (userId, selector = {}) {
-    selector.coopId = { $in: ["all", getCoopIdByContext()] };
+    selector.userId = { $in: ["all", getUserIdByContext()] };
     selector.deletedAt = selector.deletedAt || { $exists: false };
   };
 
@@ -33,19 +33,19 @@ const secure = (collection) => {
     });
 
     collection.before.update(function (userId, doc, fieldNames, modifier) {
-      const coopId = getCoopIdByContext();
+      const _userId = getUserIdByContext();
       modifier.$set = modifier.$set || {};
-      delete modifier.$set.coopId;
+      delete modifier.$set.userId;
       modifier.$set.updatedAt = new Date();
 
       // Prevent modification on another team
-      if (doc.coopId !== coopId) modifier.$set = {};
+      if (doc.userId !== _userId) modifier.$set = {};
     });
 
     collection.before.remove(function (userId, doc) {
-      const coopId = getCoopIdByContext();
+      const _userId = getUserIdByContext();
 
-      if (coopId === doc.coopId)
+      if (_userId === doc.userId)
         collection.update(doc._id, { $set: { deletedAt: new Date() } });
 
       return false;
@@ -55,7 +55,7 @@ const secure = (collection) => {
       doc.createdAt = new Date();
 
       // No connection, no special usecase, so we deny the database request
-      doc.coopId = getCoopIdByContext() || null;
+      doc.userId = getUserIdByContext() || null;
     });
   }
 

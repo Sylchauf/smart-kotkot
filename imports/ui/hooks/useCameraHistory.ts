@@ -1,17 +1,14 @@
-import axios from "axios";
 import { useQuery } from "react-query";
-import { BASE_URL } from "../../constants/api";
+import { Meteor } from "meteor/meteor";
 
 const useCameraHistory = (cameraId: string) => {
-  const result = useQuery("cameraHistory", async () => {
-    const result = await axios.get(
-      `${BASE_URL}/api/camera/images/${cameraId}/list`
-    );
-
-    return result.data;
+  const { data } = useQuery("cameraHistory", async () => {
+    return Meteor.promise("devices.sendCommand", {
+      endPoint: `/api/camera/images/${cameraId}/list`,
+    });
   });
 
-  return result?.data || [];
+  return data || [];
 };
 
 export default useCameraHistory;

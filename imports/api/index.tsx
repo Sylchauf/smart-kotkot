@@ -1,1 +1,2 @@
 import "./eggs";
+import "./devices";

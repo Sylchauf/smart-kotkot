@@ -12,6 +12,7 @@ import LocaleConfigurator from "./components/LocaleConfigurator";
 import Login from "./components/Login";
 
 import Home from "./Home";
+import Settings from "./Settings";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +21,8 @@ export const App = () => (
     <LocaleConfigurator>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <ToastContainer />
-        <Layout>
-          <BrowserRouter>
+        <BrowserRouter>
+          <Layout>
             <Routes>
               <Route path="/login" element={<Login />} />
               <Route
@@ -32,9 +33,17 @@ export const App = () => (
                   </RequireAuth>
                 }
               />
+              <Route
+                path="/settings"
+                element={
+                  <RequireAuth>
+                    <Settings />
+                  </RequireAuth>
+                }
+              />
             </Routes>
-          </BrowserRouter>
-        </Layout>
+          </Layout>
+        </BrowserRouter>
       </LocalizationProvider>
     </LocaleConfigurator>
   </QueryClientProvider>

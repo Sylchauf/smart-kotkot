@@ -6,7 +6,6 @@ import CameraCard from "./components/CameraCard";
 import DoorCard from "./components/DoorCard";
 import EggsCard from "./components/eggs/EggsCard";
 
-import Header from "./components/Header";
 import HomeCard from "./components/HomeCard";
 import Light from "./components/Light";
 import TemperatureCard from "./components/TemperatureCard";
@@ -14,8 +13,6 @@ import TemperatureCard from "./components/TemperatureCard";
 const Home: React.FC = () => {
   return (
     <div>
-      <Header />
-
       <Grid container spacing={4}>
         <Grid item xs={12} sm={9}>
           <Grid container spacing={4}>

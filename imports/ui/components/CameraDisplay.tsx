@@ -1,6 +1,7 @@
 import moment from "moment";
 import React from "react";
-import {BASE_URL} from "../../constants/api"
+import { Meteor } from "meteor/meteor";
+import { useQuery } from "react-query";
 
 interface Props {
   id: string;
@@ -13,6 +14,12 @@ const CameraDisplay: React.FC<Props> = ({
   lastRequest,
   imageId = "last",
 }) => {
+  const { data: image } = useQuery(["image", lastRequest], () =>
+    Meteor.promise("devices.sendCommand", {
+      endPoint: `/api/camera/images/${id}/${imageId}`,
+    })
+  );
+
   const date = moment(lastRequest).local().format("L HH:mm:ss");
 
   return (
@@ -30,14 +37,16 @@ const CameraDisplay: React.FC<Props> = ({
         {date}
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`${BASE_URL}/api/camera/images/${id}/${imageId}?lastRequest=${lastRequest}`}
-        alt={"Camera"}
-        loading="lazy"
-        style={{ objectFit: "cover", width: "100%", maxHeight: 600 }}
-      />
+      {image && (
+        <img
+          src={`data:image/jpg;base64,${image}`}
+          alt={"Camera"}
+          loading="lazy"
+          style={{ objectFit: "cover", width: "100%", maxHeight: 600 }}
+        />
+      )}
     </div>
   );
 };
 
-export default CameraDisplay;
+export default React.memo(CameraDisplay);

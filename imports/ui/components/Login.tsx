@@ -29,6 +29,9 @@ const Login: React.FC = () => {
       {
         email,
         password,
+        profile: {
+          theme: "automatic",
+        },
       },
       (err, res) => {
         if (err) toast.error(err.reason);

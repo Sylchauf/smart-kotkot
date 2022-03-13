@@ -71,7 +71,7 @@ const CameraHistory: React.FC = () => {
             </InputLabel>
             <Select
               labelId="image-list-label"
-              value={imageSelected}
+              value={imageSelected || null}
               onChange={handleSelectImage}
               label={formatMessage({
                 id: "Camera.SelectImage",

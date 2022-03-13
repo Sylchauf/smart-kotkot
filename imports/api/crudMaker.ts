@@ -1,4 +1,4 @@
-import { coopScope } from "../../server/coopScope";
+import { userScope } from "../../server/userScope";
 import { Restivus } from "meteor/maka:rest";
 
 const noop = (item) => item;
@@ -155,7 +155,7 @@ const crudMaker = (
           const selector = parseSelector(this.queryParams.selector);
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(this.userId, function () {
+            userScope.withValue(this.userId, function () {
               Meteor.call(`${name}.read`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
@@ -169,7 +169,7 @@ const crudMaker = (
           const selector = parseSelector(this.queryParams.selector);
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(this.userId, function () {
+            userScope.withValue(this.userId, function () {
               Meteor.call(`${name}.create`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
@@ -183,7 +183,7 @@ const crudMaker = (
           const selector = parseSelector(this.queryParams.selector);
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(this.userId, function () {
+            userScope.withValue(this.userId, function () {
               Meteor.call(`${name}.update`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);
@@ -197,7 +197,7 @@ const crudMaker = (
           const selector = parseSelector(this.queryParams.selector);
 
           return new Promise((resolve, reject) => {
-            coopScope.withValue(this.userId, function () {
+            userScope.withValue(this.userId, function () {
               Meteor.call(`${name}.remove`, { selector }, (err, res) => {
                 if (err) reject(err);
                 resolve(res);

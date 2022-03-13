@@ -18,11 +18,19 @@ const egg = (
   </div>
 );
 
-const Logo = () => {
+const Logo = ({ onClick }) => {
   const theme = useTheme();
 
   return (
-    <div style={{ display: "flex", alignItems: "center", width: 300 }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        width: 300,
+        cursor: !!onClick ? "pointer" : "initial",
+      }}
+      onClick={onClick}
+    >
       <img src={"/logo.svg"} alt={"NAME"} style={{ maxWidth: 64 }} />
       <div style={{ fontSize: 36, fontWeight: 600 }}>
         <span style={{ color: COLORS.primary }}>S</span>

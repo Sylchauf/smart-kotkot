@@ -37,4 +37,4 @@ const HomeCard: React.FC<Props> = ({ content, title, actions }) => {
   );
 };
 
-export default HomeCard;
+export default React.memo(HomeCard);

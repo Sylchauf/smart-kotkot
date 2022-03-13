@@ -1,0 +1,26 @@
+version: "2.3"
+services:
+  smartkotkot:
+    image: "sylchauf/smart-kotkot-front:latest"
+    restart: always
+    environment:
+      - MONGO_URL=mongodb://database:27017/smart-kotkot
+    ports:
+      - "8080:3000"
+
+  database:
+    image: mongo:5.0.5
+    restart: always
+    volumes:
+      - /opt/smartkotkot/data/mongodb:/data/db
+    ports:
+      - '127.0.0.1:27017:27017'
+
+  watchtower:
+    image: containrrr/watchtower
+    restart: always
+    environment:
+      - WATCHTOWER_CLEANUP=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 300

@@ -1,3 +1,9 @@
+import React from "react";
+import { ConfirmProvider } from "material-ui-confirm";
+import { FormattedMessage } from "react-intl";
+import { useTracker } from "meteor/react-meteor-data";
+import { Meteor } from "meteor/meteor";
+
 import {
   Container,
   createTheme,
@@ -5,16 +11,11 @@ import {
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material";
-import React from "react";
-import { ConfirmProvider } from "material-ui-confirm";
-import { FormattedMessage } from "react-intl";
 
 import COLORS from "../../constants/colors";
-import useConfig from "../hooks/useConfig";
+import Header from "./Header";
 
 const Layout: React.FC = ({ children }) => {
-  const { config } = useConfig();
-
   const defaultOptions = {
     title: (
       <FormattedMessage id={"Confirm.Sure"} defaultMessage={"Are you sure ?"} />
@@ -27,16 +28,20 @@ const Layout: React.FC = ({ children }) => {
     ),
   };
 
+  const theme = useTracker(
+    () => Meteor.user()?.profile?.theme || "automatic",
+    []
+  );
+
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const getMode = () => {
-    if (config.theme == "automatic" || !config.theme)
-      return prefersDarkMode ? "dark" : "light";
+    if (theme == "automatic") return prefersDarkMode ? "dark" : "light";
 
-    return config.theme;
+    return theme;
   };
 
-  const theme = React.useMemo(
+  const themeMaterial = React.useMemo(
     () =>
       createTheme({
         palette: {
@@ -48,11 +53,11 @@ const Layout: React.FC = ({ children }) => {
           },
         },
       }),
-    [prefersDarkMode, config.theme]
+    [prefersDarkMode, theme]
   );
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeMaterial}>
       <ConfirmProvider defaultOptions={defaultOptions}>
         <CssBaseline />
         <main
@@ -66,6 +71,7 @@ const Layout: React.FC = ({ children }) => {
             }}
             maxWidth={"lg"}
           >
+            <Header />
             {children}
           </Container>
         </main>

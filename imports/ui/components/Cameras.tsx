@@ -24,4 +24,4 @@ const Cameras: React.FC = () => {
   );
 };
 
-export default Cameras;
+export default React.memo(Cameras);

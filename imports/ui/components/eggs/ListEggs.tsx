@@ -2,6 +2,7 @@ import { useConfirm } from "material-ui-confirm";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import MaterialTable, { Column } from "@material-table/core";
+import { toast } from "react-toastify";
 
 import {
   Button,
@@ -11,7 +12,6 @@ import {
   DialogTitle,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { toast } from "react-toastify";
 
 import { Eggs } from "../../hooks/useEggs";
 import useMobile from "../../hooks/useMobile";

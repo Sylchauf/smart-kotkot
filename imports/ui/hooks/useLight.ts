@@ -1,47 +1,41 @@
-import axios from "axios";
-import { useQuery } from "react-query";
 import { useConfirm } from "material-ui-confirm";
-import {BASE_URL} from "../../constants/api"
-import useConfig from "./useConfig";
-
-const axiosInstance = axios.create({
-  baseURL: BASE_URL + "/api/light/",
-});
+import { Meteor } from "meteor/meteor";
+import { useQuery } from "react-query";
 
 const useLight = () => {
-  const { config } = useConfig();
+  const confirm = useConfirm();
 
   const { data, isLoading, refetch } = useQuery<any>(
     "lightStatus",
     async () => {
-      const result = await axiosInstance.get("status");
-
-      return result.data;
+      return Meteor.promise("devices.sendCommand", {
+        endPoint: "/api/light/status",
+      });
     },
     {
-      refetchInterval: config.refetchIntervalLight || 30000,
+      refetchInterval: 30000,
     }
   );
 
-  const confirm = useConfirm();
+  const callEndPoint = async (endPoint) => {
+    await confirm();
 
-  const on = () =>
-    confirm().then(async () => {
-      const res = await axiosInstance.get("on");
-      refetch();
-      return res;
+    const result = await Meteor.promise("devices.sendCommand", {
+      endPoint,
     });
-  const off = () =>
-    confirm().then(async () => {
-      const res = await axiosInstance.get("off");
-      refetch();
-      return res;
-    });
+
+    refetch();
+
+    return result;
+  };
+
+  const on = () => callEndPoint("/api/light/on");
+  const off = () => callEndPoint("/api/light/off");
 
   return {
     state: data?.state,
-    nextAutomation: data?.nextAutomation?.[0] || {},
     isLoading,
+    nextAutomation: data?.nextAutomation?.[0] || {},
     on,
     off,
   };

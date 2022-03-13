@@ -1,12 +1,7 @@
-import axios from "axios";
 import moment from "moment";
 import { useIntl } from "react-intl";
 import { useQuery } from "react-query";
-import { BASE_URL } from "../../constants/api";
-
-const axiosInstance = axios.create({
-  baseURL: BASE_URL + "/api/temperature/",
-});
+import { Meteor } from "meteor/meteor";
 
 const useTemperatureLogs = () => {
   const {
@@ -16,9 +11,9 @@ const useTemperatureLogs = () => {
   } = useQuery<any>(
     "temperatureLogs",
     async () => {
-      const result = await axiosInstance.get("logs");
-
-      return result.data;
+      return Meteor.promise("devices.sendCommand", {
+        endPoint: "/api/temperature/logs",
+      });
     },
     {
       enabled: false,
