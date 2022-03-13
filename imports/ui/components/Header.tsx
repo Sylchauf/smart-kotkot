@@ -1,18 +1,18 @@
-import { Button, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import React from "react";
-import { Meteor } from "meteor/meteor";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { FormattedMessage, useIntl } from "react-intl";
+import { Meteor } from "meteor/meteor";
+import { useTracker } from "meteor/react-meteor-data";
 
 import MenuIcon from "@mui/icons-material/Menu";
-import AddIcon from "@mui/icons-material/Add";
 
 import DeviceDisplayer from "./DeviceDisplayer";
 import Logo from "./Logo";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+
+  const user = useTracker(() => Meteor.user(), []);
 
   return (
     <div
@@ -27,13 +27,15 @@ const Header: React.FC = () => {
     >
       <Logo onClick={() => navigate("/")} />
 
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <DeviceDisplayer />
+      {!!user && (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <DeviceDisplayer />
 
-        <IconButton onClick={() => navigate("/settings")}>
-          <MenuIcon />
-        </IconButton>
-      </div>
+          <IconButton onClick={() => navigate("/settings")}>
+            <MenuIcon />
+          </IconButton>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,10 +1,12 @@
 version: "2.3"
 services:
   smartkotkot:
-    image: "sylchauf/smart-kotkot-front:latest"
+    image: "sylchauf/smart-kotkot-beta:latest"
     restart: always
     environment:
+      - PORT=3000
       - MONGO_URL=mongodb://database:27017/smart-kotkot
+      - ROOT_URL=http://YOUR_IP:8080
     ports:
       - "8080:3000"
 
