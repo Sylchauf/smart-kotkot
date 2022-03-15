@@ -1,12 +1,14 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Button } from "@mui/material";
 import { Meteor } from "meteor/meteor";
-import React from "react";
+import * as React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { toast } from "react-toastify";
 
+import { Button, Grid } from "@mui/material";
+
 import DevicesList from "./components/DevicesList";
 import HomeCard from "./components/HomeCard";
+import Profile from "./components/Profile";
 
 const Settings = () => {
   const { formatMessage } = useIntl();
@@ -39,7 +41,7 @@ const Settings = () => {
   };
 
   const devicesActions = [
-    <Button onClick={handleAddDevice}>
+    <Button key={'add-device'} onClick={handleAddDevice}>
       <AddIcon />{" "}
       <FormattedMessage
         id={"Header.AddDevice"}
@@ -49,18 +51,32 @@ const Settings = () => {
   ];
 
   return (
-    <div>
-      <HomeCard
-        title={
-          <FormattedMessage
-            id={"Settings.Devices"}
-            defaultMessage={"Devices"}
-          />
-        }
-        content={<DevicesList />}
-        actions={devicesActions}
-      />
-    </div>
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <HomeCard
+          title={
+            <FormattedMessage
+              id={"Settings.Profile"}
+              defaultMessage={"Your profile"}
+            />
+          }
+          content={<Profile />}
+        />
+      </Grid>
+
+      <Grid item xs={12}>
+        <HomeCard
+          title={
+            <FormattedMessage
+              id={"Settings.Devices"}
+              defaultMessage={"Devices"}
+            />
+          }
+          content={<DevicesList />}
+          actions={devicesActions}
+        />
+      </Grid>
+    </Grid>
   );
 };
 

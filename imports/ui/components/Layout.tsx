@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { ConfirmProvider } from "material-ui-confirm";
 import { FormattedMessage } from "react-intl";
 import { useTracker } from "meteor/react-meteor-data";
@@ -72,7 +72,7 @@ const Layout: React.FC = ({ children }) => {
             }}
             maxWidth={"lg"}
           >
-              {!!user && <Header />}
+            {!!user && <Header />}
             {children}
           </Container>
         </main>
