@@ -5,7 +5,9 @@
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
-    "visualize": "meteor --production --extra-packages bundle-visualizer"
+    "visualize": "meteor --production --extra-packages bundle-visualizer",
+    "extract": "formatjs extract",
+    "compile-intl": "npm run extract -- 'imports/**/*.ts*' --ignore='**/*.d.ts' --out-file imports/translations/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]' --format simple"
   },
   "dependencies": {
     "@babel/runtime": "^7.15.4",
@@ -40,5 +42,8 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "@formatjs/cli": "^4.8.2"
   }
 }

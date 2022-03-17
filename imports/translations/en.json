@@ -1,284 +1,89 @@
 {
-  "Actions.Close": [
-    {
-      "type": 0,
-      "value": "Close"
-    }
-  ],
-  "Camera.AccessHistory": [
-    {
-      "type": 0,
-      "value": "View all images"
-    }
-  ],
-  "Camera.History": [
-    {
-      "type": 0,
-      "value": "Camera History"
-    }
-  ],
-  "Camera.SelectCamera": [
-    {
-      "type": 0,
-      "value": "Choose the camera"
-    }
-  ],
-  "Camera.TakeNow": [
-    {
-      "type": 0,
-      "value": "Take pictures now"
-    }
-  ],
-  "Confirm.Cancel": [
-    {
-      "type": 0,
-      "value": "Cancel"
-    }
-  ],
-  "Confirm.Sure": [
-    {
-      "type": 0,
-      "value": "Are you sure ?"
-    }
-  ],
-  "Confirm.Yes": [
-    {
-      "type": 0,
-      "value": "Yes"
-    }
-  ],
-  "Door.Advanced": [
-    {
-      "type": 0,
-      "value": "Advanced actions"
-    }
-  ],
-  "Door.Calibration": [
-    {
-      "type": 0,
-      "value": "Calibration"
-    }
-  ],
-  "Door.CalibrationDown": [
-    {
-      "type": 0,
-      "value": "Force move to the down"
-    }
-  ],
-  "Door.CalibrationUp": [
-    {
-      "type": 0,
-      "value": "Force move to the up"
-    }
-  ],
-  "Door.Close": [
-    {
-      "type": 0,
-      "value": "Close"
-    }
-  ],
-  "Door.IsClose": [
-    {
-      "type": 0,
-      "value": "Closed"
-    }
-  ],
-  "Door.IsOpen": [
-    {
-      "type": 0,
-      "value": "Opened"
-    }
-  ],
-  "Door.Moving": [
-    {
-      "type": 0,
-      "value": "Moving…"
-    }
-  ],
-  "Door.NextCloseAt": [
-    {
-      "type": 0,
-      "value": "Next automatic "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "closing at "
-        },
-        {
-          "type": 1,
-          "value": "time"
-        }
-      ],
-      "type": 8,
-      "value": "b"
-    }
-  ],
-  "Door.NextOpenAt": [
-    {
-      "type": 0,
-      "value": "Next automatic "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "opening at "
-        },
-        {
-          "type": 1,
-          "value": "time"
-        }
-      ],
-      "type": 8,
-      "value": "b"
-    }
-  ],
-  "Door.Open": [
-    {
-      "type": 0,
-      "value": "Open"
-    }
-  ],
-  "Door.State": [
-    {
-      "type": 0,
-      "value": "State"
-    }
-  ],
-  "Home.Cameras": [
-    {
-      "type": 0,
-      "value": "Cameras"
-    }
-  ],
-  "Home.Door": [
-    {
-      "type": 0,
-      "value": "Door"
-    }
-  ],
-  "Home.Light": [
-    {
-      "type": 0,
-      "value": "Light"
-    }
-  ],
-  "Home.Temperature": [
-    {
-      "type": 0,
-      "value": "Temperature"
-    }
-  ],
-  "Light.IsOff": [
-    {
-      "type": 0,
-      "value": "Off"
-    }
-  ],
-  "Light.IsOn": [
-    {
-      "type": 0,
-      "value": "On"
-    }
-  ],
-  "Light.NextOffAt": [
-    {
-      "type": 0,
-      "value": "Next automatic "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "switch off at "
-        },
-        {
-          "type": 1,
-          "value": "time"
-        }
-      ],
-      "type": 8,
-      "value": "b"
-    }
-  ],
-  "Light.NextOnAt": [
-    {
-      "type": 0,
-      "value": "Next automatic "
-    },
-    {
-      "children": [
-        {
-          "type": 0,
-          "value": "switch on at "
-        },
-        {
-          "type": 1,
-          "value": "time"
-        }
-      ],
-      "type": 8,
-      "value": "b"
-    }
-  ],
-  "Light.Off": [
-    {
-      "type": 0,
-      "value": "Off"
-    }
-  ],
-  "Light.On": [
-    {
-      "type": 0,
-      "value": "On"
-    }
-  ],
-  "Light.State": [
-    {
-      "type": 0,
-      "value": "State"
-    }
-  ],
-  "Temperature.ActualHum": [
-    {
-      "type": 0,
-      "value": "Current humidity"
-    }
-  ],
-  "Temperature.ActualTemp": [
-    {
-      "type": 0,
-      "value": "Current temperature"
-    }
-  ],
-  "Temperature.Celsius": [
-    {
-      "type": 0,
-      "value": "Celsius (°)"
-    }
-  ],
-  "Temperature.Chart": [
-    {
-      "type": 0,
-      "value": "Temperature Logs"
-    }
-  ],
-  "Temperature.LastRead": [
-    {
-      "type": 0,
-      "value": "Last reading at "
-    },
-    {
-      "type": 1,
-      "value": "date"
-    }
-  ],
-  "Temperature.Percent": [
-    {
-      "type": 0,
-      "value": "Percent (%)"
-    }
-  ]
+  "Actions.Add": "Add",
+  "Actions.Close": "Close",
+  "Actions.Save": "Save",
+  "AddEggs.Number": "Number of eggs",
+  "AddEggs.Title": "Add eggs",
+  "AddEggs.date": "Pick-up date",
+  "AddEggs.error": "Something happend. Try again later",
+  "AddEggs.success": "Successfully added",
+  "Camera.AccessHistory": "View all images",
+  "Camera.History": "Camera History",
+  "Camera.SelectCamera": "Choose the camera",
+  "Camera.SelectImage": "Choose the image",
+  "Camera.TakeNow": "Take pictures now",
+  "Confirm.Cancel": "Cancel",
+  "Confirm.Sure": "Are you sure ?",
+  "Confirm.Yes": "Yes",
+  "DeviceDisplayer.offline": "{deviceId} is offline",
+  "DeviceDisplayer.online": "{deviceId} is online",
+  "DevicesList.LastAction": "Last action",
+  "DevicesList.errorDelete": "Error happend :(",
+  "DevicesList.id": "ID",
+  "DevicesList.name": "Name",
+  "DevicesList.successDelete": "Successfully deleted !",
+  "Door.Advanced": "Advanced actions",
+  "Door.Calibration": "Calibration",
+  "Door.CalibrationDown": "Force move to the down",
+  "Door.CalibrationUp": "Force move to the up",
+  "Door.IsClose": "Closed",
+  "Door.IsOpen": "Opened",
+  "Door.Moving": "Moving…",
+  "Door.NextCloseAt": "Next automatic <b>closing at {time}</b>",
+  "Door.NextOpenAt": "Next automatic <b>opening at {time}</b>",
+  "Door.Open": "Open",
+  "Door.State": "State",
+  "EditDevice.error": "Oh, no ! Configuration failed …",
+  "EditDevice.success": "Good ! Configuration applied …",
+  "EditDevice.title": "Edit configuration",
+  "EditDevice.warningReboot": "Be carefully when your update your configuration manually, you can can break your module. All modifications do a module reboot automatically.",
+  "EditDevice.warningReboot2": "Please read the documentation at :",
+  "Eggs.LastYear": "Last Year",
+  "Eggs.ThisMonth": "This month",
+  "Eggs.ThisWeek": "This week",
+  "Eggs.ThisYear": "This Year",
+  "EggsCard.Add": "Add eggs",
+  "EggsCard.List": "List of picked up eggs",
+  "Header.AddDevice": "Add a device",
+  "Header.TypeModuleId": "Type the module ID",
+  "Header.errorAddModule": "The module can not be linked",
+  "Header.successAddModule": "The module is now linked",
+  "Home.Cameras": "Cameras",
+  "Home.Door": "Door",
+  "Home.Eggs": "Eggs",
+  "Home.Light": "Light",
+  "Home.Temperature": "Temperature",
+  "Light.IsOff": "Off",
+  "Light.IsOn": "On",
+  "Light.NextOffAt": "Next automatic <b>switch off at {time}</b>",
+  "Light.NextOnAt": "Next automatic <b>switch on at {time}</b>",
+  "Light.Off": "Off",
+  "Light.On": "On",
+  "Light.State": "State",
+  "ListEggs.Date": "Date",
+  "ListEggs.Title": "Picked up eggs",
+  "ListEggs.number": "Number of eggs",
+  "ListEggs.successDelete": "Successfully deleted",
+  "Login.Email": "Email",
+  "Login.Login": "Login",
+  "Login.Password": "Password",
+  "Login.PasswordConfirm": "Confirm password",
+  "Login.Signup": "Signup",
+  "Login.SwitchLogin": "I have already an account",
+  "Login.SwitchSignup": "Create a new account",
+  "Profile.Auto": "Automatic",
+  "Profile.Dark": "Dark",
+  "Profile.Light": "Light",
+  "Profile.locale": "Locale",
+  "Profile.theme": "Theme",
+  "Settings.Devices": "Devices",
+  "Settings.Profile": "Your profile",
+  "Temperature.ActualHum": "Current humidity",
+  "Temperature.ActualTemp": "Current temperature",
+  "Temperature.Celsius": "Celsius (°)",
+  "Temperature.Chart": "Temperature Logs",
+  "Temperature.Humidity": "Humidity",
+  "Temperature.LastRead": "Last reading at {date}",
+  "Temperature.Percent": "Percent (%)",
+  "Temperature.Temperature": "Temperature"
 }

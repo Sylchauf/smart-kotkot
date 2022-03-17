@@ -91,10 +91,10 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => onClose()}>
-          <FormattedMessage id={"AddEggs.close"} defaultMessage={"Close"} />
+          <FormattedMessage id={"Actions.Close"} defaultMessage={"Close"} />
         </Button>
         <Button onClick={() => handleAdd()}>
-          <FormattedMessage id={"AddEggs.add"} defaultMessage={"Add"} />
+          <FormattedMessage id={"Actions.Add"} defaultMessage={"Add"} />
         </Button>
       </DialogActions>
     </Dialog>

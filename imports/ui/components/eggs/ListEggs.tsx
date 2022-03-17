@@ -91,7 +91,7 @@ const ListEggs: React.FC<Props> = ({ list, onClose, onDelete }) => {
 
       <DialogActions>
         <Button onClick={() => onClose()}>
-          <FormattedMessage id={"ListEggs.close"} defaultMessage={"Close"} />
+          <FormattedMessage id={"Actions.Close"} defaultMessage={"Close"} />
         </Button>
       </DialogActions>
     </Dialog>

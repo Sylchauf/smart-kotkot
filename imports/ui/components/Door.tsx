@@ -103,7 +103,7 @@ const Door: React.FC<Props> = ({
               variant={"outlined"}
               size={"small"}
             >
-              <FormattedMessage id={"Door.Close"} defaultMessage={"Close"} />
+              <FormattedMessage id={"Actions.Close"} defaultMessage={"Close"} />
             </Button>
           )}
         </div>

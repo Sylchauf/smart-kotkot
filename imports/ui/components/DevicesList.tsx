@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Meteor } from "meteor/meteor";
 import { toast } from "react-toastify";
@@ -8,13 +8,13 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 import useDevices from "../hooks/useDevices";
-import EditDevice from "./EditDevice"
+import EditDevice from "./EditDevice";
 
 const DevicesList = () => {
-    const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const { data, isLoading, refetch } = useDevices();
 
-  const handleEdit = (moduleId) => setOpen(true)
+  const handleEdit = (moduleId) => setOpen(true);
 
   const handleDelete = async (moduleId) => {
     try {
@@ -45,7 +45,7 @@ const DevicesList = () => {
     },
     {
       field: "name",
-      title: <FormattedMessage id={"DevicesList.id"} defaultMessage={"Name"} />,
+      title: <FormattedMessage id={"DevicesList.name"} defaultMessage={"Name"} />,
     },
     {
       field: "lastAction",
@@ -61,13 +61,16 @@ const DevicesList = () => {
 
   return (
     <div>
-        {open && <EditDevice onClose={() => setOpen(false)} />}
+      {open && <EditDevice onClose={() => setOpen(false)} />}
       <MaterialTable
         columns={columns}
         data={data}
         isLoading={isLoading}
         actions={[
-            { icon: SettingsIcon, onClick: (event, rawData) => handleEdit(rawData._id),}
+          {
+            icon: SettingsIcon,
+            onClick: (event, rawData) => handleEdit(rawData._id),
+          },
           {
             icon: DeleteIcon,
             onClick: (event, rawData) => handleDelete(rawData._id),

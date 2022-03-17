@@ -142,11 +142,11 @@ const EditDevice = ({ onClose }) => {
 
       <DialogActions>
         <Button onClick={onClose}>
-          <FormattedMessage id={"EditDevice.close"} defaultMessage={"Close"} />
+          <FormattedMessage id={"Actions.Close"} defaultMessage={"Close"} />
         </Button>
 
         <Button onClick={handleUpdate}>
-          <FormattedMessage id={"EditDevice.save"} defaultMessage={"Save"} />
+          <FormattedMessage id={"Actions.Save"} defaultMessage={"Save"} />
         </Button>
       </DialogActions>
     </Dialog>
