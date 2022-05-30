@@ -20,7 +20,7 @@ Meteor.methods({
 
             await axios
               .post(
-                `http://smartkotkot:pleasechangeme@smartkotkot.sylchauf.net:8083/stream/${name}/add`,
+                `http://smartkotkot:pleasechangeme@rtspserver.sylchauf.net:8083/stream/${name}/add`,
                 {
                   name,
                   channels: {
@@ -39,7 +39,7 @@ Meteor.methods({
               }); // We accept an error if there is already add
 
             resolve(
-              `http://smartkotkot.sylchauf.net:8083/stream/${name}/channel/0/webrtc?uuid=${name}&channel=0`
+              `https://rtspserver.sylchauf.net:8083/stream/${name}/channel/0/webrtc?uuid=${name}&channel=0`
             );
           }
         }
