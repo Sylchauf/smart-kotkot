@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import useCameraHistory from "../hooks/useCameraHistory";
 import useCamera from "../hooks/useCamera";
 import useMobile from "../hooks/useMobile";
-import CameraDisplay from "./CameraDisplay";
+import CameraDisplay from "./CameraImageDisplay";
 
 const CameraHistory: React.FC = () => {
   const [cameraSelected, setCameraSelected] = useState<string>("0");

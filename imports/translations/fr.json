@@ -18,6 +18,7 @@
     "DevicesList.LastAction": "Dernière Action",
     "DevicesList.errorDelete": "Une erreur est survenue :(",
     "DevicesList.id": "ID",
+    "DevicesList.name": "Nom",
     "DevicesList.successDelete": "Supprimé avec succès !",
     "Door.Advanced": "Actions avancées",
     "Door.Calibration": "Calibration",

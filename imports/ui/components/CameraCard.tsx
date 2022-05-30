@@ -8,8 +8,8 @@ import {
   Tooltip,
 } from "@mui/material";
 import React, { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import useCamera from "../hooks/useCamera";
+import { FormattedMessage, useIntl } from "react-intl";
+//import useCamera from "../hooks/useCamera";
 import CameraHistory from "./CameraHistory";
 import Cameras from "./Cameras";
 import HomeCard from "./HomeCard";
@@ -20,7 +20,8 @@ const CameraCard: React.FC = () => {
   const [openHistory, setOpenHistory] = useState<boolean>(false);
   const [disableTakeButton, setDisableTakeButton] = useState<boolean>(false);
 
-  const { takePictures, isLoading } = useCamera();
+  //const { takePictures, isLoading } = useCamera();
+  const { formatMessage } = useIntl();
 
   const handleOpen = () => {
     setOpenHistory(true);
@@ -29,9 +30,9 @@ const CameraCard: React.FC = () => {
   const handleTakePictures = () => {
     setDisableTakeButton(true);
 
-    takePictures().finally(() => {
+    /*takePictures().finally(() => {
       setDisableTakeButton(false);
-    });
+    });*/
   };
 
   const cameraActions = [
@@ -87,12 +88,11 @@ const CameraCard: React.FC = () => {
         </DialogActions>
       </Dialog>
       <HomeCard
-        title={
-          <FormattedMessage id={"Home.Cameras"} defaultMessage={"Cameras"} />
-        }
-        content={<Cameras />}
+        title={formatMessage({ id: "Home.Cameras", defaultMessage: "Cameras" })}
         actions={cameraActions}
-      />
+      >
+        <Cameras />
+      </HomeCard>
     </>
   );
 };

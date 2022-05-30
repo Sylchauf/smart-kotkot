@@ -2,17 +2,11 @@ import { useQuery } from "react-query";
 import { Meteor } from "meteor/meteor";
 
 const useCamera = () => {
-  const { data, isLoading } = useQuery(
-    "cameraList",
-    async () => {
-      return Meteor.promise("devices.sendCommand", {
-        endPoint: "/api/camera/list",
-      });
-    },
-    {
-      refetchInterval: 10000,
-    }
-  );
+  const { data, isLoading } = useQuery("cameraList", async () => {
+    return Meteor.promise("devices.sendCommand", {
+      endPoint: "/api/camera/list",
+    });
+  });
 
   const takePictures = async () => {
     const tabPromise = data?.map(async (camera: any) =>

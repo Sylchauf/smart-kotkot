@@ -7,16 +7,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Cameras: React.FC = () => {
   const { list } = useCamera();
 
-  if (!list) return null;
+  if (!list || list.length === 0) return null;
 
   return (
-    <Carousel autoPlay={false} showThumbs={false} infiniteLoop>
-      {list.map((oneCamera: any) => (
-        <div key={oneCamera.id + oneCamera.config.name}>
-          <CameraDisplay
-            id={oneCamera.id}
-            lastRequest={oneCamera.lastRequest}
-          />
+    <Carousel autoPlay={false} showThumbs={false}>
+      {list.map((oneCamera: any, index) => (
+        <div key={index}>
+          <CameraDisplay camera={oneCamera} />
           <p className="legend">{oneCamera.config.name}</p>
         </div>
       ))}

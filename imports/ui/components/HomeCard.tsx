@@ -4,7 +4,7 @@ import React from "react";
 
 interface Props {
   title: React.ReactNode | string;
-  content: React.ReactNode | string;
+  content?: React.ReactNode | string;
   actions?: React.ReactNode | string;
 }
 
@@ -23,7 +23,7 @@ const Container = styled("div")`
   }
 `;
 
-const HomeCard: React.FC<Props> = ({ content, title, actions }) => {
+const HomeCard: React.FC<Props> = ({ content, children, title, actions }) => {
   return (
     <Card>
       <CardContent>
@@ -31,7 +31,7 @@ const HomeCard: React.FC<Props> = ({ content, title, actions }) => {
           <div>{title}</div>
           <div>{actions}</div>
         </Container>
-        {content}
+        {content || children}
       </CardContent>
     </Card>
   );

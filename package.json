@@ -18,7 +18,8 @@
     "@mui/lab": "^5.0.0-alpha.72",
     "@mui/material": "5.2.7",
     "apexcharts": "3.32.1",
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
+    "fetch": "^1.1.0",
     "material-ui-confirm": "3.0.3",
     "meteor-node-stubs": "^1.1.0",
     "moment": "^2.29.1",
@@ -44,6 +45,7 @@
     "testModule": "tests/main.js"
   },
   "devDependencies": {
-    "@formatjs/cli": "^4.8.2"
+    "@formatjs/cli": "^4.8.2",
+    "@welldone-software/why-did-you-render": "^7.0.1"
   }
 }
