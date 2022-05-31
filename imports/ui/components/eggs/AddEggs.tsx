@@ -28,6 +28,8 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
 
   const { isMobile, isLandscape } = useMobile();
 
+    console.log('date:', date);
+
   const handleAdd = () => {
     onAdd({ date, number })
       .then(() => {
@@ -70,7 +72,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
                 />
               }
               value={date}
-              onChange={(newDate) => setDate(newDate ?? new Date())}
+              onChange={(newDate) => setDate(newDate.toDate() ?? new Date())}
               renderInput={(params) => <TextField {...params} />}
             />
           </Grid>

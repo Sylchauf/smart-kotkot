@@ -40,20 +40,30 @@ export const VideoPlayer = ({ url }) => {
     webrtc.onnegotiationneeded = handleNegotiationNeeded;
     webrtc.onsignalingstatechange = signalingstatechange;
 
-    webrtc.ontrack = ontrack;
+    webrtc.ontrack = function (event) {
+      console.log(event.streams.length + " track is delivered", event.track);
+      mediaStream.addTrack(event.track);
+    };
+
     let offer = await webrtc.createOffer({
-      offerToReceiveAudio: true,
+      offerToReceiveAudio: false,
       offerToReceiveVideo: true,
     });
     await webrtc.setLocalDescription(offer);
 
+    const webrtcSendChannel = webrtc.createDataChannel("rtsptowebSendChannel");
+    webrtcSendChannel.onopen = (event) => {
+      console.log(`${webrtcSendChannel.label} has opened`);
+      webrtcSendChannel.send("ping");
+    };
+    webrtcSendChannel.onclose = (_event) => {
+      console.log(`${webrtcSendChannel.label} has closed`);
+      startPlay();
+    };
+    webrtcSendChannel.onmessage = (event) => console.log(event.data);
+
     return webrtc;
   };
-
-  function ontrack(event) {
-    console.log(event.streams.length + " track is delivered", event.track);
-    mediaStream.addTrack(event.track);
-  }
 
   async function signalingstatechange() {
     switch (webrtc.signalingState) {
