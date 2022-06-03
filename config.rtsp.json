@@ -1,14 +1,29 @@
 {
+  "channel_defaults": {},
   "server": {
     "debug": false,
-    "log_level": "info",
-    "http_demo": false,
     "http_debug": false,
+    "http_demo": false,
+    "http_dir": "",
     "http_port": ":8083",
-    "ice_servers": ["stun:stun.l.google.com:19302"],
-    "rtsp_port": ":5541"
-  },
-  "channel_defaults": {
-    "on_demand": true
+    "https": false,
+    "https_auto_tls": false,
+    "https_auto_tls_name": "",
+    "https_cert": "",
+    "https_key": "",
+    "https_port": "",
+    "ice_credential": "",
+    "ice_servers": [
+      "stun:stun.l.google.com:19302"
+    ],
+    "ice_username": "",
+    "log_level": "info",
+    "rtsp_port": ":5541",
+    "token": {
+      "backend": "",
+      "enable": false
+    },
+    "webrtc_port_max": 0,
+    "webrtc_port_min": 0
   }
 }
