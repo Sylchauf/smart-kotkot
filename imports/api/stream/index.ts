@@ -19,27 +19,26 @@ Meteor.methods({
             const name = `${userId}-${cameraId}`;
 
             await axios
-              .post(
-                `https://smartkotkot:pleasechangeme@rtspserver.sylchauf.net/stream/${name}/add`,
-                {
-                  name,
-                  channels: {
-                    "0": {
-                      name: "ch1",
-                      url: camera.streamUri,
-                      on_demand: false,
-                      debug: false,
-                      status: 0,
-                    },
+              .post(`http://rtspserver:8083/stream/${name}/add`, {
+                name,
+                channels: {
+                  "0": {
+                    name: "ch1",
+                    url: camera.streamUri,
+                    on_demand: false,
+                    debug: false,
+                    status: 0,
                   },
-                }
-              )
+                },
+              })
               .catch((error) => {
                 console.error(error);
               }); // We accept an error if there is already add
 
             resolve(
-              `https://rtspserver.sylchauf.net/stream/${name}/channel/0/webrtc?uuid=${name}&channel=0`
+              Meteor.absoluteUrl(
+                `rtsp/stream/${name}/channel/0/webrtc?uuid=${name}&channel=0`
+              )
             );
           }
         }

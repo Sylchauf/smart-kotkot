@@ -1,0 +1,10 @@
+:80 {
+    reverse_proxy * smartkotkot:3000
+
+    route /rtsp/stream/*/channel/*/webrtc {
+          uri strip_prefix rtsp
+          reverse_proxy  rtspserver:8083 {
+              header_up X-Real-IP {remote}
+          }
+    }
+}

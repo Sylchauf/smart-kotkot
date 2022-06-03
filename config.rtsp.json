@@ -5,6 +5,8 @@
     "http_debug": false,
     "http_demo": false,
     "http_dir": "",
+    "http_login": "",
+    "http_password": "",
     "http_port": ":8083",
     "https": false,
     "https_auto_tls": false,
@@ -23,7 +25,7 @@
       "backend": "",
       "enable": false
     },
-    "webrtc_port_max": 0,
-    "webrtc_port_min": 0
+    "webrtc_port_max": 10000,
+    "webrtc_port_min": 10000
   }
 }

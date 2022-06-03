@@ -1,15 +1,23 @@
 version: "2.3"
 services:
   smartkotkot:
-    image: "sylchauf/smart-kotkot-beta:latest"
+    #image: "sylchauf/smart-kotkot-beta:latest"
+    build: "."
     restart: always
     environment:
       - PORT=3000
       - MONGO_URL=mongodb://database:27017/smart-kotkot
-      - ROOT_URL=http://YOUR_IP:8080
-      - RTSP_SERVER=
+      - ROOT_URL=${PROTOCOL:-https}://${DOMAIN}
+
+  caddy:
+    image: caddy:2.5.1
+    restart: always
     ports:
-      - "8080:3000"
+      - "80:80"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - /opt/smartkotkot/data/caddy/data:/data
+      - /opt/smartkotkot/data/caddy/config:/config
 
   database:
     image: mongo:5.0.5
@@ -17,20 +25,12 @@ services:
     volumes:
       - /opt/smartkotkot/data/mongodb:/data/db
     ports:
-      - '127.0.0.1:27017:27017'
+      - "127.0.0.1:27017:27017"
 
-  rstpserver:
-    image: ghcr.io/deepch/rtsptoweb:latest
+  rtspserver:
+    image: sylchauf/rtsptoweb:latest
     restart: always
-    network_mode: "host"
+    ports:
+      - "10000:10000/udp"
     volumes:
-      - ./config.rtsp.json:/config/config.json
-
-  watchtower:
-    image: containrrr/watchtower
-    restart: always
-    environment:
-      - WATCHTOWER_CLEANUP=true
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 300
+      - $PWD/config.rtsp.json:/config/config.json
