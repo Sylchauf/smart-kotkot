@@ -46,4 +46,4 @@ Your module is now live at `http://YOUR_LOCAL_IP:3000`
 
 ### Rebuild and push the image
 
-docker build -t sylchauf/smart-kotkot-beta:latest . && docker push sylchauf/smart-kotkot-beta:latest
+docker build -t sylchauf/smart-kotkot:latest . && docker push sylchauf/smart-kotkot:latest
