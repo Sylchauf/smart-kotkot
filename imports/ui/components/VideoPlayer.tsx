@@ -37,6 +37,11 @@ export const VideoPlayer = ({ url }) => {
       ],
       sdpSemantics: "unified-plan",
     });
+    webrtc.oniceconnectionstatechange = console.log;
+    webrtc.oniceconnectionstateerror = console.error;
+    webrtc.onicecandidate = console.log;
+    webrtc.ondatachannel = console.log;
+    webrtc.onconnectionstatechange = console.log;
     webrtc.onnegotiationneeded = handleNegotiationNeeded;
     webrtc.onsignalingstatechange = signalingstatechange;
 
