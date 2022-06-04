@@ -31,7 +31,5 @@ services:
     image: sylchauf/rtsptoweb:latest
     restart: always
     network_mode: "host"
-    ports:
-      - "10000:10000/udp"
     volumes:
       - $PWD/config.rtsp.json:/config/config.json
