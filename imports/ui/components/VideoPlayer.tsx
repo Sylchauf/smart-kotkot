@@ -4,6 +4,8 @@ let webrtc;
 let mediaStream;
 
 export const VideoPlayer = ({ url }) => {
+  console.log("Render player");
+
   useEffect(() => {
     startPlay();
 
@@ -37,12 +39,14 @@ export const VideoPlayer = ({ url }) => {
       ],
       sdpSemantics: "unified-plan",
     });
-    webrtc.oniceconnectionstatechange = console.log;
+    webrtc.oniceconnectionstatechange = () => {
+      console.log("ICE state: ", webrtc.iceConnectionState);
+    };
     webrtc.oniceconnectionstateerror = console.error;
     webrtc.onicecandidate = console.log;
     webrtc.ondatachannel = console.log;
     webrtc.onconnectionstatechange = console.log;
-    webrtc.onnegotiationneeded = handleNegotiationNeeded;
+    //webrtc.onnegotiationneeded = handleNegotiationNeeded;
     webrtc.onsignalingstatechange = signalingstatechange;
 
     webrtc.ontrack = function (event) {

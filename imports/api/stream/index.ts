@@ -19,7 +19,7 @@ Meteor.methods({
             const name = `${userId}-${cameraId}`;
 
             await axios
-              .post(`http://rtspserver:8083/stream/${name}/add`, {
+              .post(`http://${process.env.DOCKER_HOST_ADDRESS}:8083/stream/${name}/add`, {
                 name,
                 channels: {
                   "0": {

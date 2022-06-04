@@ -9,8 +9,8 @@ Smart KotKot: The connected and opensource coop.
 ## Hardware compatibility
 
 - Any linux server with at least 512Mb RAM (x64, x86, ARM) like Raspberry PI (2,3,4,Zero)
-- Camera compatibility: 
-  - Usb Webcam 
+- Camera compatibility:
+  - Usb Webcam
   - Raspberry PI Cam
   - ONVIF (like [Sonoff gk200 hack](https://github.com/roleoroleo/sonoff-hack))
 - Light: anyone controlled by GPIO or [USB GCERelay](https://www.gce-electronics.com/en/-usb/247-126-controller-usb-8-relay-board.html#/29-boitier-without_box)
@@ -41,6 +41,10 @@ docker-compose up
 ```
 
 Your module is now live at `http://YOUR_LOCAL_IP:3000`
+
+### Module
+
+You need to run a module to command your device. See [Module page](https://github.com/Sylchauf/smart-kotkot-module)
 
 ## Developers
 

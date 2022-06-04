@@ -7,6 +7,7 @@ services:
       - PORT=3000
       - MONGO_URL=mongodb://database:27017/smart-kotkot
       - ROOT_URL=${PROTOCOL:-https}://${DOMAIN}
+      - DOCKER_HOST_ADDRESS=${DOCKER_HOST_ADDRESS}
 
   caddy:
     image: caddy:2.5.1
@@ -29,6 +30,7 @@ services:
   rtspserver:
     image: sylchauf/rtsptoweb:latest
     restart: always
+    network_mode: "host"
     ports:
       - "10000:10000/udp"
     volumes:
