@@ -14,6 +14,8 @@ services:
     restart: always
     ports:
       - "80:80"
+    environment:
+      - DOCKER_HOST_ADDRESS=${DOCKER_HOST_ADDRESS}
     volumes:
       - $PWD/Caddyfile:/etc/caddy/Caddyfile
       - /opt/smartkotkot/data/caddy/data:/data
