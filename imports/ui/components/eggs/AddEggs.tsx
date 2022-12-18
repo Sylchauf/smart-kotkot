@@ -12,7 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 
-import DateTimePicker from "@mui/lab/DateTimePicker";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 import { AddArgs } from "../../hooks/useEggs";
 import useMobile from "../../hooks/useMobile";

@@ -3,8 +3,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import AdapterMoment from "@mui/lab/AdapterMoment";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
