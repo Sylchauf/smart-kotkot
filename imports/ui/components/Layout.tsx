@@ -70,7 +70,7 @@ const Layout: React.FC = ({ children }) => {
             style={{
               minHeight: "100vh",
             }}
-            maxWidth={"lg"}
+            maxWidth={"xl"}
           >
             {!!user && <Header />}
             {children}

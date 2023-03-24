@@ -26,4 +26,10 @@ const sharedSchema = new SimpleSchema({
     optional: true,
   },
 });
+
+export const LocalizedString = new SimpleSchema({
+  fr: { type: String, optional: true },
+  en: { type: String, optional: true },
+});
+
 export default sharedSchema;

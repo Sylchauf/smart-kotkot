@@ -1,0 +1,94 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "/*": [
+        "./*"
+      ],
+      "meteor/mongo": [
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/local_collection_driver.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/collection.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/connection_options.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/doc_fetcher.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/mongo_driver.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/mongo_utils.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/observe_multiplex.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/oplog_observe_driver.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/oplog_tailing.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/oplog_v2_converter.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/polling_observe_driver.js",
+        "/home/sylchauf/.meteor/packages/mongo/1.16.3/web.browser/remote_collection_driver.js"
+      ],
+      "meteor/reactive-var": [
+        "/home/sylchauf/.meteor/packages/reactive-var/1.0.12/web.browser/reactive-var.js"
+      ],
+      "meteor/es5-shim": [
+        "/home/sylchauf/.meteor/packages/es5-shim/4.8.0/web.browser/client.js",
+        "/home/sylchauf/.meteor/packages/es5-shim/4.8.0/web.browser/console.js",
+        "/home/sylchauf/.meteor/packages/es5-shim/4.8.0/web.browser/cordova.js",
+        "/home/sylchauf/.meteor/packages/es5-shim/4.8.0/web.browser/export_globals.js",
+        "/home/sylchauf/.meteor/packages/es5-shim/4.8.0/web.browser/import_globals.js"
+      ],
+      "meteor/ecmascript": [
+        "/home/sylchauf/.meteor/packages/ecmascript/0.16.4/web.browser/ecmascript.js"
+      ],
+      "meteor/shell-server": [
+        "/home/sylchauf/.meteor/packages/shell-server/0.5.0/web.browser/main.js",
+        "/home/sylchauf/.meteor/packages/shell-server/0.5.0/web.browser/shell-server.js"
+      ],
+      "meteor/hot-module-replacement": [
+        "/home/sylchauf/.meteor/packages/hot-module-replacement/0.5.2/web.browser/hot-api.js",
+        "/home/sylchauf/.meteor/packages/hot-module-replacement/0.5.2/web.browser/client.js",
+        "/home/sylchauf/.meteor/packages/hot-module-replacement/0.5.2/web.browser/server.js"
+      ],
+      "meteor/react-meteor-data": [
+        "/home/sylchauf/.meteor/packages/react-meteor-data/2.6.1/web.browser/index.js"
+      ],
+      "meteor/accounts-base": [
+        "/home/sylchauf/.meteor/packages/accounts-base/2.2.6/web.browser/client_main.js",
+        "/home/sylchauf/.meteor/packages/accounts-base/2.2.6/web.browser/accounts_client.js",
+        "/home/sylchauf/.meteor/packages/accounts-base/2.2.6/web.browser/accounts_common.js",
+        "/home/sylchauf/.meteor/packages/accounts-base/2.2.6/web.browser/accounts_server.js",
+        "/home/sylchauf/.meteor/packages/accounts-base/2.2.6/web.browser/server_main.js"
+      ],
+      "meteor/accounts-password": [
+        "/home/sylchauf/.meteor/packages/accounts-password/2.3.3/web.browser/password_client.js",
+        "/home/sylchauf/.meteor/packages/accounts-password/2.3.3/web.browser/email_templates.js",
+        "/home/sylchauf/.meteor/packages/accounts-password/2.3.3/web.browser/password_server.js"
+      ],
+      "meteor/matb33:collection-hooks": [
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/client.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/advices.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/collection-hooks.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/find.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/findone.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/insert.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/remove.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/server.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/update.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/upsert.js",
+        "/home/sylchauf/.meteor/packages/matb33_collection-hooks/1.2.0/web.browser/users-compat.js"
+      ],
+      "meteor/maka:rest": [
+        "/home/sylchauf/.meteor/packages/maka_rest/2.0.12/web.browser/lib/auth.js",
+        "/home/sylchauf/.meteor/packages/maka_rest/2.0.12/web.browser/lib/restivus.js",
+        "/home/sylchauf/.meteor/packages/maka_rest/2.0.12/web.browser/lib/route.js"
+      ],
+      "meteor/aldeed:collection2-core": [
+        "/home/sylchauf/.meteor/packages/aldeed_collection2-core/2.1.2/web.browser/collection2.js"
+      ]
+    }
+  },
+  "typeAcquisition": {
+    "include": [
+      "meteor"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    ".meteor"
+  ]
+}
