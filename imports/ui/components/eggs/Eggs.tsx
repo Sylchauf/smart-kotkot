@@ -51,7 +51,7 @@ const Eggs: React.FC<Props> = ({ list, isLoading }) => {
     <Grid container spacing={4} textAlign={"center"}>
       <Grid item xs={6} sm={3}>
         <Title>
-          <FormattedMessage id={"Eggs.ThisWeek"} defaultMessage={"This week"} />
+          <FormattedMessage id={"Vegetables.ThisWeek"} defaultMessage={"This week"} />
         </Title>
         <Value>{numberTotalWeek} 🥚</Value>
       </Grid>
@@ -59,7 +59,7 @@ const Eggs: React.FC<Props> = ({ list, isLoading }) => {
       <Grid item xs={6} sm={3}>
         <Title>
           <FormattedMessage
-            id={"Eggs.ThisMonth"}
+            id={"Vegetables.ThisMonth"}
             defaultMessage={"This month"}
           />
         </Title>
@@ -68,14 +68,14 @@ const Eggs: React.FC<Props> = ({ list, isLoading }) => {
 
       <Grid item xs={6} sm={3}>
         <Title>
-          <FormattedMessage id={"Eggs.ThisYear"} defaultMessage={"This Year"} />
+          <FormattedMessage id={"Vegetables.ThisYear"} defaultMessage={"This Year"} />
         </Title>
         <Value>{numberTotalYear} 🥚</Value>
       </Grid>
 
       <Grid item xs={6} sm={3}>
         <Title>
-          <FormattedMessage id={"Eggs.LastYear"} defaultMessage={"Last Year"} />
+          <FormattedMessage id={"Vegetables.LastYear"} defaultMessage={"Last Year"} />
         </Title>
         <Value>{numberTotalLastYear} 🥚</Value>
       </Grid>

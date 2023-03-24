@@ -21,7 +21,7 @@ const EggsCard: React.FC = () => {
     <Tooltip
       key={"add"}
       title={
-        <FormattedMessage id={"EggsCard.Add"} defaultMessage={"Add eggs"} />
+        <FormattedMessage id={"VegetablesCard.Add"} defaultMessage={"Add eggs"} />
       }
     >
       <IconButton size={"small"} onClick={() => setOpenAddEggs(true)}>
@@ -32,7 +32,7 @@ const EggsCard: React.FC = () => {
       key={"list"}
       title={
         <FormattedMessage
-          id={"EggsCard.List"}
+          id={"VegetablesCard.List"}
           defaultMessage={"List of picked up eggs"}
         />
       }
@@ -57,7 +57,7 @@ const EggsCard: React.FC = () => {
       )}
 
       <HomeCard
-        title={<FormattedMessage id={"Home.Eggs"} defaultMessage={"Eggs"} />}
+        title={<FormattedMessage id={"Home.Vegetables"} defaultMessage={"Eggs"} />}
         content={<Eggs list={list} isLoading={false} />}
         actions={actions}
       />

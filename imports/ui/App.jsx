@@ -10,8 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Layout from "./components/Layout";
 import LocaleConfigurator from "./components/LocaleConfigurator";
 import Login from "./components/Login";
+import GardenEditor from "./GardenEditor";
 
 import Home from "./Home";
+import Garden from "./pages/Garden";
 import Settings from "./Settings";
 
 const queryClient = new QueryClient();
@@ -38,6 +40,22 @@ export const App = () => (
                 element={
                   <RequireAuth>
                     <Settings />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/garden/:id/editor"
+                element={
+                  <RequireAuth>
+                    <GardenEditor />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/garden/:id"
+                element={
+                  <RequireAuth>
+                    <Garden />
                   </RequireAuth>
                 }
               />

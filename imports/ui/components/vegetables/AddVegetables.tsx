@@ -12,26 +12,21 @@ import {
   TextField,
 } from "@mui/material";
 
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-
-import { AddArgs } from "../../hooks/useEggs";
+import useVegetables from "../../hooks/useVegetables";
 import useMobile from "../../hooks/useMobile";
 
 interface Props {
   onClose: () => void;
-  onAdd: (input: AddArgs) => Promise<any>;
 }
 
-const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
-  const [date, setDate] = useState(new Date());
-  const [number, setNumber] = useState(1);
-
+const AddVegetables: React.FC<Props> = ({ onClose }) => {
+  const [name, setName] = useState<string>("");
   const { isMobile, isLandscape } = useMobile();
 
-    console.log('date:', date);
+  const { addVegetables } = useVegetables();
 
   const handleAdd = () => {
-    onAdd({ date, number })
+    addVegetables({ name: { fr: name } })
       .then(() => {
         toast.success(
           <FormattedMessage
@@ -59,34 +54,22 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
       fullScreen={isMobile || isLandscape}
     >
       <DialogTitle>
-        <FormattedMessage id={"AddVegetables.Title"} defaultMessage={"Add eggs"} />
+        <FormattedMessage
+          id={"AddVegetables.Title"}
+          defaultMessage={"Add a new vegetable"}
+        />
       </DialogTitle>
       <DialogContent>
         <Grid container spacing={2} style={{ marginTop: 4 }}>
           <Grid item xs={12}>
-            <DateTimePicker
-              label={
-                <FormattedMessage
-                  id={"AddVegetables.date"}
-                  defaultMessage={"Pick-up date"}
-                />
-              }
-              value={date}
-              onChange={(newDate) => setDate(newDate.toDate() ?? new Date())}
-              renderInput={(params) => <TextField {...params} />}
-            />
-          </Grid>
-          <Grid item xs={12}>
             <TextField
               label={
                 <FormattedMessage
-                  id={"AddVegetables.Number"}
-                  defaultMessage={"Number of eggs"}
+                  id={"AddVegetables.name"}
+                  defaultMessage={"Name"}
                 />
               }
-              type={"number"}
-              value={number}
-              onChange={({ target: { value } }) => setNumber(Number(value))}
+              onChange={({ target: { value } }) => setName(value)}
             />
           </Grid>
         </Grid>
@@ -103,4 +86,4 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
   );
 };
 
-export default AddEggs;
+export default AddVegetables;

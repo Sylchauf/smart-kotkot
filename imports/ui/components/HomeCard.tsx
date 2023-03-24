@@ -23,16 +23,28 @@ const Container = styled("div")`
   }
 `;
 
-const HomeCard: React.FC<Props> = ({ content, children, title, actions }) => {
+const HomeCard: React.FC<Props> = ({
+  content,
+  children,
+  title,
+  actions,
+  hideCard = false,
+}) => {
+  const _content = (
+    <>
+      <Container>
+        <div>{title}</div>
+        <div>{actions}</div>
+      </Container>
+      {content || children}
+    </>
+  );
+
+  if (hideCard) return _content;
+
   return (
     <Card>
-      <CardContent>
-        <Container>
-          <div>{title}</div>
-          <div>{actions}</div>
-        </Container>
-        {content || children}
-      </CardContent>
+      <CardContent>{_content}</CardContent>
     </Card>
   );
 };
