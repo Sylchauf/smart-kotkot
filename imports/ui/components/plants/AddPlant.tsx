@@ -37,7 +37,7 @@ const AddPlant: React.FC<Props> = ({ onClose }) => {
   const { locale } = useIntl();
 
   const handleAdd = () => {
-    addPlant({ vegetableId, comment })
+    addPlant({ shapeId, vegetableId, comment })
       .then(() => {
         toast.success(
           <FormattedMessage
@@ -77,6 +77,7 @@ const AddPlant: React.FC<Props> = ({ onClose }) => {
               label={"Espace de culture"}
               value={shapeId || plot?.data?.shapes[0]._id}
               fullWidth
+              onChange={({ target: { value } }) => setShapeId(value as string)}
             >
               {plot?.data?.shapes.map((s) => (
                 <MenuItem value={s.id}>{s.name}</MenuItem>

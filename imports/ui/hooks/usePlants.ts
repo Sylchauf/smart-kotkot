@@ -19,8 +19,9 @@ const usePlants = (): Return => {
     return Meteor.promise("plants.read");
   });
 
-  const addPlant = async ({ vegetableId, comment }: Plant) => {
+  const addPlant = async ({ shapeId, vegetableId, comment }: Plant) => {
     const res = await Meteor.promise("plants.create", {
+      shapeId,
       vegetableId,
       comment,
     });

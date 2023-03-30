@@ -96,6 +96,31 @@ const GardenLayout: React.FC<Props> = ({
     stage.batchDraw();
   };
 
+  const handleWheel = (e) => {
+    e.evt.preventDefault();
+
+    const scaleBy = 1.05;
+    const stage = e.target.getStage();
+    const oldScale = stage.scaleX();
+
+    const mousePointTo = {
+      x: stage.getPointerPosition().x / oldScale - stage.x() / oldScale,
+      y: stage.getPointerPosition().y / oldScale - stage.y() / oldScale,
+    };
+
+    const newScale = e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
+
+    stage.scale({
+      x: newScale,
+      y: newScale,
+    });
+
+    stage.position({
+      x: (stage.getPointerPosition().x / newScale - mousePointTo.x) * newScale,
+      y: (stage.getPointerPosition().y / newScale - mousePointTo.y) * newScale,
+    });
+  };
+
   return (
     <div style={{ position: "relative" }}>
       {generalActions && (
@@ -137,6 +162,10 @@ const GardenLayout: React.FC<Props> = ({
           <Stage
             ref={stageRef}
             onMouseDown={handleMouseDown}
+            onDragMove={(e) => {
+              console.log(e);
+            }}
+            onWheel={handleWheel}
             width={size?.width || 0}
             height={size?.height || 0}
           >
