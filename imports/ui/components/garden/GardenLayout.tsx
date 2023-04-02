@@ -61,8 +61,8 @@ const GardenLayout: React.FC<Props> = ({
     // deselect when clicked on empty area
     const clickedOnEmpty = e.target === e.target.getStage();
     if (clickedOnEmpty) {
-      onSelectShape(null);
-      onSelectPlan(null);
+      if (onSelectShape) onSelectShape(null);
+      if (onSelectPlan) onSelectPlan(null);
     }
   };
 
