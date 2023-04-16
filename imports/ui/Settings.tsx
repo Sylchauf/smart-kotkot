@@ -114,7 +114,6 @@ const Settings = () => {
       {openAddVegetables && (
         <AddVegetables onClose={() => setOpenAddVegetables(false)} />
       )}
-
       <Grid item xs={12}>
         <HomeCard
           title={
@@ -126,7 +125,6 @@ const Settings = () => {
           content={<Profile />}
         />
       </Grid>
-
       <Grid item xs={12}>
         <HomeCard
           title={
@@ -136,7 +134,6 @@ const Settings = () => {
           actions={plotsActions}
         />
       </Grid>
-
       <Grid item xs={12}>
         <HomeCard
           title={
@@ -149,7 +146,6 @@ const Settings = () => {
           actions={devicesActions}
         />
       </Grid>
-
       <Grid item xs={12}>
         <HomeCard
           title={
@@ -162,6 +158,7 @@ const Settings = () => {
           actions={vegetablesActions}
         />
       </Grid>
+      Version v{require("../../package.json").version}
     </Grid>
   );
 };
