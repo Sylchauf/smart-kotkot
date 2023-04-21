@@ -163,6 +163,8 @@ const Garden = () => {
   return (
     <div>
       <GardenLayout
+        plotId={plot.data._id}
+        initialPosition={plot.data.position}
         panel={panel}
         shapes={plot.data.shapes}
         plants={plants}

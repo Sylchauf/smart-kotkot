@@ -79,7 +79,6 @@ const Rectangle = ({
           });
         }}
         onClick={(e) => {
-          console.log("e:", e, e.target.attrs);
           if (e.target.parent.attrs.name !== "plant") onSelect(shapeProps.id);
         }}
         onTap={() => onSelect(shapeProps.id)}

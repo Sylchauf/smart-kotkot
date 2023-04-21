@@ -19,6 +19,11 @@ const schema = new SimpleSchema({
     type: Object,
     blackbox: true,
   },
+  position: { type: Object, optional: true },
+  "position.x": Number,
+  "position.y": Number,
+  "position.xScale": Number,
+  "position.yScale": Number,
 }).extend(sharedSchemas);
 
 export default schema;

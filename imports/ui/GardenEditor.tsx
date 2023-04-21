@@ -157,6 +157,7 @@ const GardenEditor = () => {
 
   return (
     <GardenLayout
+      plotId={plot._id}
       generalActions={generalActions}
       panel={panel}
       onSelectShape={onSelectShape}

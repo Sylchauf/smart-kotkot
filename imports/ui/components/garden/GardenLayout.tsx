@@ -8,6 +8,13 @@ import Rectangle from "./Rectangle";
 const WIDTH_PANEL = 500;
 
 type Props = {
+  plotId: string;
+  initialPosition?: {
+    x: number;
+    y: number;
+    xScale: number;
+    yScale: number;
+  };
   shapes: any;
   generalActions?: any;
   panel: any;
@@ -19,6 +26,8 @@ type Props = {
 };
 
 const GardenLayout: React.FC<Props> = ({
+  plotId,
+  initialPosition,
   shapes,
   plants = [],
   generalActions,
@@ -45,6 +54,19 @@ const GardenLayout: React.FC<Props> = ({
       window.removeEventListener("resize", checkSize);
     };
   }, [containerRef.current]);
+
+  useEffect(() => {
+    if (initialPosition && stageRef.current) {
+      stageRef.current.position({
+        x: initialPosition.x,
+        y: initialPosition.y,
+      });
+      stageRef.current.scale({
+        x: initialPosition.xScale,
+        y: initialPosition.yScale,
+      });
+    }
+  }, [stageRef, initialPosition]);
 
   const checkSize = useCallback(() => {
     const width = document.getElementById("konva-container").offsetWidth;
@@ -94,6 +116,8 @@ const GardenLayout: React.FC<Props> = ({
 
     stage.position(newPos);
     stage.batchDraw();
+
+    handleSavePosition();
   };
 
   const handleWheel = (e) => {
@@ -119,6 +143,29 @@ const GardenLayout: React.FC<Props> = ({
       x: (stage.getPointerPosition().x / newScale - mousePointTo.x) * newScale,
       y: (stage.getPointerPosition().y / newScale - mousePointTo.y) * newScale,
     });
+
+    handleSavePosition();
+  };
+
+  const handleSavePosition = () => {
+    const stage: any = stageRef.current;
+    const data = {
+      xScale: stage.scaleX(),
+      yScale: stage.scaleY(),
+      x: stage.x(),
+      y: stage.y(),
+    };
+
+    Meteor.promise("plots.update", { _id: plotId }, { position: data });
+  };
+
+  const handleDragEnd = (e) => {
+    handleSavePosition();
+  };
+  const dragBoundFunc = (pos) => {
+    const newX = Math.max(Math.min(pos.x, 500), -500);
+    const newY = Math.max(Math.min(pos.y, 500), -500);
+    return { x: newX, y: newY };
   };
 
   return (
@@ -162,9 +209,9 @@ const GardenLayout: React.FC<Props> = ({
           <Stage
             ref={stageRef}
             onMouseDown={handleMouseDown}
-            onDragMove={(e) => {
-              console.log(e);
-            }}
+            onDragEnd={handleDragEnd}
+            dragBoundFunc={dragBoundFunc}
+            draggable
             onWheel={handleWheel}
             width={size?.width || 0}
             height={size?.height || 0}
