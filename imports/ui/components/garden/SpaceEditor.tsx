@@ -2,6 +2,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Button, TextField } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import React from "react";
+import { FormattedMessage } from "react-intl";
+import InputSize from "../tools/InputSize";
 
 const SpaceEditor = ({ selectedShape, onChange, onDelete, onExit }) => {
   return (
@@ -12,37 +14,52 @@ const SpaceEditor = ({ selectedShape, onChange, onDelete, onExit }) => {
         color={"primary"}
         onClick={() => onExit()}
       >
-        Retour
+        <FormattedMessage id={"SpaceEditor.Back"} defaultMessage={"Back"} />
       </Button>
       <br />
       <br />
 
       <TextField
         fullWidth
-        label={"Nom de l'espace"}
-        value={selectedShape?.name || ''}
+        label={
+          <FormattedMessage
+            id={"SpaceEditor.Name"}
+            defaultMessage={"Name of the space"}
+          />
+        }
+        value={selectedShape?.name || ""}
         onChange={(e) => onChange("name", e.target.value)}
       />
+
       <br />
       <br />
-      <TextField
-        fullWidth
-        label={"Longeur (en mètre)"}
-        value={(selectedShape?.width / 100).toFixed(2)}
+
+      <InputSize
+        label={
+          <FormattedMessage
+            id={"SpaceEditor.Length"}
+            defaultMessage={"Length"}
+          />
+        }
+        value={selectedShape.width}
         onChange={(e) =>
           onChange("width", Number((Number(e.target.value) * 100).toFixed(0)))
         }
       />
+
       <br />
       <br />
-      <TextField
-        fullWidth
-        label={"Largeur (en mètre)"}
-        value={(selectedShape?.height / 100).toFixed(2)}
+
+      <InputSize
+        label={
+          <FormattedMessage id={"SpaceEditor.Width"} defaultMessage={"Width"} />
+        }
+        value={selectedShape.height}
         onChange={(e) =>
           onChange("height", Number((Number(e.target.value) * 100).toFixed(0)))
         }
       />
+
       <br />
       <br />
 
@@ -52,7 +69,10 @@ const SpaceEditor = ({ selectedShape, onChange, onDelete, onExit }) => {
         color={"error"}
         onClick={() => onDelete()}
       >
-        Supprimer cet espace
+        <FormattedMessage
+          id={"SpaceEditor.Delete"}
+          defaultMessage={"Delete this space"}
+        />
       </Button>
     </div>
   );

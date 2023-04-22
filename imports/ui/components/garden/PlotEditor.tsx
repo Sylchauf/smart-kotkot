@@ -1,38 +1,67 @@
 import React from "react";
 
 import AddIcon from "@mui/icons-material/Add";
-import { Button, IconButton, TextField, useTheme } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  IconButton,
+  TextField,
+  useTheme,
+} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import { FormattedMessage } from "react-intl";
+import InputSize from "../tools/InputSize";
 
 const PlotEditor = ({ plot, onAdd, shapes, onSelect, onChange }) => {
   const theme = useTheme();
+
+  if (!plot) return <CircularProgress />;
 
   return (
     <div>
       <TextField
         fullWidth
-        label={"Nom de la parcelle"}
+        label={
+          <FormattedMessage
+            id={"PlotEditor.Name"}
+            defaultMessage={"Name of the plot"}
+          />
+        }
         value={plot?.name || ""}
         onChange={(e) => onChange("name", e.target.value)}
       />
       <br />
       <br />
 
-      <TextField
-        fullWidth
-        label={"Longeur de la parcelle (en mètre)"}
-        value={(plot?.width / 100).toFixed(2)}
-        onChange={(e) => onChange("width", Number(e.target.value) * 100)}
+      <InputSize
+        label={
+          <FormattedMessage
+            id={"PlotEditor.Width"}
+            defaultMessage={"Length of the plot"}
+          />
+        }
+        value={plot.width}
+        onChange={(e) => {
+          onChange("width", Number(e.target.value) * 100);
+        }}
       />
+
       <br />
       <br />
 
-      <TextField
-        fullWidth
-        label={"Largeur de la parcelle (en mètre)"}
-        value={(plot?.height / 100).toFixed(2)}
-        onChange={(e) => onChange("height", Number(e.target.value) * 100)}
+      <InputSize
+        label={
+          <FormattedMessage
+            id={"PlotEditor.Height"}
+            defaultMessage={"Width of the plot"}
+          />
+        }
+        value={plot.height}
+        onChange={(e) => {
+          onChange("height", Number(e.target.value) * 100);
+        }}
       />
+
       <br />
       <br />
 
@@ -49,7 +78,11 @@ const PlotEditor = ({ plot, onAdd, shapes, onSelect, onChange }) => {
             textDecoration: "underline",
           }}
         >
-          Listes des espaces:
+          <FormattedMessage
+            id={"PlotEditor.ListSpace"}
+            defaultMessage={"List of space"}
+          />{" "}
+          :
         </div>
         <Button
           size={"small"}
@@ -57,13 +90,19 @@ const PlotEditor = ({ plot, onAdd, shapes, onSelect, onChange }) => {
           variant={"outlined"}
           onClick={() => onAdd()}
         >
-          Ajouter un espace
+          <FormattedMessage
+            id={"PlotEditor.AddSpace"}
+            defaultMessage={"Add a space"}
+          />
         </Button>
       </div>
       <div>
         {shapes.length === 0 && (
           <div style={{ textAlign: "center", marginTop: 16 }}>
-            Aucun espace défini
+            <FormattedMessage
+              id={"PlotEditor.NoSpace"}
+              defaultMessage={"No space found"}
+            />
           </div>
         )}
         {shapes.map((s) => (

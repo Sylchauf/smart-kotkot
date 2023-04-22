@@ -31,6 +31,7 @@
     "react-intl": "^6.4.1",
     "react-konva": "^18.2.7",
     "react-konva-utils": "^1.0.4",
+    "react-number-format": "^5.1.4",
     "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.10.0",

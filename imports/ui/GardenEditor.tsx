@@ -15,7 +15,9 @@ import SpaceEditor from "./components/garden/SpaceEditor";
 import usePlot from "./hooks/usePlot";
 
 const GardenEditor = () => {
-  const [updatedPlot, setUpdatedPlot] = useState<Record<string, any>>({});
+  const [updatedPlot, setUpdatedPlot] = useState<Record<string, any> | null>(
+    null
+  );
   const [annotations, setAnnotations] = useState([]);
   const [selectedId, selectShape] = useState<string>(null);
 
@@ -117,19 +119,22 @@ const GardenEditor = () => {
   const generalActions = (
     <div>
       <Button color="success" startIcon={<SaveIcon />} onClick={handleSave}>
-        Sauvegarder
+        <FormattedMessage id={"GardenEditor.Save"} defaultMessage={"Save"} />
       </Button>
       <Button
         color={"error"}
         startIcon={<CloseIcon />}
         onClick={() => navigate("/settings")}
       >
-        Annuler
+        <FormattedMessage
+          id={"GardenEditor.Cancel"}
+          defaultMessage={"Cancel"}
+        />
       </Button>
     </div>
   );
 
-  if (plot.isLoading) return <CircularProgress />;
+  if (plot.isLoading || !updatedPlot) return <CircularProgress />;
 
   const panel = (
     <div>

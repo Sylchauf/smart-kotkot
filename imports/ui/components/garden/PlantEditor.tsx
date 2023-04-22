@@ -2,7 +2,7 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { useConfirm } from "material-ui-confirm";
 import moment from "moment";
 import React, { useState } from "react";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useParams } from "react-router-dom";
 import { Random } from "meteor/random";
 
@@ -26,6 +26,7 @@ import EVENT_TYPE, {
 } from "../../../constants/eventType";
 import usePlot from "../../hooks/usePlot";
 import HomeCard from "../HomeCard";
+import InputSize from "../tools/InputSize";
 
 const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
   const [editEventId, setEditEventId] = useState(null);
@@ -82,13 +83,27 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
         alignItems: "center",
       }}
     >
-      <Tooltip title={"Ajouter un évènement"}>
+      <Tooltip
+        title={
+          <FormattedMessage
+            id={"PlantEditor.AddEvent"}
+            defaultMessage={"Add an event"}
+          />
+        }
+      >
         <IconButton color={"primary"} onClick={() => handleAddEvent()}>
           <AddIcon />
         </IconButton>
       </Tooltip>
 
-      <Tooltip title={"Supprimer ce plant"}>
+      <Tooltip
+        title={
+          <FormattedMessage
+            id={"PlantEditor.Delete"}
+            defaultMessage={"Delete this plant"}
+          />
+        }
+      >
         <IconButton color={"error"} onClick={() => onDelete()}>
           <DeleteIcon />
         </IconButton>
@@ -101,7 +116,14 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
       hideCard
       title={
         <div>
-          <Tooltip title={"Retour à la liste"}>
+          <Tooltip
+            title={
+              <FormattedMessage
+                id={"PlantEditor.Back"}
+                defaultMessage={"Back"}
+              />
+            }
+          >
             <IconButton color={"primary"} onClick={() => onExit()}>
               <ArrowBackIcon />
             </IconButton>
@@ -112,7 +134,9 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
       actions={actions}
     >
       <Select
-        label={"Espace de culture"}
+        label={
+          <FormattedMessage id={"PlantEditor.Space"} defaultMessage={"Space"} />
+        }
         value={selectedPlant.shapeId}
         fullWidth
       >
@@ -126,43 +150,35 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
 
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <TextField
-            fullWidth
-            label={"Longeur (en mètre)"}
-            type={"number"}
-            size={"small"}
-            inputProps={{
-              min: 0.01,
-              step: 0.01,
-              max: maxWidth,
-            }}
-            value={(selectedPlant?.width / 100).toFixed(2)}
+          <InputSize
+            label={
+              <FormattedMessage
+                id={"PlantEditor.Width"}
+                defaultMessage={"Width"}
+              />
+            }
+            value={selectedPlant.width}
+            max={maxWidth}
             onChange={(e) =>
-              onChange(
-                selectedPlant._id,
-                "width",
-                Number((Number(e.target.value) * 100).toFixed(0))
-              )
+              onChange(selectedPlant._id, "width", Number(e.target.value) * 100)
             }
           />
         </Grid>
         <Grid item xs={6}>
-          <TextField
-            fullWidth
-            label={"Largeur (en mètre)"}
-            type={"number"}
-            size={"small"}
-            inputProps={{
-              min: 0.01,
-              step: 0.01,
-              max: maxHeight,
-            }}
-            value={(selectedPlant?.height / 100).toFixed(2)}
+          <InputSize
+            label={
+              <FormattedMessage
+                id={"PlantEditor.Height"}
+                defaultMessage={"Length"}
+              />
+            }
+            value={selectedPlant.height}
+            max={maxHeight}
             onChange={(e) =>
               onChange(
                 selectedPlant._id,
                 "height",
-                Number((Number(e.target.value) * 100).toFixed(0))
+                Number(e.target.value) * 100
               )
             }
           />
@@ -207,7 +223,12 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
 
                 <Grid item xs={6}>
                   <Select
-                    label={"Type d'évènement"}
+                    label={
+                      <FormattedMessage
+                        id={"PlantEditor.TypeEvent"}
+                        defaultMessage={"Type of event"}
+                      />
+                    }
                     value={event.type}
                     fullWidth
                     size={"small"}
@@ -247,7 +268,10 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
                     size={"small"}
                     onClick={() => handleDeleteEvent(event._id)}
                   >
-                    Supprimer
+                    <FormattedMessage
+                      id={"PlantEditor.DeleteEvent"}
+                      defaultMessage={"Delete"}
+                    />
                   </Button>
                 </div>
               )}
