@@ -22,7 +22,7 @@ const PlotEditor = ({ plot, onAdd, shapes, onSelect, onChange }) => {
         fullWidth
         label={"Longeur de la parcelle (en mètre)"}
         value={(plot?.width / 100).toFixed(2)}
-        onChange={(e) => onChange("width", e.target.value * 100)}
+        onChange={(e) => onChange("width", Number(e.target.value) * 100)}
       />
       <br />
       <br />
@@ -31,7 +31,7 @@ const PlotEditor = ({ plot, onAdd, shapes, onSelect, onChange }) => {
         fullWidth
         label={"Largeur de la parcelle (en mètre)"}
         value={(plot?.height / 100).toFixed(2)}
-        onChange={(e) => onChange("height", e.target.value * 100)}
+        onChange={(e) => onChange("height", Number(e.target.value) * 100)}
       />
       <br />
       <br />

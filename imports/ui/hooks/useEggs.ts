@@ -17,7 +17,7 @@ interface Return {
   list: Eggs[];
   isLoading: boolean;
   addEggs: (input: AddArgs) => Promise<any>;
-  deleteEggs: (id: number) => Promise<any>;
+  deleteEggs: (id: string) => Promise<any>;
 }
 
 const useEggs = (): Return => {

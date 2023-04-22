@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@formatjs/cli": "^6.1.0",
+    "@types/meteor": "^2.9.2",
     "@welldone-software/why-did-you-render": "^7.0.1",
     "prettier": "^2.8.7"
   }

@@ -5,7 +5,9 @@ import React from "react";
 interface Props {
   title: React.ReactNode | string;
   content?: React.ReactNode | string;
+  children?: React.ReactNode | string;
   actions?: React.ReactNode | string;
+  hideCard?: boolean;
 }
 
 const Container = styled("div")`

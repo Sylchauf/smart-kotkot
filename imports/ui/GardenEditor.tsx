@@ -15,7 +15,7 @@ import SpaceEditor from "./components/garden/SpaceEditor";
 import usePlot from "./hooks/usePlot";
 
 const GardenEditor = () => {
-  const [updatedPlot, setUpdatedPlot] = useState({});
+  const [updatedPlot, setUpdatedPlot] = useState<Record<string, any>>({});
   const [annotations, setAnnotations] = useState([]);
   const [selectedId, selectShape] = useState<string>(null);
 
@@ -157,7 +157,7 @@ const GardenEditor = () => {
 
   return (
     <GardenLayout
-      plotId={plot._id}
+      plotId={plot.data._id}
       generalActions={generalActions}
       panel={panel}
       onSelectShape={onSelectShape}
