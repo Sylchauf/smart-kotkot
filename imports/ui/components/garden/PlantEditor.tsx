@@ -194,7 +194,7 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
                   <DatePicker
                     label={"Date"}
                     value={event.date}
-                    inputFormat="DD/MM/YYYY"
+                    format="DD/MM/YYYY"
                     onChange={(value) =>
                       handleChangeEvent(
                         event._id,

@@ -1,9 +1,9 @@
-import moment from "moment";
+import moment, { Moment } from "moment";
 import { useQuery } from "react-query";
 import { Meteor } from "meteor/meteor";
 
 export interface AddArgs {
-  date: Date;
+  date: Moment | Date;
   number: number;
 }
 
@@ -34,7 +34,10 @@ const useEggs = (): Return => {
   );
 
   const addEggs = async ({ date, number }: AddArgs) => {
-    const res = await Meteor.promise("eggs.create", { date, value: number });
+    const res = await Meteor.promise("eggs.create", {
+      date: moment(date).toDate(),
+      value: number,
+    });
     refetch();
     return res;
   };

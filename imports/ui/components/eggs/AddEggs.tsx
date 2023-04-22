@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { toast } from "react-toastify";
@@ -23,12 +24,10 @@ interface Props {
 }
 
 const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
-  const [date, setDate] = useState(new Date());
-  const [number, setNumber] = useState(1);
+  const [date, setDate] = useState<moment.Moment>(moment());
+  const [number, setNumber] = useState<number>(1);
 
   const { isMobile, isLandscape } = useMobile();
-
-    console.log('date:', date);
 
   const handleAdd = () => {
     onAdd({ date, number })
@@ -59,7 +58,10 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
       fullScreen={isMobile || isLandscape}
     >
       <DialogTitle>
-        <FormattedMessage id={"AddVegetables.Title"} defaultMessage={"Add eggs"} />
+        <FormattedMessage
+          id={"AddVegetables.Title"}
+          defaultMessage={"Add eggs"}
+        />
       </DialogTitle>
       <DialogContent>
         <Grid container spacing={2} style={{ marginTop: 4 }}>
@@ -72,8 +74,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
                 />
               }
               value={date}
-              onChange={(newDate) => setDate(newDate.toDate() ?? new Date())}
-              renderInput={(params) => <TextField {...params} />}
+              onChange={(newDate) => setDate(newDate)}
             />
           </Grid>
           <Grid item xs={12}>
