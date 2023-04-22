@@ -35,9 +35,8 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.10.0",
     "react-toastify": "^9.1.2",
-    "simpl-schema": "^1.13.1",
+    "simpl-schema": "^3.4.1",
     "socket.io": "^4.6.1",
-    "uniforms-bridge-simple-schema-2": "^4.0.0-alpha.3",
     "use-image": "^1.1.0",
     "uuid": "^9.0.0"
   },

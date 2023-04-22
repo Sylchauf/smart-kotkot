@@ -6,9 +6,6 @@ import sharedSchemas from "../sharedSchemas";
 const schema = new SimpleSchema({
   _id: {
     type: String,
-    uniforms: {
-      component: () => null,
-    },
     defaultValue: Random.id(),
   },
   date: Date,
