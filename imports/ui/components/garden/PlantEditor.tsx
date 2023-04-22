@@ -193,7 +193,7 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
                 <Grid item xs={6}>
                   <DatePicker
                     label={"Date"}
-                    value={event.date}
+                    value={moment(event.date)}
                     format="DD/MM/YYYY"
                     onChange={(value) =>
                       handleChangeEvent(
@@ -202,9 +202,6 @@ const PlantEditor = ({ selectedPlant, onChange, onDelete, onExit }) => {
                         moment(value).toISOString()
                       )
                     }
-                    renderInput={(params) => (
-                      <TextField size={"small"} fullWidth {...params} />
-                    )}
                   />
                 </Grid>
 
