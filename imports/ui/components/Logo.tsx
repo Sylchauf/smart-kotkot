@@ -8,7 +8,7 @@ const egg = (
       fontSize: 24,
       display: "inline-block",
       position: "relative",
-      top: 1,
+      top: 6,
       left: -3,
       width: 25,
       overflow: "hidden",

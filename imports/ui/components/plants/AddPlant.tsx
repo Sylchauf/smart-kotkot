@@ -22,11 +22,12 @@ import usePlants from "../../hooks/usePlants";
 
 interface Props {
   onClose: () => void;
+  shapeId?: string;
 }
 
-const AddPlant: React.FC<Props> = ({ onClose }) => {
+const AddPlant: React.FC<Props> = ({ onClose, shapeId: defaultShapeId }) => {
   const [vegetableId, setVegetableId] = useState<string>("");
-  const [shapeId, setShapeId] = useState<string>("");
+  const [shapeId, setShapeId] = useState<string>(defaultShapeId);
   const [comment, setComment] = useState<string>("");
 
   const { isMobile, isLandscape } = useMobile();

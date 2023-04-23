@@ -1,3 +1,4 @@
+import { Chip, Tooltip } from "@mui/material";
 import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Meteor } from "meteor/meteor";
@@ -42,10 +43,39 @@ const DevicesList = () => {
     {
       field: "_id",
       title: <FormattedMessage id={"DevicesList.id"} defaultMessage={"ID"} />,
+      render: (device) => {
+        const color = device.isOnline ? "success" : "error";
+        const title = device.isOnline ? (
+          <FormattedMessage
+            id={"DeviceDisplayer.online"}
+            defaultMessage={"{deviceId} is online"}
+            values={{ deviceId: device._id }}
+          />
+        ) : (
+          <FormattedMessage
+            id={"DeviceDisplayer.offline"}
+            defaultMessage={"{deviceId} is offline"}
+            values={{ deviceId: device._id }}
+          />
+        );
+
+        return (
+          <Tooltip title={title} key={device._id}>
+            <Chip
+              style={{ marginRight: 8 }}
+              size={"small"}
+              color={color}
+              label={device.name || device._id}
+            />
+          </Tooltip>
+        );
+      },
     },
     {
       field: "name",
-      title: <FormattedMessage id={"DevicesList.name"} defaultMessage={"Name"} />,
+      title: (
+        <FormattedMessage id={"DevicesList.name"} defaultMessage={"Name"} />
+      ),
     },
     {
       field: "lastAction",

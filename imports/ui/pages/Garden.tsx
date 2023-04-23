@@ -95,7 +95,9 @@ const Garden = () => {
 
   const panel = (
     <div>
-      {openAddPlant && <AddPlant onClose={() => setOpenAddPlant(false)} />}
+      {openAddPlant && (
+        <AddPlant shapeId={selectedId} onClose={() => setOpenAddPlant(false)} />
+      )}
 
       {!selectedPlantId && (
         <>

@@ -4,26 +4,25 @@ import { Meteor } from "meteor/meteor";
 export type Vegetables = {
   _id: string;
   name: String;
+  dataLink: string;
 };
 
 interface Return {
   list: Vegetables[];
   isLoading: boolean;
   addVegetables: (input: any) => Promise<any>;
-  deleteVegetables: (id: number) => Promise<any>;
+  deleteVegetables: (id: string) => Promise<any>;
 }
 
 const useVegetables = (): Return => {
-  const { data, isLoading, refetch } = useQuery<any>(
-    "vegetables",
-    async () => {
-      return Meteor.promise("vegetables.read");
-    }
-  );
+  const { data, isLoading, refetch } = useQuery<any>("vegetables", async () => {
+    return Meteor.promise("vegetables.read");
+  });
 
-  const addVegetables = async ({ name }: Vegetables) => {
+  const addVegetables = async ({ name, dataLink }: Vegetables) => {
     const res = await Meteor.promise("vegetables.create", {
       name,
+      dataLink,
     });
     refetch();
     return res;

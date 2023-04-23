@@ -9,7 +9,7 @@ const schema = new SimpleSchema({
     defaultValue: Random.id(),
   },
   name: LocalizedString,
-  imageUrl: { type: String, optional: true },
+  dataLink: { type: String, optional: true },
 }).extend(sharedSchemas);
 
 export default schema;

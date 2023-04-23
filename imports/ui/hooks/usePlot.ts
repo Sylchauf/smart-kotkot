@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { useQuery } from "react-query";
 
-const usePlots = (id) => {
+const usePlot = (id) => {
   const { data, isLoading, refetch } = useQuery(`plots-${id}`, () =>
     Meteor.promise("plots.read", { selector: id })
   );
@@ -13,4 +13,4 @@ const usePlots = (id) => {
   };
 };
 
-export default usePlots;
+export default usePlot;

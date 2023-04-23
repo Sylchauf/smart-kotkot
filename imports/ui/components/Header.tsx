@@ -1,16 +1,19 @@
 import { IconButton } from "@mui/material";
 import React from "react";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router-dom";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import Link from "@mui/material/Link";
 import useMobile from "../hooks/useMobile";
+import usePlots from "../hooks/usePlots";
 
-import DeviceDisplayer from "./DeviceDisplayer";
 import Logo from "./Logo";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const { isMobile } = useMobile();
+  const plots = usePlots();
 
   const logo = <Logo onClick={() => navigate("/")} />;
   const menu = (
@@ -18,7 +21,25 @@ const Header: React.FC = () => {
       <MenuIcon />
     </IconButton>
   );
-  const devices = <DeviceDisplayer />;
+
+  const plotsMenu = plots.data.map((plot) => (
+    <Link
+      style={{ marginRight: 32 }}
+      href={`/garden/${plot._id}`}
+      underline={"hover"}
+    >
+      {plot.name}
+    </Link>
+  ));
+
+  const itemsMenu = (
+    <>
+      <Link style={{ marginRight: 32 }} href={`/`} underline={"hover"}>
+        <FormattedMessage id={"Header.Home"} defaultMessage={"Home"} />
+      </Link>
+      {plotsMenu}
+    </>
+  );
 
   if (!isMobile)
     return (
@@ -35,7 +56,7 @@ const Header: React.FC = () => {
         {logo}
 
         <div style={{ display: "flex", alignItems: "center" }}>
-          {devices}
+          <div style={{ display: "flex", marginLeft: 32 }}>{itemsMenu}</div>
           {menu}
         </div>
       </div>
@@ -53,8 +74,7 @@ const Header: React.FC = () => {
         {logo}
         {menu}
       </div>
-
-      {devices}
+      <div style={{ marginTop: 8 }}>{itemsMenu}</div>
     </div>
   );
 };

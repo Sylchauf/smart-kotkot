@@ -21,13 +21,13 @@ interface Props {
 
 const AddVegetables: React.FC<Props> = ({ onClose }) => {
   const [name, setName] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [dataLink, setDataLink] = useState<string>("");
   const { isMobile, isLandscape } = useMobile();
 
   const { addVegetables } = useVegetables();
 
   const handleAdd = () => {
-    addVegetables({ name: { fr: name }, imageUrl })
+    addVegetables({ name: { fr: name }, dataLink })
       .then(() => {
         toast.success(
           <FormattedMessage
@@ -78,12 +78,12 @@ const AddVegetables: React.FC<Props> = ({ onClose }) => {
             <TextField
               label={
                 <FormattedMessage
-                  id={"AddVegetables.imageUrl"}
-                  defaultMessage={"Image URL"}
+                  id={"AddVegetables.dataLink"}
+                  defaultMessage={"Data"}
                 />
               }
-              value={imageUrl}
-              onChange={({ target: { value } }) => setImageUrl(value)}
+              value={dataLink}
+              onChange={({ target: { value } }) => setDataLink(value)}
             />
           </Grid>
         </Grid>

@@ -23,7 +23,7 @@ const Plant = ({ plant, onClick }) => {
       <CardContent style={{ textAlign: "center", padding: 8 }}>
         {vegetable?.name[locale]}
         <br />
-        <img src={vegetable?.imageUrl} height={48} />
+        <img src={`/data/${vegetable?.dataLink}/icon.png`} height={48} />
       </CardContent>
     </Card>
   );

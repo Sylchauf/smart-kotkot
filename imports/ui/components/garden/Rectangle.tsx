@@ -143,7 +143,7 @@ const Rectangle = ({
               />
               <ShowImage
                 containerSize={{ width: p.width, height: p.height }}
-                url={p?.vegetable?.imageUrl}
+                url={`/data/${p?.vegetable?.dataLink}/icon.png`}
               />
               <Text
                 x={(p.width - p?.vegetable?.name[locale].length * 6) / 2}
