@@ -13,7 +13,7 @@ const CameraStreamDisplay: React.FC<Props> = ({ camera }) => {
   const [url, setUrl] = useState("");
 
   useEffect(() => {
-    Meteor.promise("stream.start", camera.id, (err, res) => {
+    Meteor.call("stream.start", camera.id, (err, res) => {
       setUrl(res);
     });
   }, []);
