@@ -4,8 +4,6 @@ let webrtc;
 let mediaStream;
 
 export const VideoPlayer = ({ url }) => {
-  console.log("Render player");
-
   useEffect(() => {
     startPlay();
 

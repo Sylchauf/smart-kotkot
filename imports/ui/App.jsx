@@ -16,7 +16,13 @@ import Home from "./Home";
 import Garden from "./pages/Garden";
 import Settings from "./Settings";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>

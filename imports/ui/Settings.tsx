@@ -67,8 +67,6 @@ const Settings = () => {
           shapes: [],
         });
 
-        console.log("result:", result);
-
         navigate(`/garden/${result}/editor`);
       } catch (error) {
         console.error(error);

@@ -13,13 +13,13 @@ const CameraStreamDisplay: React.FC<Props> = ({ camera }) => {
   const [url, setUrl] = useState("");
 
   useEffect(() => {
-    Meteor.call("stream.start", camera.id, (err, res) => {
+    Meteor.promise("stream.start", camera.id, (err, res) => {
       setUrl(res);
     });
   }, []);
 
   const handleSelectPreset = (index) => {
-    Meteor.call("devices.sendCommand", {
+    Meteor.promise("devices.sendCommand", {
       endPoint: `/api/camera/move/${camera.id}/${index}`,
     });
   };

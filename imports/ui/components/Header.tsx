@@ -24,6 +24,7 @@ const Header: React.FC = () => {
 
   const plotsMenu = plots.data.map((plot) => (
     <Link
+      key={plot._id}
       style={{ marginRight: 32 }}
       href={`/garden/${plot._id}`}
       underline={"hover"}
