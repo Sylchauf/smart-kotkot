@@ -1,3 +1,4 @@
+import Inventory from '/imports/ui/pages/Inventory'
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ToastContainer } from "react-toastify";
@@ -62,6 +63,14 @@ export const App = () => (
                 element={
                   <RequireAuth>
                     <Garden />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="/inventory/:id"
+                element={
+                  <RequireAuth>
+                    <Inventory />
                   </RequireAuth>
                 }
               />

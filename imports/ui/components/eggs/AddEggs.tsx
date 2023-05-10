@@ -34,7 +34,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
       .then(() => {
         toast.success(
           <FormattedMessage
-            id={"AddVegetables.success"}
+            id={"Form.success"}
             defaultMessage={"Successfully added"}
           />
         );
@@ -43,7 +43,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
       .catch(() => {
         toast.error(
           <FormattedMessage
-            id={"AddVegetables.error"}
+            id={"Form.error"}
             defaultMessage={"Something happend. Try again later"}
           />
         );
@@ -59,7 +59,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
     >
       <DialogTitle>
         <FormattedMessage
-          id={"AddVegetables.Title"}
+          id={"Form.Title"}
           defaultMessage={"Add eggs"}
         />
       </DialogTitle>
@@ -69,7 +69,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
             <DateTimePicker
               label={
                 <FormattedMessage
-                  id={"AddVegetables.date"}
+                  id={"Form.date"}
                   defaultMessage={"Pick-up date"}
                 />
               }
@@ -81,7 +81,7 @@ const AddEggs: React.FC<Props> = ({ onClose, onAdd }) => {
             <TextField
               label={
                 <FormattedMessage
-                  id={"AddVegetables.Number"}
+                  id={"Form.Number"}
                   defaultMessage={"Number of eggs"}
                 />
               }

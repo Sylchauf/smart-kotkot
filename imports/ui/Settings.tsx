@@ -1,4 +1,3 @@
-import AddIcon from "@mui/icons-material/Add";
 import { Meteor } from "meteor/meteor";
 import { useState } from "react";
 import * as React from "react";
@@ -7,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { Button, Grid } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 import DevicesList from "./components/DevicesList";
 import HomeCard from "./components/HomeCard";
@@ -14,6 +14,11 @@ import PlotsList from "./components/PlotsList";
 import Profile from "./components/Profile";
 import AddVegetables from "./components/vegetables/AddVegetables";
 import ListVegetables from "./components/vegetables/ListVegetables";
+import { bridge as InventorySchema } from "../db/Inventories/schema";
+import { bridge as ItemCategoriesSchema } from "../db/ItemCategories/schema";
+import List from "./components/forms/List";
+import gettersInventories from "./hooks/useInventories";
+import gettersItemCategories from "./hooks/useItemCategories";
 
 const Settings = () => {
   const [openAddVegetables, setOpenAddVegetables] = useState<boolean>(false);
@@ -98,12 +103,9 @@ const Settings = () => {
   ];
 
   const vegetablesActions = [
-    <Button key={"add-plot"} onClick={() => setOpenAddVegetables(true)}>
+    <Button key={"add-vegetable"} onClick={() => setOpenAddVegetables(true)}>
       <AddIcon />{" "}
-      <FormattedMessage
-        id={"Header.AddVegetables"}
-        defaultMessage={"Add a vegetable"}
-      />
+      <FormattedMessage id={"Header.Form"} defaultMessage={"Add a vegetable"} />
     </Button>,
   ];
 
@@ -154,6 +156,20 @@ const Settings = () => {
           }
           content={<ListVegetables />}
           actions={vegetablesActions}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <List
+          title={"Inventory"}
+          schema={InventorySchema}
+          getters={gettersInventories}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <List
+          title={"Item categories"}
+          schema={ItemCategoriesSchema}
+          getters={gettersItemCategories}
         />
       </Grid>
       Version v{require("../../package.json").version}

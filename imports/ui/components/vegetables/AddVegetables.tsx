@@ -31,7 +31,7 @@ const AddVegetables: React.FC<Props> = ({ onClose }) => {
       .then(() => {
         toast.success(
           <FormattedMessage
-            id={"AddVegetables.success"}
+            id={"Form.success"}
             defaultMessage={"Successfully added"}
           />
         );
@@ -40,7 +40,7 @@ const AddVegetables: React.FC<Props> = ({ onClose }) => {
       .catch(() => {
         toast.error(
           <FormattedMessage
-            id={"AddVegetables.error"}
+            id={"Form.error"}
             defaultMessage={"Something happend. Try again later"}
           />
         );
@@ -56,7 +56,7 @@ const AddVegetables: React.FC<Props> = ({ onClose }) => {
     >
       <DialogTitle>
         <FormattedMessage
-          id={"AddVegetables.Title"}
+          id={"Form.Title"}
           defaultMessage={"Add a new vegetable"}
         />
       </DialogTitle>
@@ -66,7 +66,7 @@ const AddVegetables: React.FC<Props> = ({ onClose }) => {
             <TextField
               label={
                 <FormattedMessage
-                  id={"AddVegetables.name"}
+                  id={"Form.name"}
                   defaultMessage={"Name"}
                 />
               }
@@ -78,7 +78,7 @@ const AddVegetables: React.FC<Props> = ({ onClose }) => {
             <TextField
               label={
                 <FormattedMessage
-                  id={"AddVegetables.dataLink"}
+                  id={"Form.dataLink"}
                   defaultMessage={"Data"}
                 />
               }

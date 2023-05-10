@@ -9,11 +9,13 @@ import useMobile from "../hooks/useMobile";
 import usePlots from "../hooks/usePlots";
 
 import Logo from "./Logo";
+import { useInventories } from "../hooks/useInventories";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const { isMobile } = useMobile();
   const plots = usePlots();
+  const inventories = useInventories();
 
   const logo = <Logo onClick={() => navigate("/")} />;
   const menu = (
@@ -33,12 +35,24 @@ const Header: React.FC = () => {
     </Link>
   ));
 
+  const inventoriesMenu = inventories.list.map((inventory) => (
+    <Link
+      key={inventory._id}
+      style={{ marginRight: 32 }}
+      href={`/inventory/${inventory._id}`}
+      underline={"hover"}
+    >
+      {inventory.name}
+    </Link>
+  ));
+
   const itemsMenu = (
     <>
       <Link style={{ marginRight: 32 }} href={`/`} underline={"hover"}>
         <FormattedMessage id={"Header.Home"} defaultMessage={"Home"} />
       </Link>
       {plotsMenu}
+      {inventoriesMenu}
     </>
   );
 

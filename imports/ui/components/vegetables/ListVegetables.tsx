@@ -9,7 +9,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import useVegetables, { Vegetables } from "../../hooks/useVegetables";
 
 interface Props {
-  onDelete: (id: number) => any;
+  onDelete?: (id: number) => any;
 }
 
 const ListVegetables: React.FC<Props> = ({ onDelete }) => {
@@ -21,7 +21,7 @@ const ListVegetables: React.FC<Props> = ({ onDelete }) => {
   const columns: Array<Column<Vegetables>> = [
     {
       title: (
-        <FormattedMessage id={"ListVegetables.Name"} defaultMessage={"Name"} />
+        <FormattedMessage id={"ListInventory.Name"} defaultMessage={"Name"} />
       ),
       field: "name",
       defaultSort: "desc",
@@ -33,11 +33,11 @@ const ListVegetables: React.FC<Props> = ({ onDelete }) => {
     confirm().then(() => {
       toast.success(
         <FormattedMessage
-          id={"ListVegetables.successDelete"}
+          id={"ListInventory.successDelete"}
           defaultMessage={"Successfully deleted"}
         />
       );
-      onDelete(rowData._id);
+      if (onDelete) onDelete(rowData._id);
     });
   };
 

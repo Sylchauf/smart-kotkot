@@ -88,7 +88,10 @@ const crudMaker = (
     [`${name}.read`]: function ({ selector = {}, fields = undefined } = {}) {
       const _selector = alterSelector("read", selector);
 
-      return collection.find(_selector, { fields }).fetch().map(afterRead);
+      return collection
+        .find({ ..._selector, deletedAt: { $exists: false } }, { fields })
+        .fetch()
+        .map(afterRead);
     },
 
     [`${name}.update`]: async function (selector, item) {

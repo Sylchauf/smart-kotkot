@@ -5,5 +5,6 @@ import "./stream";
 import "./plots";
 import "./plants";
 import "./vegetables";
-import "./inventory";
+import "./inventories";
 import "./items";
+import "./itemCategories";

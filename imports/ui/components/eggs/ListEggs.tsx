@@ -24,7 +24,7 @@ interface Props {
 
 const columns: Array<Column<Eggs>> = [
   {
-    title: <FormattedMessage id={"ListVegetables.Date"} defaultMessage={"Date"} />,
+    title: <FormattedMessage id={"ListInventory.Date"} defaultMessage={"Date"} />,
     field: "date",
     type: "datetime",
     defaultSort: "desc",
@@ -32,7 +32,7 @@ const columns: Array<Column<Eggs>> = [
   {
     title: (
       <FormattedMessage
-        id={"ListVegetables.number"}
+        id={"ListInventory.number"}
         defaultMessage={"Number of eggs"}
       />
     ),
@@ -49,7 +49,7 @@ const ListEggs: React.FC<Props> = ({ list, onClose, onDelete }) => {
     confirm().then(() => {
       toast.success(
         <FormattedMessage
-          id={"ListVegetables.successDelete"}
+          id={"ListInventory.successDelete"}
           defaultMessage={"Successfully deleted"}
         />
       );
@@ -66,7 +66,7 @@ const ListEggs: React.FC<Props> = ({ list, onClose, onDelete }) => {
     >
       <DialogTitle>
         <FormattedMessage
-          id={"ListVegetables.Title"}
+          id={"ListInventory.Title"}
           defaultMessage={"Picked up eggs"}
         />
       </DialogTitle>
