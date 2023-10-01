@@ -21,15 +21,15 @@ ngrok:
   command: ""
 
 rtsp:
-  listen: ":8554"
+  listen: ":8564"
   username: ""
   password: ""
 
 srtp:
-  listen: ":8443"
+  listen: ":8463"
 
 webrtc:
-  listen: ":8555"
+  listen: ":8565"
   candidates: []
   ice_servers:
     - urls: [ "stun:stun.l.google.com:19302" ]

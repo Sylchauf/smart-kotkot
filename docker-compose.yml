@@ -29,7 +29,9 @@ services:
   go2rtc:
     image: alexxit/go2rtc:latest
     restart: always
-    network_mode: "host"
-    privileged: true
+    ports:
+      - 8564:8564
+      - 8463:8463
+      - 8565:8565
     volumes:
       - $PWD/go2rtc.yaml:/config/go2rtc.yaml
