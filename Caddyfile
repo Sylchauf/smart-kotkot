@@ -1,7 +1,7 @@
 :80 {
     reverse_proxy * smartkotkot:3000
 
-    route /rtsp/stream.html {
+    route /rtsp/* {
           uri strip_prefix rtsp
           reverse_proxy go2rtc:8184 {
               header_up X-Real-IP {remote}
