@@ -17,7 +17,7 @@ Meteor.methods({
             const camera = cameraList.find((c) => c.id === String(cameraId));
 
             const name = `${userId}-${cameraId}`;
-            
+
             console.log(`Try to add ${encodeURI(name)} (${encodeURI(camera.streamUri)})`)
 
             const res = await axios
