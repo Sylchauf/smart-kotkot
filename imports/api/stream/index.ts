@@ -17,10 +17,12 @@ Meteor.methods({
             const camera = cameraList.find((c) => c.id === String(cameraId));
 
             const name = `${userId}-${cameraId}`;
+            
+            console.log(`Try to add ${encodeURI(name)} (${encodeURI(camera.streamUri)})`)
 
             const res = await axios
               .put(
-                `http://go2rtc:8184/api/streams?name=${name}&src=${camera.streamUri}`
+                `http://go2rtc:8184/api/streams?name=${encodeURI(name)}&src=${encodeURI(camera.streamUri)}`
               )
               .catch((error) => {
                 console.error(`ADD STREAM ERROR: ${error}`);
