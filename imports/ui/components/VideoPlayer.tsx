@@ -4,7 +4,7 @@ let webrtc;
 let mediaStream;
 
 export const VideoPlayer = ({ url }) => {
-  useEffect(() => {
+  /*useEffect(() => {
     startPlay();
 
     document
@@ -22,7 +22,9 @@ export const VideoPlayer = ({ url }) => {
         webrtc = null;
       }
     };
-  }, []);
+  }, []);*/
+
+    console.log('url:', url);
 
   const startPlay = async () => {
     mediaStream = new MediaStream();
@@ -144,22 +146,7 @@ export const VideoPlayer = ({ url }) => {
       });
   }
 
-  return (
-    <video
-      id={"videoPlayer"}
-      autoPlay={true}
-      controls={false}
-      playsInline={true}
-      muted={true}
-      loop={true}
-      style={{
-        objectFit: "contain",
-        width: "100%",
-        height: 463,
-        background: "black",
-      }}
-    />
-  );
+  return <iframe src={url} />;
 };
 
 export default VideoPlayer;

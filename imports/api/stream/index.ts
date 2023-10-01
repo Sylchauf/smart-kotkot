@@ -18,28 +18,15 @@ Meteor.methods({
 
             const name = `${userId}-${cameraId}`;
 
-            await axios
-              .post(`http://${process.env.DOCKER_HOST_ADDRESS}:8083/stream/${name}/add`, {
-                name,
-                channels: {
-                  "0": {
-                    name: "ch1",
-                    url: camera.streamUri,
-                    on_demand: false,
-                    debug: false,
-                    status: 0,
-                  },
-                },
-              })
+            const res = await axios
+              .put(
+                `http://go2rtc:8184/api/streams?name=${name}&src=${camera.streamUri}`
+              )
               .catch((error) => {
-                console.error(error);
+                console.error(`ADD STREAM ERROR: ${error}`);
               }); // We accept an error if there is already add
 
-            resolve(
-              Meteor.absoluteUrl(
-                `rtsp/stream/${name}/channel/0/webrtc?uuid=${name}&channel=0`
-              )
-            );
+            resolve(Meteor.absoluteUrl(`rtsp/stream.html?src=${name}`));
           }
         }
       );

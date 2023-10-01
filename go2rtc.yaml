@@ -1,0 +1,39 @@
+api:
+  listen: ":8184"
+  base_path: ""
+  static_dir: ""
+  origin: ""
+
+ffmpeg:
+  bin: "ffmpeg"
+  global: "-hide_banner"
+  file: "-re -stream_loop -1 -i {input}"
+  http: "-fflags nobuffer -flags low_delay -i {input}"
+  rtsp: "-fflags nobuffer -flags low_delay -timeout 5000000 -user_agent go2rtc/ffmpeg -rtsp_transport tcp -i {input}"
+  output: "-user_agent ffmpeg/go2rtc -rtsp_transport tcp -f rtsp {output}"
+  # ... different presets for codecs
+
+log:
+  format: ""
+  level: "debug"
+
+ngrok:
+  command: ""
+
+rtsp:
+  listen: ":8554"
+  username: ""
+  password: ""
+
+srtp:
+  listen: ":8443"
+
+webrtc:
+  listen: ":8555"
+  candidates: []
+  ice_servers:
+    - urls: [ "stun:stun.l.google.com:19302" ]
+      username: ""
+      credential: ""
+streams:
+        scfPwKDsoo6w5s2ip-0: rtsp://sylchauf:Maislol19@192.168.1.139/av_stream/ch0

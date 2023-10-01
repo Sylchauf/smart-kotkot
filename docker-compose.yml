@@ -2,36 +2,35 @@ version: "2.3"
 services:
   smartkotkot:
     image: "sylchauf/smart-kotkot:latest"
+    build: .
     restart: always
     environment:
       - PORT=3000
       - MONGO_URL=mongodb://database:27017/smart-kotkot
       - ROOT_URL=${PROTOCOL:-https}://${DOMAIN}
-      - DOCKER_HOST_ADDRESS=${DOCKER_HOST_ADDRESS}
 
   caddy:
-    image: caddy:2.5.1
+    image: caddy:2
     restart: always
     ports:
-      - "80:80"
-    environment:
-      - DOCKER_HOST_ADDRESS=${DOCKER_HOST_ADDRESS}
+      - ${PORT:-80}:80
     volumes:
       - $PWD/Caddyfile:/etc/caddy/Caddyfile
       - /opt/smartkotkot/data/caddy/data:/data
       - /opt/smartkotkot/data/caddy/config:/config
 
   database:
-    image: mongo:5.0.5
+    image: mongo:5
     restart: always
     volumes:
       - /opt/smartkotkot/data/mongodb:/data/db
     ports:
       - "127.0.0.1:27017:27017"
 
-  rtspserver:
-    image: sylchauf/rtsptoweb:latest
+  go2rtc:
+    image: alexxit/go2rtc:latest
     restart: always
     network_mode: "host"
+    privileged: true
     volumes:
-      - $PWD/config.rtsp.json:/config/config.json
+      - $PWD/go2rtc.yaml:/config/go2rtc.yaml
