@@ -2,7 +2,6 @@ version: "2.3"
 services:
   smartkotkot:
     image: "sylchauf/smart-kotkot:latest"
-    build: .
     restart: always
     environment:
       - PORT=3000
