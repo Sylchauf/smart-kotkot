@@ -33,11 +33,10 @@ const Layout: React.FC = ({ children }) => {
     ),
   };
 
-  const theme = useTracker(
-    () => Meteor.user()?.profile?.theme || "automatic",
-    []
-  );
   const user = useTracker(() => Meteor.user(), []);
+  const theme = user?.profile.theme || "automatic";
+
+  console.log(user);
 
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -90,6 +89,7 @@ const Layout: React.FC = ({ children }) => {
       <ConfirmProvider defaultOptions={defaultOptions}>
         <CssBaseline />
         <main
+          key={user?._id}
           style={{
             minHeight: "100vh",
           }}

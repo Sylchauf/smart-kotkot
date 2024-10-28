@@ -25,14 +25,32 @@ const Door: React.FC<Props> = ({
   if (isLoading) return null;
 
   const isOpen = state === "top";
+  const isClosed = state === "bottom";
 
-  const stateToDisplay = isMoving ? (
-    <FormattedMessage id={"Door.Moving"} defaultMessage={"Moving…"} />
-  ) : isOpen ? (
-    <FormattedMessage id={"Door.IsOpen"} defaultMessage={"Opened"} />
-  ) : (
-    <FormattedMessage id={"Door.IsClose"} defaultMessage={"Closed"} />
-  );
+  let stateToDisplay;
+  let color;
+
+  if (isMoving) {
+    stateToDisplay = (
+      <FormattedMessage id={"Door.Moving"} defaultMessage={"Moving…"} />
+    );
+    color = "blue";
+  } else if (isOpen) {
+    stateToDisplay = (
+      <FormattedMessage id={"Door.IsOpen"} defaultMessage={"Opened"} />
+    );
+    color = "green";
+  } else if (isClosed) {
+    stateToDisplay = (
+      <FormattedMessage id={"Door.IsClose"} defaultMessage={"Closed"} />
+    );
+    color = "red";
+  } else {
+    stateToDisplay = (
+      <FormattedMessage id={"Door.Unknown"} defaultMessage={"Unknown state"} />
+    );
+    color = "gray";
+  }
 
   return (
     <div>
@@ -40,9 +58,7 @@ const Door: React.FC<Props> = ({
         <b>
           <FormattedMessage id={"Door.State"} defaultMessage={"State"} /> :{" "}
         </b>
-        <span style={{ color: isMoving ? "blue" : isOpen ? "green" : "red" }}>
-          {stateToDisplay}
-        </span>
+        <span style={{ color }}>{stateToDisplay}</span>
       </div>
 
       <div style={{ color: "gray", fontSize: "75%" }}>
@@ -84,7 +100,7 @@ const Door: React.FC<Props> = ({
 
       <br />
 
-      {!isMoving && (
+      {!isMoving && state !== undefined && (
         <div>
           {!isOpen && (
             <Button

@@ -27,6 +27,7 @@ type Options = {
 // @ts-ignore
 const Api = new Restivus({
   useDefaultAuth: true,
+  apiPath: "api",
   prettyJson: true,
 });
 
@@ -76,34 +77,40 @@ const crudMaker = (
     [`${name}.create`]: async function (item: Item) {
       const itemAltered = await beforeCreate({ ...item });
 
-      const res = collection.insert(itemAltered);
+      const res = await collection.insertAsync(itemAltered);
 
-      const documentInserted = collection.findOne(res);
+      const documentInserted = await collection.findOneAsync(res);
 
       afterCreate(documentInserted, item);
 
       return res;
     },
 
-    [`${name}.read`]: function ({ selector = {}, fields = undefined } = {}) {
+    [`${name}.read`]: async function ({
+      selector = {},
+      fields = undefined,
+    } = {}) {
       const _selector = alterSelector("read", selector);
 
-      return collection
+      const results = await collection
         .find({ ..._selector, deletedAt: { $exists: false } }, { fields })
-        .fetch()
-        .map(afterRead);
+        .fetchAsync();
+
+      return results.map(afterRead);
     },
 
     [`${name}.update`]: async function (selector, item) {
       const _selector = alterSelector("update", selector);
 
-      const oldItem = collection.findOne(_selector);
+      const oldItem = await collection.findOneAsync(_selector);
 
       const itemAltered = await beforeUpdate({ ...item });
 
-      const res = collection.update(_selector, { $set: itemAltered });
+      const res = await collection.updateAsync(_selector, {
+        $set: itemAltered,
+      });
 
-      const documentUpdated = collection.findOne(_selector);
+      const documentUpdated = await collection.findOneAsync(_selector);
 
       afterUpdate(documentUpdated, oldItem);
 
@@ -113,13 +120,13 @@ const crudMaker = (
     [`${name}.delete`]: async function (selector) {
       const _selector = alterSelector("delete", selector);
 
-      const document = collection.findOne(_selector);
+      const document = await collection.findOneAsync(_selector);
 
       await beforeDelete(document);
 
       if (!document) throw new Meteor.Error(404, "NOT_FOUND");
 
-      const res = collection.update(_selector, {
+      const res = await collection.updateAsync(_selector, {
         $set: { deletedAt: new Date(), deletedBy: this.userId },
       });
 
@@ -128,10 +135,11 @@ const crudMaker = (
       return res;
     },
 
-    [`${name}.count`]: function ({ selector = {} } = {}) {
+    [`${name}.count`]: async function ({ selector = {} } = {}) {
       const _selector = alterSelector("count", selector);
 
       return collection
+        .rawCollection()
         .find({ deletedAt: { $exists: false }, ..._selector })
         .count();
     },
@@ -142,7 +150,7 @@ const crudMaker = (
   Meteor.publish(`${name}.subscribe`, function (selector, fields) {
     const _selector = alterSelector("subscribe", selector);
 
-    const cursor = collection.find(_selector, { fields });
+    const cursor = collection.rawCollection().find(_selector, { fields });
 
     this.onStop(onStopSubscribe);
 

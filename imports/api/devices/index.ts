@@ -4,7 +4,7 @@ import Devices from "../../db/devices/collection";
 
 Meteor.methods({
   "devices.sendCommand": async function ({ endPoint, data }) {
-    const device = Devices.findOne({ userId: this.userId });
+    const device = await Devices.findOneAsync({ userId: this.userId });
 
     if (!device) throw new Meteor.Error(500, "No device associated");
 
@@ -15,7 +15,7 @@ Meteor.methods({
     return sendCommand(device._id, { endPoint, data });
   },
   "devices.read": async function () {
-    const devices = Devices.find({ userId: this.userId });
+    const devices = await Devices.find({ userId: this.userId }).fetchAsync();
 
     return devices.map((device) => {
       return {
@@ -26,23 +26,23 @@ Meteor.methods({
     });
   },
   "devices.associate": async function (moduleId) {
-    const device = await Devices.rawCollection().findOne({ _id: moduleId });
+    const device = await Devices.findOneAsync({ _id: moduleId });
 
     if (!device) {
       // If the device never connected, claim the futur device
-      Devices.insert({
+      await Devices.insertAsync({
         _id: moduleId,
         userId: this.userId,
       });
     } else if (!device.userId) {
       // If this devices is not associated, associate to the user
-      Devices.rawCollection().update(
+      await Devices.updateAsync(
         { _id: moduleId },
         { $set: { userId: this.userId } }
       );
     }
   },
   "devices.delete": function (moduleId) {
-    Devices.remove(moduleId);
+    return Devices.removeAsync(moduleId);
   },
 });

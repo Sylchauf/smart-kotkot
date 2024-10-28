@@ -1,8 +1,8 @@
 import { Meteor } from "meteor/meteor";
 
 Meteor.methods({
-  "profile.update": function ({ locale, theme }) {
-    const user = Meteor.users.findOne(this.userId);
+  "profile.update": async function ({ locale, theme }) {
+    const user = await Meteor.users.findOneAsync(this.userId);
     if (!user) throw new Meteor.Error(400);
 
     const newProfile = {
@@ -11,7 +11,7 @@ Meteor.methods({
       theme: theme || user.profile?.theme,
     };
 
-    Meteor.users.update(this.userId, {
+    await Meteor.users.updateAsync(this.userId, {
       $set: {
         profile: newProfile,
       },

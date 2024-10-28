@@ -12,12 +12,26 @@ const Light: React.FC = () => {
   if (isLoading) return null;
 
   const isOn = state === "on";
+  const isOff = state === "off";
 
-  const stateToDisplay = isOn ? (
-    <FormattedMessage id={"Light.IsOn"} defaultMessage={"On"} />
-  ) : (
-    <FormattedMessage id={"Light.IsOff"} defaultMessage={"Off"} />
-  );
+  let stateToDisplay;
+  let color;
+  if (isOn) {
+    stateToDisplay = (
+      <FormattedMessage id={"Light.IsOn"} defaultMessage={"On"} />
+    );
+    color = "green";
+  } else if (isOff) {
+    stateToDisplay = (
+      <FormattedMessage id={"Light.IsOff"} defaultMessage={"Off"} />
+    );
+    color = "red";
+  } else {
+    stateToDisplay = (
+      <FormattedMessage id={"Light.Unknown"} defaultMessage={"Unknown state"} />
+    );
+    color = "gray";
+  }
 
   return (
     <div>
@@ -25,7 +39,7 @@ const Light: React.FC = () => {
         <b>
           <FormattedMessage id={"Light.State"} defaultMessage={"State"} /> :{" "}
         </b>
-        <span style={{ color: isOn ? "green" : "red" }}>{stateToDisplay}</span>
+        <span style={{ color }}>{stateToDisplay}</span>
       </div>
 
       <div style={{ color: "gray", fontSize: "75%" }}>
@@ -64,15 +78,29 @@ const Light: React.FC = () => {
       <br />
 
       <div>
-        {!isOn && (
-          <Button onClick={on} fullWidth variant={"outlined"} size={"small"}>
-            <FormattedMessage id={"Light.On"} defaultMessage={"On"} />
-          </Button>
-        )}
-        {isOn && (
-          <Button onClick={off} fullWidth variant={"outlined"} size={"small"}>
-            <FormattedMessage id={"Light.Off"} defaultMessage={"Off"} />
-          </Button>
+        {state !== undefined && (
+          <div>
+            {!isOn && (
+              <Button
+                onClick={on}
+                fullWidth
+                variant={"outlined"}
+                size={"small"}
+              >
+                <FormattedMessage id={"Light.On"} defaultMessage={"On"} />
+              </Button>
+            )}
+            {isOn && (
+              <Button
+                onClick={off}
+                fullWidth
+                variant={"outlined"}
+                size={"small"}
+              >
+                <FormattedMessage id={"Light.Off"} defaultMessage={"Off"} />
+              </Button>
+            )}
+          </div>
         )}
       </div>
     </div>

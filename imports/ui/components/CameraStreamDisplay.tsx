@@ -25,6 +25,7 @@ const CameraStreamDisplay: React.FC<Props> = ({ camera }) => {
   };
 
   if (!url) return null;
+
   return (
     <div>
       <div style={{ position: "relative" }}>

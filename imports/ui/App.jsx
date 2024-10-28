@@ -1,7 +1,10 @@
-import Inventory from '/imports/ui/pages/Inventory'
+import Inventory from "/imports/ui/pages/Inventory";
+import { CircularProgress } from "@mui/material";
+import { Meteor } from "meteor/meteor";
+import { useTracker } from "meteor/react-meteor-data";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
@@ -25,68 +28,85 @@ const queryClient = new QueryClient({
   },
 });
 
-export const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <LocaleConfigurator>
-      <LocalizationProvider dateAdapter={AdapterMoment}>
-        <ToastContainer />
-        <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route
-                path="/"
-                element={
-                  <RequireAuth>
-                    <Home />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <RequireAuth>
-                    <Settings />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/garden/:id/editor"
-                element={
-                  <RequireAuth>
-                    <GardenEditor />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/garden/:id"
-                element={
-                  <RequireAuth>
-                    <Garden />
-                  </RequireAuth>
-                }
-              />
-              <Route
-                path="/inventory/:id"
-                element={
-                  <RequireAuth>
-                    <Inventory />
-                  </RequireAuth>
-                }
-              />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
-      </LocalizationProvider>
-    </LocaleConfigurator>
-  </QueryClientProvider>
-);
+export const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <LocaleConfigurator>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <ToastContainer />
+          <BrowserRouter>
+            <Layout>
+              <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route
+                  path="/"
+                  element={
+                    <RequireAuth>
+                      <Home />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/settings"
+                  element={
+                    <RequireAuth>
+                      <Settings />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/garden/:id/editor"
+                  element={
+                    <RequireAuth>
+                      <GardenEditor />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/garden/:id"
+                  element={
+                    <RequireAuth>
+                      <Garden />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/inventory/:id"
+                  element={
+                    <RequireAuth>
+                      <Inventory />
+                    </RequireAuth>
+                  }
+                />
+              </Routes>
+            </Layout>
+          </BrowserRouter>
+        </LocalizationProvider>
+      </LocaleConfigurator>
+    </QueryClientProvider>
+  );
+};
 
 const RequireAuth = ({ children }) => {
-  let user = Meteor.user();
+  let user = useTracker(() => Meteor.user(), []);
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
+  if (user === null) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get("username");
+    const password = urlParams.get("password");
+
+    if (username && password) {
+      Meteor.loginWithPassword(username, password, (err, res) => {
+        if (err) toast.error(err.reason);
+        else {
+          window.location.href = "/";
+        }
+      });
+
+      return <CircularProgress />;
+    } else return <Navigate to="/login" replace />;
+  } else if (user === undefined) {
+    return <CircularProgress />;
   }
 
   return children;

@@ -18,13 +18,13 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    Meteor.loginWithPassword(email, password, (err, res) => {
+    Meteor.loginWithPassword(email, password, (err: any) => {
       if (err) toast.error(err.reason);
       else navigate("/");
     });
   };
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     Accounts.createUser(
       {
         email,
@@ -33,7 +33,7 @@ const Login: React.FC = () => {
           theme: "automatic",
         },
       },
-      (err, res) => {
+      (err: any) => {
         if (err) toast.error(err.reason);
         else handleLogin();
       }
