@@ -8,3 +8,4 @@ import "./vegetables";
 import "./inventories";
 import "./items";
 import "./itemCategories";
+import "./tasks";

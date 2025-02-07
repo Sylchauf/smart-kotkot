@@ -51,6 +51,9 @@ const Header: React.FC = () => {
       <Link style={{ marginRight: 32 }} href={`/`} underline={"hover"}>
         <FormattedMessage id={"Header.Home"} defaultMessage={"Home"} />
       </Link>
+      <Link style={{ marginRight: 32 }} href={`/calendar`} underline={"hover"}>
+        <FormattedMessage id={"Header.Calendar"} defaultMessage={"Calendar"} />
+      </Link>
       {plotsMenu}
       {inventoriesMenu}
     </>

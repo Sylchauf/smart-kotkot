@@ -1,3 +1,4 @@
+import Calendar from "/imports/ui/pages/Calendar";
 import Inventory from "/imports/ui/pages/Inventory";
 import { CircularProgress } from "@mui/material";
 import { Meteor } from "meteor/meteor";
@@ -51,6 +52,14 @@ export const App = () => {
                   element={
                     <RequireAuth>
                       <Settings />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path="/calendar"
+                  element={
+                    <RequireAuth>
+                      <Calendar />
                     </RequireAuth>
                   }
                 />
